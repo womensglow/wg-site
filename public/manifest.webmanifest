@@ -1,0 +1,18 @@
+{
+  "name": "Women's Glow",
+  "short_name": "Women's Glow",
+  "description": "Premium home beauty services in Agra with a fast installable web app experience.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdfb",
+  "theme_color": "#be9f6a",
+  "scope": "/",
+  "orientation": "portrait-primary"
+}
