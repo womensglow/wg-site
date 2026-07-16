@@ -1,3 +1,6 @@
+import voiceReviewRitika from '@/assets/audio/voice_review_ritika.mp3';
+import voiceReviewSimran from '@/assets/audio/voice_review_simran.mp3';
+
 export type TextReview = {
   id: string;
   name: string;
