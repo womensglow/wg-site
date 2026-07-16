@@ -16,6 +16,12 @@ const basePath = process.env.BASE_PATH || '/';
 
 export default defineConfig({
   base: basePath,
+  publicDir: 'public',
+  build: {
+    outDir: path.resolve(import.meta.dirname, 'dist'),
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 1000,
+  },
   plugins: [
     react(),
     tailwindcss(),
@@ -47,10 +53,6 @@ export default defineConfig({
     dedupe: ['react', 'react-dom'],
   },
   root: path.resolve(import.meta.dirname),
-  build: {
-    outDir: path.resolve(import.meta.dirname, 'dist/public'),
-    emptyOutDir: true,
-  },
   server: {
     port,
     strictPort: true,

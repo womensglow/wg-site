@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Women's Glow logo">
+  <rect width="64" height="64" rx="16" fill="#f7efe5"/>
+  <path d="M20 44c3-8 8-12 12-14 4 2 9 6 12 14" fill="none" stroke="#b8894a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 24c2-7 7-10 10-10s8 3 10 10" fill="none" stroke="#8f5f2a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="34" cy="20" r="3" fill="#8f5f2a"/>
+</svg>
