@@ -6,6 +6,7 @@ import {
   REFERRAL_PROGRAM,
   BRAND_PARTNERS
 } from '../constants/services';
+import { IMAGE_REVIEWS } from '../constants/reviews';
 import { ServiceCard } from '../components/ServiceCard';
 import { useCart } from '../contexts/CartContext';
 import { Button } from '@/components/ui/button';
@@ -46,14 +47,7 @@ export default function Home() {
     }
   };
 
-  const reviews = [
-    { name: "Priya S.", text: "Absolutely wonderful experience! The beautician arrived on time and was very professional. Highly recommended for home services in Agra.", rating: 5 },
-    { name: "Neha G.", text: "The Rica wax was practically painless. Very hygienic setup, they bring everything needed. Will book again.", rating: 5 },
-    { name: "Anjali M.", text: "Got the Korean Mani Pedi done and it was heavenly. So relaxing to get spa-quality service in my own living room.", rating: 5 },
-    { name: "Kritika R.", text: "Booking was so easy, and the staff is very polite. The glow facial gave me amazing results right before my event.", rating: 5 },
-    { name: "Simran K.", text: "Best home salon service in Agra! I love that I don't have to deal with traffic just to get my eyebrows threaded.", rating: 5 },
-    { name: "Megha V.", text: "Very affordable for the premium quality they provide. Their sanitization process is top-notch.", rating: 5 },
-  ];
+  const reviews = IMAGE_REVIEWS;
 
   const faqs = [
     { q: "How do I book an appointment?", a: "You can book an appointment by selecting your desired services, going to your cart, and filling out the booking form. This will prepare a WhatsApp message to confirm your slot." },
@@ -267,17 +261,22 @@ export default function Home() {
           
           <div className="columns-1 sm:columns-2 lg:columns-4 gap-4 space-y-4">
             {[
-              "threading.jpg", "nail-tools.jpg", "korean-mani.jpg", "waxing.jpg", 
-              "facial.jpg", "beauty-kit.jpg", "pedicure.jpg", "bridal.jpg"
+              '/images/services/threading.jpg',
+              '/images/services/nail-tools.jpg',
+              '/images/services/korean-mani.jpg',
+              '/images/services/waxing.jpg',
+              '/images/services/facial.jpg',
+              '/images/services/beauty-kit.jpg',
+              '/images/services/pedicure.jpg',
+              '/images/services/bridal.jpg'
             ].map((img, i) => (
               <div key={i} className="break-inside-avoid relative group rounded-2xl overflow-hidden bg-secondary/10 aspect-[3/4]">
                 <img 
-                  src={`/attached_assets/generated_images/${img}`} 
+                  src={img} 
                   alt={`Gallery Image ${i+1}`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => {
-                    // Fallback gradient if image fails
                     e.currentTarget.style.display = 'none';
                     e.currentTarget.parentElement!.classList.add('bg-gradient-to-br', 'from-secondary', 'to-primary/20');
                   }}
@@ -303,17 +302,29 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {reviews.map((review, i) => (
-              <div key={i} className="bg-white p-8 rounded-3xl border border-border shadow-sm hover:shadow-md transition-shadow relative">
-                <div className="absolute top-8 right-8 text-primary/20 font-serif text-6xl leading-none">"</div>
-                <div className="flex gap-1 mb-4">
-                  {[...Array(review.rating)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
+            {reviews.map((review) => (
+              <div key={review.id} className="bg-white rounded-3xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                <div className="w-full h-56 bg-secondary/10">
+                  <img
+                    src={review.imageSrc}
+                    alt={review.caption}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
                 </div>
-                <p className="text-foreground/80 mb-6 italic relative z-10 leading-relaxed">"{review.text}"</p>
-                <div className="font-bold text-foreground">{review.name}</div>
-                <div className="text-xs text-foreground/50">Agra, UP</div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="font-bold text-foreground">{review.name}</div>
+                    <div className="text-xs text-foreground/50">{review.location}</div>
+                  </div>
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(review.rating)].map((_, j) => (
+                      <Star key={j} className="w-4 h-4 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <p className="text-foreground/70 text-sm">{review.caption}</p>
+                </div>
               </div>
             ))}
           </div>

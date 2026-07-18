@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
-import { Instagram, MapPin, Phone, Mail, Clock } from 'lucide-react';
-import logoUrl from '/images/services/beauty-kit.jpg';
+import { Instagram, MapPin, Phone, Mail, Clock, Youtube, Facebook } from 'lucide-react';
+import logoUrl from '/images/wg_logo.jpeg';
 
 export function Footer() {
   return (
@@ -16,7 +16,7 @@ export function Footer() {
                 className="w-14 h-14 rounded-full object-cover border border-primary/20" 
               />
               <span className="font-serif text-2xl font-bold text-foreground">
-                Women's Glow
+                Women's <span className="text-rose-500">Glow</span>
               </span>
             </Link>
             <p className="text-foreground/70 mb-6 leading-relaxed">
@@ -30,6 +30,25 @@ export function Footer() {
                 className="w-10 h-10 rounded-full bg-secondary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
               >
                 <Instagram className="w-5 h-5" />
+                
+              </a>
+              <a 
+                href="https://instagram.com/women_sglow_agra" 
+                target="_blank" 
+                rel="noreferrer"
+                className="w-10 h-10 rounded-full bg-secondary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
+              >
+                <Youtube className="w-5 h-5" />
+                
+              </a>
+              <a 
+                href="https://instagram.com/women_sglow_agra" 
+                target="_blank" 
+                rel="noreferrer"
+                className="w-10 h-10 rounded-full bg-secondary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
+                
               </a>
             </div>
           </div>
@@ -68,7 +87,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-foreground/70">+91 99999 99999</span>
+                <span className="text-foreground/70">+91 96347 04776</span>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-primary shrink-0" />

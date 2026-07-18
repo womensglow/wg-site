@@ -6,10 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { ServiceCard } from '../components/ServiceCard';
-import { SERVICES, SERVICE_CATEGORIES, type Service } from '../constants/services';
+import { SERVICES, SERVICE_CATEGORIES, type Service, normalizeServiceType } from '../constants/services';
 import { loadServices } from '@/lib/serviceCatalog';
 
 type PriceFilter = 'all' | 'under-500' | '500-1000' | '1000-plus';
+type ServiceTypeFilter = 'all' | 'with-product' | 'without-product';
 type SortOption = 'featured' | 'price-asc' | 'price-desc' | 'duration-asc';
 
 function FilterPanel({
@@ -17,6 +18,8 @@ function FilterPanel({
   setActiveCategory,
   priceRange,
   setPriceRange,
+  serviceTypeFilter,
+  setServiceTypeFilter,
   sortBy,
   setSortBy,
   onReset,
@@ -25,6 +28,8 @@ function FilterPanel({
   setActiveCategory: (value: string) => void;
   priceRange: PriceFilter;
   setPriceRange: (value: PriceFilter) => void;
+  serviceTypeFilter: ServiceTypeFilter;
+  setServiceTypeFilter: (value: ServiceTypeFilter) => void;
   sortBy: SortOption;
   setSortBy: (value: SortOption) => void;
   onReset: () => void;
@@ -34,6 +39,66 @@ function FilterPanel({
       <div>
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Filters</p>
         <h2 className="mt-2 text-xl font-serif font-semibold text-foreground">Find your ideal service</h2>
+      </div>
+
+
+      <div>
+        <p className="mb-3 text-sm font-medium text-foreground/80">Budget</p>
+        <div className="space-y-2">
+          {[
+            { value: 'all', label: 'All prices' },
+            { value: 'under-500', label: 'Under ₹500' },
+            { value: '500-1000', label: '₹500 - ₹1000' },
+            { value: '1000-plus', label: '₹1000+' },
+          ].map((option) => (
+            <label key={option.value} className="flex cursor-pointer items-center gap-2 text-sm text-foreground/70">
+              <input
+                type="radio"
+                name="priceRange"
+                checked={priceRange === option.value}
+                onChange={() => setPriceRange(option.value as PriceFilter)}
+                className="h-4 w-4 border-border text-primary focus:ring-primary"
+              />
+              {option.label}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p className="mb-3 text-sm font-medium text-foreground/80">Service type</p>
+        <div className="space-y-2">
+          {[
+            { value: 'all', label: 'All services' },
+            { value: 'with-product', label: 'With product' },
+            { value: 'without-product', label: 'Without product' },
+          ].map((option) => (
+            <label key={option.value} className="flex cursor-pointer items-center gap-2 text-sm text-foreground/70">
+              <input
+                type="radio"
+                name="serviceTypeFilter"
+                checked={serviceTypeFilter === option.value}
+                onChange={() => setServiceTypeFilter(option.value as ServiceTypeFilter)}
+                className="h-4 w-4 border-border text-primary focus:ring-primary"
+              />
+              {option.label}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p className="mb-3 text-sm font-medium text-foreground/80">Sort by</p>
+        <select
+          value={sortBy}
+          onChange={(event) => setSortBy(event.target.value as SortOption)}
+          className="w-full rounded-full border border-border bg-white px-4 py-2 text-sm outline-none focus:border-primary"
+        >
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="duration-asc">Duration: Short to Long</option>
+        </select>
       </div>
 
       <div>
@@ -61,42 +126,6 @@ function FilterPanel({
         </div>
       </div>
 
-      <div>
-        <p className="mb-3 text-sm font-medium text-foreground/80">Budget</p>
-        <div className="space-y-2">
-          {[
-            { value: 'all', label: 'All prices' },
-            { value: 'under-500', label: 'Under ₹500' },
-            { value: '500-1000', label: '₹500 - ₹1000' },
-            { value: '1000-plus', label: '₹1000+' },
-          ].map((option) => (
-            <label key={option.value} className="flex cursor-pointer items-center gap-2 text-sm text-foreground/70">
-              <input
-                type="radio"
-                name="priceRange"
-                checked={priceRange === option.value}
-                onChange={() => setPriceRange(option.value as PriceFilter)}
-                className="h-4 w-4 border-border text-primary focus:ring-primary"
-              />
-              {option.label}
-            </label>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <p className="mb-3 text-sm font-medium text-foreground/80">Sort by</p>
-        <select
-          value={sortBy}
-          onChange={(event) => setSortBy(event.target.value as SortOption)}
-          className="w-full rounded-full border border-border bg-white px-4 py-2 text-sm outline-none focus:border-primary"
-        >
-          <option value="featured">Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="duration-asc">Duration: Short to Long</option>
-        </select>
-      </div>
 
       <Button type="button" variant="ghost" className="w-full justify-center text-primary" onClick={onReset}>
         Reset filters
@@ -109,6 +138,7 @@ export default function Services() {
   const [services, setServices] = useState<Service[]>(SERVICES);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [priceRange, setPriceRange] = useState<PriceFilter>('all');
+  const [serviceTypeFilter, setServiceTypeFilter] = useState<ServiceTypeFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('featured');
   const [loading, setLoading] = useState(true);
@@ -143,20 +173,26 @@ export default function Services() {
 
     const result = services.filter((service) => {
       const matchesCategory = activeCategory === 'All' || service.category === activeCategory;
+      const displayPrice = service.discountedPrice ?? service.price;
       const matchesPrice = (() => {
         switch (priceRange) {
           case 'under-500':
-            return service.price < 500;
+            return displayPrice < 500;
           case '500-1000':
-            return service.price >= 500 && service.price <= 1000;
+            return displayPrice >= 500 && displayPrice <= 1000;
           case '1000-plus':
-            return service.price > 1000;
+            return displayPrice > 1000;
           default:
             return true;
         }
       })();
+      const serviceType = normalizeServiceType((service.serviceType ?? service.productMode) as string | undefined);
+      const matchesServiceType =
+        serviceTypeFilter === 'all'
+          ? true
+          : serviceType === serviceTypeFilter;
 
-      if (!matchesCategory || !matchesPrice) {
+      if (!matchesCategory || !matchesPrice || !matchesServiceType) {
         return false;
       }
 
@@ -170,26 +206,30 @@ export default function Services() {
     });
 
     result.sort((a, b) => {
+      const aPrice = a.discountedPrice ?? a.price;
+      const bPrice = b.discountedPrice ?? b.price;
+
       switch (sortBy) {
         case 'price-asc':
-          return a.price - b.price;
+          return aPrice - bPrice;
         case 'price-desc':
-          return b.price - a.price;
+          return bPrice - aPrice;
         case 'duration-asc':
           return a.duration - b.duration;
         default:
           if (a.popular && !b.popular) return -1;
           if (!a.popular && b.popular) return 1;
-          return a.price - b.price;
+          return aPrice - bPrice;
       }
     });
 
     return result;
-  }, [activeCategory, priceRange, searchQuery, services, sortBy]);
+  }, [activeCategory, priceRange, serviceTypeFilter, searchQuery, services, sortBy]);
 
   const resetFilters = () => {
     setActiveCategory('All');
     setPriceRange('all');
+    setServiceTypeFilter('all');
     setSearchQuery('');
     setSortBy('featured');
   };
@@ -225,6 +265,8 @@ export default function Services() {
               setActiveCategory={setActiveCategory}
               priceRange={priceRange}
               setPriceRange={setPriceRange}
+              serviceTypeFilter={serviceTypeFilter}
+              setServiceTypeFilter={setServiceTypeFilter}
               sortBy={sortBy}
               setSortBy={setSortBy}
               onReset={resetFilters}
@@ -261,6 +303,8 @@ export default function Services() {
                       setActiveCategory={setActiveCategory}
                       priceRange={priceRange}
                       setPriceRange={setPriceRange}
+                      serviceTypeFilter={serviceTypeFilter}
+                      setServiceTypeFilter={setServiceTypeFilter}
                       sortBy={sortBy}
                       setSortBy={setSortBy}
                       onReset={resetFilters}

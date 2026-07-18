@@ -57,7 +57,7 @@ export function Navbar() {
             className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-primary/20 shadow-sm group-hover:shadow-md transition-shadow" 
           />
           <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground">
-            Women's Glow
+            Women's <span className="text-primary">Glow</span>
           </span>
         </Link>
 
@@ -117,7 +117,8 @@ export function Navbar() {
                     </Link>
                   ))}
                 </nav>
-                <div className="mt-auto pb-6">
+                <div className="mt-auto pb-6 space-y-4">
+                  <AppInstallButton />
                   <Link href="/booking" className="w-full">
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-lg py-6 shadow-sm">
                       Book Appointment

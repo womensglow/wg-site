@@ -1,3 +1,45 @@
+export type ServiceType = 'with-product' | 'without-product' | 'both';
+
+export function normalizeServiceType(value?: string | null): ServiceType | undefined {
+  if (!value) return undefined;
+
+  const normalized = value
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/\//g, '-');
+
+  if (['with-product', 'with-products', 'withproduct', 'withproducts'].includes(normalized)) {
+    return 'with-product';
+  }
+
+  if (['without-product', 'without-products', 'withoutproduct', 'withoutproducts'].includes(normalized)) {
+    return 'without-product';
+  }
+
+  if (['both', 'all', 'flexible', 'either', 'both-options', 'with-product-without-product', 'with-products-without-products'].includes(normalized)) {
+    return 'both';
+  }
+
+  return undefined;
+}
+
+export function getServiceTypeLabel(value?: string | null): string {
+  const mode = normalizeServiceType(value);
+
+  switch (mode) {
+    case 'with-product':
+      return 'With product';
+    case 'without-product':
+      return 'Without product';
+    case 'both':
+      return 'With product';
+    default:
+      return;
+  }
+}
+
 export type Service = {
   id: string;
   category: string;
@@ -5,11 +47,14 @@ export type Service = {
   price: number;
   duration: number;
   popular?: boolean;
+  serviceType?: ServiceType | string;
+  productMode?: ServiceType | string;
+  discountedPrice?: number;
 };
 
 export const SERVICES: Service[] = [
   // Threading
-  { id: 't-1', category: 'Threading', name: 'Eyebrow', price: 30, duration: 5 },
+  { id: 't-1', category: 'Threading', name: 'Eyebrow', price: 49, discountedPrice: 30, serviceType: 'with-product', duration: 5 },
   { id: 't-2', category: 'Threading', name: 'Upper Lip', price: 30, duration: 5 },
   { id: 't-3', category: 'Threading', name: 'Lower Lip', price: 30, duration: 5 },
   { id: 't-4', category: 'Threading', name: 'Chin', price: 30, duration: 5 },
@@ -85,9 +130,9 @@ export const SERVICES: Service[] = [
   { id: 'mp-10', category: 'Mani and Pedi', name: 'Nail Paint Apply', price: 59, duration: 10 },
 
   // Hair Care
-  { id: 'hc-1', category: 'Hair Care', name: 'Root Touch-Up', price: 399, duration: 30 },
-  { id: 'hc-2', category: 'Hair Care', name: 'Root Touch-Up (Your Own Product)', price: 180, duration: 30 },
-  { id: 'hc-3', category: 'Hair Care', name: 'Henna Application', price: 240, duration: 40 },
+  { id: 'hc-1', category: 'Hair Care', name: 'Root Touch-Up (With Product)', price: 399, duration: 30, serviceType: 'with-product', discountedPrice: 349 },
+  { id: 'hc-2', category: 'Hair Care', name: 'Root Touch-Up (Without Product)', price: 180, duration: 30, serviceType: 'without-product', discountedPrice: 149 },
+  { id: 'hc-3', category: 'Hair Care', name: 'Henna Application', price: 240, duration: 40, serviceType: 'both', discountedPrice: 199 },
 
   // Bleach
   { id: 'bl-1', category: 'Bleach', name: 'Full Face + Neck', price: 195, duration: 30 },
