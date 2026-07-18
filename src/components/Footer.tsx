@@ -16,7 +16,7 @@ export function Footer() {
                 className="w-14 h-14 rounded-full object-cover border border-primary/20" 
               />
               <span className="font-serif text-2xl font-bold text-foreground">
-                Women's <span className="text-rose-500">Glow</span>
+                Women's <span className="text-primary">Glow</span>
               </span>
             </Link>
             <p className="text-foreground/70 mb-6 leading-relaxed">

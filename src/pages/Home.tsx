@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'wouter';
-import { 
-  SERVICES, 
+import {
+  SERVICES,
   REFERRAL_PROGRAM,
   BRAND_PARTNERS
 } from '../constants/services';
 import { IMAGE_REVIEWS } from '../constants/reviews';
 import { ServiceCard } from '../components/ServiceCard';
+import { OurServices } from '../components/OurServices';
 import { useCart } from '../contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Star, ShieldCheck, Home as HomeIcon, Sparkles, ArrowRight } from 'lucide-react';
@@ -30,7 +31,9 @@ export default function Home() {
     }
   };
 
-  const popularServices = SERVICES.filter(service => service.popular);
+  const popularServices = SERVICES
+    .filter(service => service.popular)
+    .slice(0, 8);
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -66,33 +69,39 @@ export default function Home() {
     <div className="min-h-screen bg-[#FFFDFB]">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,var(--color-secondary)_0%,transparent_40%)] opacity-20"></div>
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_left,var(--color-primary)_0%,transparent_40%)] opacity-10"></div>
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url("/images/wg-hero-home.png")',
+          }}
+        ></div>
         
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-30">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
               <span className="inline-block py-1 px-3 rounded-full bg-secondary/30 text-primary font-medium text-sm mb-6 tracking-wide uppercase">
                 Premium Home Salon in Agra
               </span>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               className="text-5xl md:text-7xl font-serif font-bold text-foreground mb-6 leading-tight"
               initial="hidden" animate="visible" variants={fadeInUp} transition={{ delay: 0.1 }}
             >
-              Glow at Home.<br/>
+              Glow at Home.<br />
               <span className="text-primary">Beauty at Your Door.</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-lg md:text-xl text-foreground/70 mb-10 max-w-2xl mx-auto leading-relaxed"
               initial="hidden" animate="visible" variants={fadeInUp} transition={{ delay: 0.2 }}
             >
               Experience luxury salon services in the comfort of your home. Professional beauticians, premium products, and impeccable hygiene.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
               initial="hidden" animate="visible" variants={fadeInUp} transition={{ delay: 0.3 }}
             >
@@ -104,13 +113,13 @@ export default function Home() {
                 Book Appointment
               </Button>
               <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-lg w-full sm:w-auto bg-white border-primary/20 hover:bg-secondary/10" onClick={() => {
-                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                setLocation('/services');
               }}>
                 View Services
               </Button>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
               initial="hidden" animate="visible" variants={stagger}
             >
@@ -131,53 +140,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 relative">
-              <div className="aspect-square rounded-3xl overflow-hidden">
-                {/* Fallback image if generator doesn't work */}
-                <div className="w-full h-full bg-secondary/20 flex items-center justify-center">
-                  <img src="/attached_assets/generated_images/beauty-kit.jpg" alt="Beauty Kit" className="w-full h-full object-cover" onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                  }} />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay"></div>
-                </div>
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-border max-w-[240px]">
-                <p className="font-serif italic text-lg text-foreground mb-2">"True beauty is self-care, delivered with elegance."</p>
-                <p className="text-sm text-primary font-bold">— Women's Glow</p>
-              </div>
-            </div>
-            
-            <div className="order-1 md:order-2">
-              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Redefining Home Beauty</h2>
-              <p className="text-foreground/70 mb-8 text-lg leading-relaxed">
-                Women's Glow brings the luxury and expertise of a high-end salon directly to your living room. We believe that self-care shouldn't require fighting traffic or waiting in lines.
-              </p>
-              
-              <div className="space-y-6">
-                {[
-                  { title: "Certified Staff", desc: "Vetted professionals with years of salon experience." },
-                  { title: "Hygienic Process", desc: "Disposable sheets, sanitized tools, and strict protocols." },
-                  { title: "Premium Products", desc: "We use only genuine, top-tier brand products." }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center shrink-0">
-                      <Check className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                      <p className="text-foreground/60">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Our Services Section */}
+      <OurServices />
+
 
       {/* Popular Services Section */}
       <section id="services" className="py-20 bg-[#FFFDFB]">
@@ -258,7 +223,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">The Experience</h2>
             <p className="text-foreground/70 max-w-2xl mx-auto text-lg">A glimpse into our luxurious at-home setups.</p>
           </div>
-          
+
           <div className="columns-1 sm:columns-2 lg:columns-4 gap-4 space-y-4">
             {[
               '/images/services/threading.jpg',
@@ -271,9 +236,9 @@ export default function Home() {
               '/images/services/bridal.jpg'
             ].map((img, i) => (
               <div key={i} className="break-inside-avoid relative group rounded-2xl overflow-hidden bg-secondary/10 aspect-[3/4]">
-                <img 
-                  src={img} 
-                  alt={`Gallery Image ${i+1}`}
+                <img
+                  src={img}
+                  alt={`Gallery Image ${i + 1}`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => {
@@ -300,7 +265,7 @@ export default function Home() {
             </div>
             <p className="text-foreground/70">Trusted by hundreds of women in Agra.</p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {reviews.map((review) => (
               <div key={review.id} className="bg-white rounded-3xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -339,13 +304,62 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section id="about" className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1 relative">
+              <div className="aspect-square rounded-3xl overflow-hidden">
+                {/* Fallback image if generator doesn't work */}
+                <div className="w-full h-full bg-secondary/20 flex items-center justify-center">
+                  <img src="/attached_assets/generated_images/beauty-kit.jpg" alt="Beauty Kit" className="w-full h-full object-cover" onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }} />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay"></div>
+                </div>
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-border max-w-[240px]">
+                <p className="font-serif italic text-lg text-foreground mb-2">"True beauty is self-care, delivered with elegance."</p>
+                <p className="text-sm text-primary font-bold">— Women's Glow</p>
+              </div>
+            </div>
+
+            <div className="order-1 md:order-2">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Redefining Home Beauty</h2>
+              <p className="text-foreground/70 mb-8 text-lg leading-relaxed">
+                Women's Glow brings the luxury and expertise of a high-end salon directly to your living room. We believe that self-care shouldn't require fighting traffic or waiting in lines.
+              </p>
+
+              <div className="space-y-6">
+                {[
+                  { title: "Certified Staff", desc: "Vetted professionals with years of salon experience." },
+                  { title: "Hygienic Process", desc: "Disposable sheets, sanitized tools, and strict protocols." },
+                  { title: "Premium Products", desc: "We use only genuine, top-tier brand products." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center shrink-0">
+                      <Check className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg mb-1">{item.title}</h4>
+                      <p className="text-foreground/60">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* FAQ */}
       <section id="faq" className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">Frequent Questions</h2>
           </div>
-          
+
           <Accordion type="single" collapsible className="w-full space-y-4">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="bg-[#FFFDFB] border border-border rounded-2xl px-6">

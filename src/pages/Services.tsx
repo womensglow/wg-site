@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { ArrowLeft, Filter, Loader2, Search, SlidersHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -135,6 +135,7 @@ function FilterPanel({
 }
 
 export default function Services() {
+  const [location] = useLocation();
   const [services, setServices] = useState<Service[]>(SERVICES);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [priceRange, setPriceRange] = useState<PriceFilter>('all');
@@ -143,6 +144,19 @@ export default function Services() {
   const [sortBy, setSortBy] = useState<SortOption>('featured');
   const [loading, setLoading] = useState(true);
   const [sourceLabel, setSourceLabel] = useState('Local catalog');
+
+  // Parse URL search parameters and set category filter
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get('category');
+    if (categoryParam) {
+      const decodedCategory = decodeURIComponent(categoryParam);
+      // Check if the category exists in SERVICE_CATEGORIES
+      if (SERVICE_CATEGORIES.includes(decodedCategory)) {
+        setActiveCategory(decodedCategory);
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     let ignore = false;
@@ -232,6 +246,19 @@ export default function Services() {
     setServiceTypeFilter('all');
     setSearchQuery('');
     setSortBy('featured');
+    window.history.pushState({}, '', '/services');
+  };
+
+  // Wrapper function to update URL when category changes
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    if (category !== 'All') {
+      const params = new URLSearchParams();
+      params.set('category', category);
+      window.history.pushState({}, '', `/services?${params.toString()}`);
+    } else {
+      window.history.pushState({}, '', '/services');
+    }
   };
 
   return (
@@ -262,7 +289,7 @@ export default function Services() {
           <aside className="hidden lg:block">
             <FilterPanel
               activeCategory={activeCategory}
-              setActiveCategory={setActiveCategory}
+              setActiveCategory={handleCategoryChange}
               priceRange={priceRange}
               setPriceRange={setPriceRange}
               serviceTypeFilter={serviceTypeFilter}
@@ -300,7 +327,7 @@ export default function Services() {
                     </SheetHeader>
                     <FilterPanel
                       activeCategory={activeCategory}
-                      setActiveCategory={setActiveCategory}
+                      setActiveCategory={handleCategoryChange}
                       priceRange={priceRange}
                       setPriceRange={setPriceRange}
                       serviceTypeFilter={serviceTypeFilter}
