@@ -48,7 +48,7 @@ export default function Booking() {
   const { items, totalPrice, itemCount, clearCart } = useCart();
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [generatedBookingId, setGeneratedBookingId] = useState('');
@@ -85,7 +85,7 @@ export default function Booking() {
 
   const onSubmit = async (data: FormValues) => {
     if (data.website) return; // Spam honeypot triggered
-    
+
     if (itemCount === 0) return;
 
     setIsSubmitting(true);
@@ -180,7 +180,7 @@ _Please confirm this appointment at your earliest convenience._
       setGeneratedBookingId(bookingId);
       setShowSuccess(true);
       clearCart();
-      
+
     } catch (error) {
       toast({
         title: "Error",
@@ -202,9 +202,14 @@ _Please confirm this appointment at your earliest convenience._
         <Link href="/" className="inline-flex items-center text-foreground/60 hover:text-primary transition-colors mb-8 font-medium">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Services
         </Link>
-        
+
         <h1 className="text-3xl md:text-4xl font-serif font-bold mb-8 text-foreground">Complete Your Booking</h1>
-        
+
+        <div className="lg:col-span-1 space-y-6 mb-2">
+          <CartSummary />
+        </div>
+
+
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
             <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-border">
@@ -220,11 +225,11 @@ _Please confirm this appointment at your earliest convenience._
                       <Input id="name" {...form.register('name')} placeholder="Your name" className={form.formState.errors.name ? "border-destructive" : ""} />
                       {form.formState.errors.name && <p className="text-destructive text-xs">{form.formState.errors.name.message}</p>}
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="gender">Gender <span className="text-destructive">*</span></Label>
-                      <Select 
-                        onValueChange={(val) => form.setValue('gender', val as any)} 
+                      <Select
+                        onValueChange={(val) => form.setValue('gender', val as any)}
                         defaultValue={form.getValues('gender')}
                       >
                         <SelectTrigger className={form.formState.errors.gender ? "border-destructive" : ""}>
@@ -259,7 +264,7 @@ _Please confirm this appointment at your earliest convenience._
                     <Textarea id="address" {...form.register('address')} placeholder="Complete address" className={`resize-none ${form.formState.errors.address ? "border-destructive" : ""}`} />
                     {form.formState.errors.address && <p className="text-destructive text-xs">{form.formState.errors.address.message}</p>}
                   </div>
-                  
+
                   <div className="grid md:grid-cols-3 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="landmark">Landmark</Label>
@@ -298,17 +303,17 @@ _Please confirm this appointment at your earliest convenience._
                             mode="single"
                             selected={form.watch('preferredDate')}
                             onSelect={(date) => date && form.setValue('preferredDate', date)}
-                            disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))}
+                            disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
                             initialFocus
                           />
                         </PopoverContent>
                       </Popover>
                       {form.formState.errors.preferredDate && <p className="text-destructive text-xs">{form.formState.errors.preferredDate.message}</p>}
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label>Preferred Time <span className="text-destructive">*</span></Label>
-                      <Select 
+                      <Select
                         onValueChange={(val) => form.setValue('preferredTime', val)}
                       >
                         <SelectTrigger className={form.formState.errors.preferredTime ? "border-destructive" : ""}>
@@ -328,8 +333,8 @@ _Please confirm this appointment at your earliest convenience._
                 <div className="space-y-4">
                   <h3 className="text-xl font-serif font-bold border-b border-border pb-2">Payment Mode</h3>
                   <div className="space-y-3">
-                    <RadioGroup 
-                      defaultValue="UPI" 
+                    <RadioGroup
+                      defaultValue="UPI"
                       onValueChange={(val) => form.setValue('paymentMode', val as any)}
                       className="flex flex-col space-y-1"
                     >
@@ -355,7 +360,7 @@ _Please confirm this appointment at your earliest convenience._
                 </div>
 
                 <div className="pt-2">
-                  <Button 
+                  <Button
                     type="submit"
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-7 text-lg font-bold shadow-md"
                     disabled={isSubmitting}
@@ -373,21 +378,18 @@ _Please confirm this appointment at your earliest convenience._
               </form>
             </div>
           </div>
-          
-          <div className="lg:col-span-1 space-y-6">
-            <CartSummary />
-            
-          </div>
+
+
         </div>
       </div>
-      
-      <BookingSuccessModal 
-        open={showSuccess} 
+
+      <BookingSuccessModal
+        open={showSuccess}
         onOpenChange={(open) => {
           setShowSuccess(open);
           if (!open) setLocation('/');
-        }} 
-        bookingId={generatedBookingId} 
+        }}
+        bookingId={generatedBookingId}
       />
     </div>
   );

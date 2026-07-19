@@ -68,77 +68,111 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#FFFDFB]">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        <div
+          className="absolute inset-0 bg-cover bg-[70%] sm:bg-[40%_center] md:bg-[90%_center] lg:bg-right z-0"
           style={{
             backgroundImage: 'url("/images/wg-hero-home.png")',
           }}
-        ></div>
-        
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-30">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
-              <span className="inline-block py-1 px-3 rounded-full bg-secondary/30 text-primary font-medium text-sm mb-6 tracking-wide uppercase">
-                Premium Home Salon in Agra
-              </span>
-            </motion.div>
+        />
 
-            <motion.h1
-              className="text-5xl md:text-7xl font-serif font-bold text-foreground mb-6 leading-tight"
-              initial="hidden" animate="visible" variants={fadeInUp} transition={{ delay: 0.1 }}
-            >
-              Glow at Home.<br />
-              <span className="text-primary">Beauty at Your Door.</span>
-            </motion.h1>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-pink-50/75 via-pink-50/45 to-transparent lg:bg-gradient-to-r lg:from-pink-50/92 lg:via-pink-50/70 lg:to-transparent" />
 
-            <motion.p
-              className="text-lg md:text-xl text-foreground/70 mb-10 max-w-2xl mx-auto leading-relaxed"
-              initial="hidden" animate="visible" variants={fadeInUp} transition={{ delay: 0.2 }}
-            >
-              Experience luxury salon services in the comfort of your home. Professional beauticians, premium products, and impeccable hygiene.
-            </motion.p>
 
-            <motion.div
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-              initial="hidden" animate="visible" variants={fadeInUp} transition={{ delay: 0.3 }}
-            >
-              <Button
-                size="lg"
-                onClick={handleBookAppointment}
-                className="rounded-full bg-primary hover:bg-primary/90 text-white px-8 h-14 text-lg w-full sm:w-auto shadow-lg shadow-primary/20"
-              >
-                Book Appointment
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-lg w-full sm:w-auto bg-white border-primary/20 hover:bg-secondary/10" onClick={() => {
-                setLocation('/services');
-              }}>
-                View Services
-              </Button>
-            </motion.div>
 
-            <motion.div
-              className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-              initial="hidden" animate="visible" variants={stagger}
+        {/* Content */}
+        <div className="container relative z-20 mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-start lg:items-start justify-end text-left pb-16 lg:text-left min-h-screen">
+
+          {/* Badge */}
+          <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
+            <span className="inline-block rounded-full bg-primary/10 px-5 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-primary">
+              Premium Home Salon in Agra
+            </span>
+          </motion.div>
+
+          {/* Heading */}
+          <motion.h1
+            className="mt-6 font-serif font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            transition={{ delay: 0.1 }}
+          >
+            Glow at Home.
+            <br />
+            <span className="text-primary">Beauty at Your Door.</span>
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            className="mt-4 sm:mt-6 max-w-md sm:max-w-lg md:max-w-xl text-sm sm:text-base md:text-lg lg:text-xl text-foreground/80 leading-relaxed"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            transition={{ delay: 0.2 }}
+          >
+            Experience luxury salon services in the comfort of your home.
+            Professional beauticians, premium products, and impeccable hygiene.
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            transition={{ delay: 0.3 }}
+          >
+            <Button
+              size="lg"
+              onClick={handleBookAppointment}
+              className="h-12 sm:h-14 w-full sm:w-auto rounded-full px-6 sm:px-8 text-base sm:text-lg bg-primary hover:bg-primary/90 shadow-lg"
             >
-              {[
-                { icon: <Star className="w-6 h-6 text-primary" />, value: "4.9", label: "Average Rating" },
-                { icon: <HomeIcon className="w-6 h-6 text-primary" />, value: "500+", label: "Happy Customers" },
-                { icon: <ShieldCheck className="w-6 h-6 text-primary" />, value: "Certified", label: "Professionals" },
-                { icon: <Sparkles className="w-6 h-6 text-primary" />, value: "Premium", label: "Products Used" }
-              ].map((stat, i) => (
-                <motion.div key={i} variants={fadeInUp} className="bg-white/60 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm">
-                  <div className="flex justify-center mb-2">{stat.icon}</div>
-                  <div className="text-xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-xs text-foreground/60 uppercase tracking-wider">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+              Book Appointment
+            </Button>
+
+            <Button
+              size="lg"
+              onClick={() => setLocation("/services")}
+              className="h-12 sm:h-14 w-full sm:w-auto rounded-full px-6 sm:px-8 text-base sm:text-lg bg-white/50 backdrop-blur border border-primary/20 hover:bg-white"
+            >
+              View Services
+            </Button>
+          </motion.div>
+
         </div>
       </section>
+
+
+      {/* Stats */}
+      <motion.div
+        className="mt-8 sm:mt-10 grid grid-cols-2 gap-4 sm:gap-6 w-full sm:w-auto"
+        initial="hidden"
+        animate="visible"
+        variants={stagger}
+      >
+        {[
+          { icon: <Star className="w-6 h-6 text-primary" />, value: "4.9", label: "Average Rating" },
+          { icon: <HomeIcon className="w-6 h-6 text-primary" />, value: "500+", label: "Happy Customers" },
+          { icon: <ShieldCheck className="w-6 h-6 text-primary" />, value: "Certified", label: "Professionals" },
+          { icon: <Sparkles className="w-6 h-6 text-primary" />, value: "Premium", label: "Products" },
+        ].map((stat, i) => (
+          <motion.div
+            key={i}
+            variants={fadeInUp}
+            className="rounded-xl border border-white/60 bg-white/80 backdrop-blur-md p-4 shadow-md text-center"
+          >
+            <div className="flex justify-center">{stat.icon}</div>
+            <h3 className="mt-2 text-lg sm:text-xl font-bold text-foreground">{stat.value}</h3>
+            <p className="text-xs sm:text-sm uppercase tracking-wide text-muted-foreground">{stat.label}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+
 
       {/* Our Services Section */}
       <OurServices />

@@ -59,20 +59,7 @@ export function FloatingButtons() {
         </a>
       </div>
 
-      {/* Mobile Sticky Bottom Bar */}
-      {location !== '/booking' && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-border shadow-[0_-4px_10px_rgba(0,0,0,0.05)] p-4 z-50 flex items-center justify-between">
-          <div className="flex flex-col">
-            <span className="text-xs text-foreground/60 uppercase font-medium tracking-wider">Cart</span>
-            <span className="font-bold text-foreground">{itemCount} items</span>
-          </div>
-          <Link href="/booking">
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 shadow-sm">
-              Book Appointment
-            </Button>
-          </Link>
-        </div>
-      )}
+
     </>
   );
 }
