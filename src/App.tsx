@@ -11,6 +11,7 @@ import { FloatingButtons } from './components/FloatingButtons';
 import Home from './pages/Home';
 import Booking from './pages/Booking';
 import Services from './pages/Services';
+import ServiceDetails from './pages/ServiceDetails';
 import Reviews from './pages/Reviews';
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/services" component={Services} />
+          <Route path="/service/:id" component={ServiceDetails} />
           <Route path="/reviews" component={Reviews} />
           <Route path="/booking" component={Booking} />
           <Route component={NotFound} />

@@ -20,7 +20,7 @@ export async function loadServices(): Promise<Service[]> {
     const { data, error } = await supabase
       .from('services')
       .select('*')
-      .order('price', { ascending: true });
+      .order('withoutProductPrice', { ascending: true });
 
     if (error) {
       throw error;
@@ -30,9 +30,11 @@ export async function loadServices(): Promise<Service[]> {
       return SERVICES;
     }
 
-    return data.map((item: Service) => ({
+    return data.map((item: Service & { price?: number }) => ({
       ...item,
-      price: Number(item.price),
+      withoutProductPrice: Number(item.withoutProductPrice ?? item.price ?? 0),
+      withProductPrice: item.withProductPrice == null ? undefined : Number(item.withProductPrice),
+      discount: item.discount == null ? undefined : Number(item.discount),
       duration: Number(item.duration),
     }));
   } catch {

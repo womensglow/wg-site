@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Service } from '../constants/services';
+import { getServicePrice, Service } from '../constants/services';
 
 export interface CartItem extends Service {
   quantity: number;
+  price: number;
 }
 
 interface CartContextType {
@@ -39,7 +40,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           item.id === service.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prev, { ...service, quantity: 1 }];
+      return [...prev, { ...service, price: getServicePrice(service), quantity: 1 }];
     });
   };
 

@@ -1,21 +1,44 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'wouter';
-import { ArrowLeft, Filter, Loader2, Search, SlidersHorizontal } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Filter, Loader2, Search, SlidersHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { ServiceCard } from '../components/ServiceCard';
-import { SERVICES, SERVICE_CATEGORIES, type Service, normalizeServiceType } from '../constants/services';
+import {
+  getSubCategoryLabel,
+  getServicePrice,
+  normalizeSubCategory,
+  SERVICES,
+  SERVICE_CATEGORIES,
+  type Service,
+  normalizeServiceType,
+} from '../constants/services';
 import { loadServices } from '@/lib/serviceCatalog';
 
 type PriceFilter = 'all' | 'under-500' | '500-1000' | '1000-plus';
 type ServiceTypeFilter = 'all' | 'with-product' | 'without-product';
 type SortOption = 'featured' | 'price-asc' | 'price-desc' | 'duration-asc';
 
+const CATEGORY_ALIASES: Record<string, string[]> = {
+  Wax: ['Wax', 'Roll On Rica Wax'],
+  Bleach: ['Bleach'],
+  'Bridal & Combo Packages': ['Bridal & Combo Packages'],
+  'Body Scrub': ['Body Scrub', 'Body Polishing'],
+  'Body Spa & Massage': ['Body Spa & Massage', 'Spa'],
+};
+
+function categoryMatches(serviceCategory: string, activeCategory: string) {
+  return activeCategory === 'All' || (CATEGORY_ALIASES[activeCategory] ?? [activeCategory]).includes(serviceCategory);
+}
+
 function FilterPanel({
   activeCategory,
   setActiveCategory,
+  activeSubCategory,
+  setActiveSubCategory,
+  subCategories,
   priceRange,
   setPriceRange,
   serviceTypeFilter,
@@ -26,6 +49,9 @@ function FilterPanel({
 }: {
   activeCategory: string;
   setActiveCategory: (value: string) => void;
+  activeSubCategory: string;
+  setActiveSubCategory: (value: string) => void;
+  subCategories: string[];
   priceRange: PriceFilter;
   setPriceRange: (value: PriceFilter) => void;
   serviceTypeFilter: ServiceTypeFilter;
@@ -34,6 +60,30 @@ function FilterPanel({
   setSortBy: (value: SortOption) => void;
   onReset: () => void;
 }) {
+  const [expandedCategory, setExpandedCategory] = useState(activeCategory === 'All' ? 'Wax' : activeCategory);
+
+  useEffect(() => {
+    if (activeCategory !== 'All') {
+      setExpandedCategory(activeCategory);
+    }
+  }, [activeCategory]);
+
+  const categoryGroups = [
+    { value: 'Threading', label: 'Threading', categories: ['Threading'] },
+    { value: 'Wax', label: 'Waxing', categories: ['Wax', 'Roll On Rica Wax'] },
+    { value: 'Hair Care', label: 'Hair Care', categories: ['Hair Care'] },
+    { value: 'Add On', label: 'Add On', categories: ['Add On'] },
+    { value: 'Bleach', label: 'De-Tan/Bleach', categories: ['Bleach'] },
+    { value: 'Bridal & Combo Packages', label: 'Packages', categories: ['Bridal & Combo Packages'] },
+    { value: 'Facial', label: 'Facial', categories: ['Facial'] },
+    { value: 'Body Scrub', label: 'Body Scrub / Body Polish', categories: ['Body Scrub', 'Body Polishing'] },
+    { value: 'Face Mask', label: 'Face Mask', categories: ['Face Mask'] },
+    { value: 'Makeup', label: 'Makeup', categories: ['Makeup'] },
+    { value: 'Basic Cleanup', label: 'Cleanup', categories: ['Basic Cleanup'] },
+    { value: 'Mani and Pedi', label: 'Mani-Pedi', categories: ['Mani and Pedi'] },
+    { value: 'Body Spa & Massage', label: 'Body Spa', categories: ['Body Spa & Massage', 'Spa'] },
+  ];
+
   return (
     <div className="space-y-6 rounded-3xl border border-border bg-white/80 p-5 shadow-sm backdrop-blur-sm">
       <div>
@@ -41,91 +91,52 @@ function FilterPanel({
         <h2 className="mt-2 text-xl font-serif font-semibold text-foreground">Find your ideal service</h2>
       </div>
 
-
       <div>
-        <p className="mb-3 text-sm font-medium text-foreground/80">Budget</p>
-        <div className="space-y-2">
-          {[
-            { value: 'all', label: 'All prices' },
-            { value: 'under-500', label: 'Under ₹500' },
-            { value: '500-1000', label: '₹500 - ₹1000' },
-            { value: '1000-plus', label: '₹1000+' },
-          ].map((option) => (
-            <label key={option.value} className="flex cursor-pointer items-center gap-2 text-sm text-foreground/70">
-              <input
-                type="radio"
-                name="priceRange"
-                checked={priceRange === option.value}
-                onChange={() => setPriceRange(option.value as PriceFilter)}
-                className="h-4 w-4 border-border text-primary focus:ring-primary"
-              />
-              {option.label}
-            </label>
-          ))}
+        <p className="mb-3 text-sm font-medium text-foreground/80">Categories:</p>
+
+        <div className="space-y-1">
+          {categoryGroups.map((group) => {
+            const isActive = group.categories.includes(activeCategory);
+            const isExpanded = expandedCategory === group.value;
+            const hasChildren = isActive && subCategories.length > 0;
+
+            return (
+              <div key={group.value}>
+                <button
+                  type="button"
+                  className={`flex w-full items-center gap-2 py-2 text-left text-sm transition-colors ${isActive ? 'font-semibold text-foreground' : 'text-foreground/80 hover:text-primary'}`}
+                  onClick={() => {
+                    setExpandedCategory(isExpanded ? '' : group.value);
+                    setActiveCategory(group.value);
+                  }}
+                >
+                  <span className={`h-3 w-3 rounded-full border ${isActive ? 'border-primary bg-primary/70' : 'border-foreground/25 bg-white'}`} />
+                  <span className="flex-1">{group.label}</span>
+                  {hasChildren && (isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />)}
+                </button>
+                {isExpanded && hasChildren && (
+                  <div className="ml-7 space-y-1 pb-2">
+                    {subCategories.map((subcategory) => (
+                      <button
+                        key={subcategory}
+                        type="button"
+                        className={`block w-full py-1 text-left text-sm ${activeSubCategory === subcategory ? 'font-medium text-primary' : 'text-foreground/75 hover:text-primary'}`}
+                        onClick={() => setActiveSubCategory(subcategory)}
+                      >
+                        {getSubCategoryLabel(subcategory)}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      <div>
-        <p className="mb-3 text-sm font-medium text-foreground/80">Service type</p>
-        <div className="space-y-2">
-          {[
-            { value: 'all', label: 'All services' },
-            { value: 'with-product', label: 'With product' },
-            { value: 'without-product', label: 'Without product' },
-          ].map((option) => (
-            <label key={option.value} className="flex cursor-pointer items-center gap-2 text-sm text-foreground/70">
-              <input
-                type="radio"
-                name="serviceTypeFilter"
-                checked={serviceTypeFilter === option.value}
-                onChange={() => setServiceTypeFilter(option.value as ServiceTypeFilter)}
-                className="h-4 w-4 border-border text-primary focus:ring-primary"
-              />
-              {option.label}
-            </label>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <p className="mb-3 text-sm font-medium text-foreground/80">Sort by</p>
-        <select
-          value={sortBy}
-          onChange={(event) => setSortBy(event.target.value as SortOption)}
-          className="w-full rounded-full border border-border bg-white px-4 py-2 text-sm outline-none focus:border-primary"
-        >
-          <option value="featured">Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="duration-asc">Duration: Short to Long</option>
-        </select>
-      </div>
-
-      <div>
-        <p className="mb-3 text-sm font-medium text-foreground/80">Category</p>
-        <div className="flex flex-wrap gap-2">
-          <Button
-            type="button"
-            variant={activeCategory === 'All' ? 'default' : 'outline'}
-            onClick={() => setActiveCategory('All')}
-            className={`rounded-full ${activeCategory === 'All' ? 'bg-primary text-white' : 'bg-white'}`}
-          >
-            All
-          </Button>
-          {SERVICE_CATEGORIES.map((category) => (
-            <Button
-              key={category}
-              type="button"
-              variant={activeCategory === category ? 'default' : 'outline'}
-              onClick={() => setActiveCategory(category)}
-              className={`rounded-full ${activeCategory === category ? 'bg-primary text-white' : 'bg-white'}`}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-      </div>
-
+      <Button type="button" variant="outline" className="w-full rounded-full" onClick={() => setActiveCategory('All')}>
+        All categories
+      </Button>
 
       <Button type="button" variant="ghost" className="w-full justify-center text-primary" onClick={onReset}>
         Reset filters
@@ -138,6 +149,7 @@ export default function Services() {
   const [location] = useLocation();
   const [services, setServices] = useState<Service[]>(SERVICES);
   const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [activeSubCategory, setActiveSubCategory] = useState<string>('All');
   const [priceRange, setPriceRange] = useState<PriceFilter>('all');
   const [serviceTypeFilter, setServiceTypeFilter] = useState<ServiceTypeFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -146,17 +158,51 @@ export default function Services() {
   const [sourceLabel, setSourceLabel] = useState('Local catalog');
 
   // Parse URL search parameters and set category filter
+  const subCategoryOptions = useMemo(() => {
+    if (activeCategory === 'All') {
+      return [];
+    }
+
+    return Array.from(
+      new Set(
+        services
+          .filter((service) => categoryMatches(service.category, activeCategory) && service.subCategory)
+          .map((service) => normalizeSubCategory(service.subCategory)!),
+      ),
+    );
+  }, [activeCategory, services]);
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const categoryParam = params.get('category');
-    if (categoryParam) {
-      const decodedCategory = decodeURIComponent(categoryParam);
-      // Check if the category exists in SERVICE_CATEGORIES
-      if (SERVICE_CATEGORIES.includes(decodedCategory)) {
-        setActiveCategory(decodedCategory);
+    const subCategoryParam = params.get('subcategory');
+
+    const decodedCategory = categoryParam ? decodeURIComponent(categoryParam) : '';
+    const decodedSubcategory = subCategoryParam
+      ? normalizeSubCategory(decodeURIComponent(subCategoryParam)) ?? ''
+      : '';
+
+    if (decodedCategory && (SERVICE_CATEGORIES.includes(decodedCategory) || CATEGORY_ALIASES[decodedCategory])) {
+      setActiveCategory(decodedCategory);
+
+      const validSubcategories = Array.from(
+        new Set(
+          services
+            .filter((service) => categoryMatches(service.category, decodedCategory) && service.subCategory)
+            .map((service) => normalizeSubCategory(service.subCategory)!),
+        ),
+      );
+
+      if (decodedSubcategory && validSubcategories.includes(decodedSubcategory)) {
+        setActiveSubCategory(decodedSubcategory);
+      } else {
+        setActiveSubCategory('All');
       }
+    } else {
+      setActiveCategory('All');
+      setActiveSubCategory('All');
     }
-  }, [location]);
+  }, [location, services]);
 
   useEffect(() => {
     let ignore = false;
@@ -186,8 +232,8 @@ export default function Services() {
     const query = searchQuery.trim().toLowerCase();
 
     const result = services.filter((service) => {
-      const matchesCategory = activeCategory === 'All' || service.category === activeCategory;
-      const displayPrice = service.discountedPrice ?? service.price;
+      const matchesCategory = categoryMatches(service.category, activeCategory);
+      const displayPrice = getServicePrice(service);
       const matchesPrice = (() => {
         switch (priceRange) {
           case 'under-500':
@@ -204,9 +250,12 @@ export default function Services() {
       const matchesServiceType =
         serviceTypeFilter === 'all'
           ? true
-          : serviceType === serviceTypeFilter;
+          : serviceType === serviceTypeFilter || serviceType === 'both';
 
-      if (!matchesCategory || !matchesPrice || !matchesServiceType) {
+      const matchesSubCategory =
+        activeSubCategory === 'All' || normalizeSubCategory(service.subCategory) === normalizeSubCategory(activeSubCategory);
+
+      if (!matchesCategory || !matchesPrice || !matchesServiceType || !matchesSubCategory) {
         return false;
       }
 
@@ -220,8 +269,8 @@ export default function Services() {
     });
 
     result.sort((a, b) => {
-      const aPrice = a.discountedPrice ?? a.price;
-      const bPrice = b.discountedPrice ?? b.price;
+      const aPrice = getServicePrice(a);
+      const bPrice = getServicePrice(b);
 
       switch (sortBy) {
         case 'price-asc':
@@ -238,10 +287,11 @@ export default function Services() {
     });
 
     return result;
-  }, [activeCategory, priceRange, serviceTypeFilter, searchQuery, services, sortBy]);
+  }, [activeCategory, activeSubCategory, priceRange, serviceTypeFilter, searchQuery, services, sortBy]);
 
   const resetFilters = () => {
     setActiveCategory('All');
+    setActiveSubCategory('All');
     setPriceRange('all');
     setServiceTypeFilter('all');
     setSearchQuery('');
@@ -249,9 +299,26 @@ export default function Services() {
     window.history.pushState({}, '', '/services');
   };
 
+  const handleSubCategoryChange = (subcategory: string) => {
+    setActiveSubCategory(subcategory);
+    const params = new URLSearchParams();
+
+    if (activeCategory !== 'All') {
+      params.set('category', activeCategory);
+    }
+
+    if (subcategory !== 'All') {
+      params.set('subcategory', subcategory);
+    }
+
+    const query = params.toString();
+    window.history.pushState({}, '', `/services${query ? `?${query}` : ''}`);
+  };
+
   // Wrapper function to update URL when category changes
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
+    setActiveSubCategory('All');
     if (category !== 'All') {
       const params = new URLSearchParams();
       params.set('category', category);
@@ -290,6 +357,9 @@ export default function Services() {
             <FilterPanel
               activeCategory={activeCategory}
               setActiveCategory={handleCategoryChange}
+              activeSubCategory={activeSubCategory}
+              setActiveSubCategory={handleSubCategoryChange}
+              subCategories={subCategoryOptions}
               priceRange={priceRange}
               setPriceRange={setPriceRange}
               serviceTypeFilter={serviceTypeFilter}
@@ -328,6 +398,9 @@ export default function Services() {
                     <FilterPanel
                       activeCategory={activeCategory}
                       setActiveCategory={handleCategoryChange}
+                      activeSubCategory={activeSubCategory}
+                      setActiveSubCategory={handleSubCategoryChange}
+                      subCategories={subCategoryOptions}
                       priceRange={priceRange}
                       setPriceRange={setPriceRange}
                       serviceTypeFilter={serviceTypeFilter}
