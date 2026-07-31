@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'wouter';
-import { ArrowLeft, ChevronDown, ChevronUp, Filter, Loader2, Search, SlidersHorizontal } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Filter, Loader2, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -45,7 +45,6 @@ function FilterPanel({
   setServiceTypeFilter,
   sortBy,
   setSortBy,
-  onReset,
 }: {
   activeCategory: string;
   setActiveCategory: (value: string) => void;
@@ -58,7 +57,6 @@ function FilterPanel({
   setServiceTypeFilter: (value: ServiceTypeFilter) => void;
   sortBy: SortOption;
   setSortBy: (value: SortOption) => void;
-  onReset: () => void;
 }) {
   const [expandedCategory, setExpandedCategory] = useState(activeCategory === 'All' ? 'Wax' : activeCategory);
 
@@ -86,10 +84,10 @@ function FilterPanel({
 
   return (
     <div className="space-y-6 rounded-3xl border border-border bg-white/80 p-5 shadow-sm backdrop-blur-sm">
-      <div>
-        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Filters</p>
-        <h2 className="mt-2 text-xl font-serif font-semibold text-foreground">Find your ideal service</h2>
-      </div>
+
+      <Button type="button" variant="outline" className="w-full rounded-full" onClick={() => setActiveCategory('All')}>
+        All categories
+      </Button>
 
       <div>
         <p className="mb-3 text-sm font-medium text-foreground/80">Categories:</p>
@@ -134,13 +132,6 @@ function FilterPanel({
         </div>
       </div>
 
-      <Button type="button" variant="outline" className="w-full rounded-full" onClick={() => setActiveCategory('All')}>
-        All categories
-      </Button>
-
-      <Button type="button" variant="ghost" className="w-full justify-center text-primary" onClick={onReset}>
-        Reset filters
-      </Button>
     </div>
   );
 }
@@ -263,7 +254,17 @@ export default function Services() {
         return true;
       }
 
-      const haystack = `${service.name} ${service.category}`.toLowerCase();
+      const haystack = [
+        service.name,
+        service.category,
+        service.subCategory,
+        getServicePrice(service),
+        service.withoutProductPrice,
+        service.withProductPrice,
+      ]
+        .filter((value) => value !== undefined && value !== null)
+        .join(' ')
+        .toLowerCase();
       const words = query.split(/\s+/).filter(Boolean);
       return words.every((word) => haystack.includes(word));
     });
@@ -345,29 +346,38 @@ export default function Services() {
               setServiceTypeFilter={setServiceTypeFilter}
               sortBy={sortBy}
               setSortBy={setSortBy}
-              onReset={resetFilters}
             />
           </aside>
 
           <div className="space-y-2 md:space-y-4">
-            <div className="flex flex-col gap-4 rounded-[28px] p-2 md:flex-row md:items-center md:justify-between md:p-2">
-              <div className="relative w-full md:max-w-xl">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" />
-                <Input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(event) => setSearchQuery(event.target.value)}
-                  placeholder="Search by service or category"
-                  className="h-11 rounded-full border-border pl-10"
-                  autoFocus
-                />
-              </div>
+            <div className="rounded-[28px] p-2">
+              <div className="flex w-full items-center gap-2">
+                <div className="relative min-w-0 flex-1">
+                  <Search className="absolute left-3 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-foreground/40" />
+                  <Input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter') {
+                        event.currentTarget.blur();
+                      }
+                    }}
+                    placeholder="Search by name, category, subcategory or price"
+                    className="h-11 rounded-full border-border pl-10"
+                    autoFocus
+                  />
+                </div>
 
-              <div className="flex items-center gap-3">
                 <Sheet>
                   <SheetTrigger asChild>
-                    <Button variant="outline" className="rounded-full lg:hidden">
-                      <Filter className="mr-2 h-4 w-4" /> Filters
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="h-11 w-11 shrink-0 rounded-full"
+                      aria-label="Open filters"
+                    >
+                      <Filter />
                     </Button>
                   </SheetTrigger>
                   <SheetContent side="right" className="overflow-y-auto">
@@ -386,15 +396,9 @@ export default function Services() {
                       setServiceTypeFilter={setServiceTypeFilter}
                       sortBy={sortBy}
                       setSortBy={setSortBy}
-                      onReset={resetFilters}
                     />
                   </SheetContent>
                 </Sheet>
-
-                <div className="flex items-center gap-2 rounded-full border border-border bg-secondary/20 px-3 py-2 text-sm text-foreground/70">
-                  <SlidersHorizontal className="h-4 w-4" />
-                  <span>{filteredServices.length} results</span>
-                </div>
               </div>
             </div>
 
