@@ -331,7 +331,7 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-[#FFFDFB] pt-20 pb-20">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mt-8 grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
+        <div className="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
           <aside className="hidden lg:block">
             <FilterPanel
               activeCategory={activeCategory}
@@ -349,8 +349,8 @@ export default function Services() {
             />
           </aside>
 
-          <div className="space-y-6">
-            <div className="flex flex-col gap-4 rounded-[28px] border border-border bg-white/80 p-4 shadow-sm backdrop-blur-sm md:flex-row md:items-center md:justify-between md:p-5">
+          <div className="space-y-2 md:space-y-4">
+            <div className="flex flex-col gap-4 rounded-[28px] p-2 md:flex-row md:items-center md:justify-between md:p-2">
               <div className="relative w-full md:max-w-xl">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" />
                 <Input
