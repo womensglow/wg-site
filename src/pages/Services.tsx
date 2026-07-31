@@ -329,29 +329,8 @@ export default function Services() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDFB] pt-28 pb-20">
+    <div className="min-h-screen bg-[#FFFDFB] pt-20 pb-20">
       <div className="container mx-auto px-4 md:px-6">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/60 transition-colors hover:text-primary">
-          <ArrowLeft className="h-4 w-4" /> Back to Home
-        </Link>
-
-        <div className="mt-8 rounded-[32px] border border-border bg-white/70 p-6 shadow-sm backdrop-blur-sm md:p-8">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">Beauty menu</p>
-              <h1 className="mt-3 font-serif text-3xl font-bold text-foreground md:text-5xl">Discover services tailored to your glow routine</h1>
-              <p className="mt-4 text-lg text-foreground/70">
-                Browse our complete catalog of salon treatments, filter by category or budget, and book the experience that fits your schedule.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-primary/20 bg-secondary/20 px-4 py-3 text-sm text-foreground/70">
-              <p className="font-semibold text-foreground">{services.length}+ services available</p>
-              <p className="mt-1">Data source: {sourceLabel}</p>
-            </div>
-          </div>
-        </div>
-
         <div className="mt-8 grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
           <aside className="hidden lg:block">
             <FilterPanel
