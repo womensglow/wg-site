@@ -5,7 +5,7 @@ import { useCart } from '../contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { AppInstallButton } from './AppInstallButton';
-import logoUrl from '/images/wg_logo.jpeg';
+import logoUrl from '/images/wg_logo.webp';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,6 +54,8 @@ export function Navbar() {
           <img 
             src={logoUrl} 
             alt="Women's Glow Logo" 
+            width="48"
+            height="48"
             className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-primary/20 shadow-sm group-hover:shadow-md transition-shadow" 
           />
           <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground">
@@ -62,7 +64,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 

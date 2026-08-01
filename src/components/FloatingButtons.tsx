@@ -46,6 +46,7 @@ export function FloatingButtons() {
         <a href={`tel:+${whatsappNumber}`} target="_blank" rel="noreferrer" aria-label="Call Women's Glow">
           <Button
             size="icon"
+            aria-label="Call Women's Glow"
             className="w-12 h-12 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90"
           >
             <Phone className="w-5 h-5" />

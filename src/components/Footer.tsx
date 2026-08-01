@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Instagram, MapPin, Phone, Mail, Clock, Youtube, Facebook } from 'lucide-react';
-import logoUrl from '/images/wg_logo.jpeg';
+import logoUrl from '/images/wg_logo.webp';
 
 export function Footer() {
   return (
@@ -13,13 +13,15 @@ export function Footer() {
               <img 
                 src={logoUrl} 
                 alt="Women's Glow Logo" 
+                width="56"
+                height="56"
                 className="w-14 h-14 rounded-full object-cover border border-primary/20" 
               />
               <span className="font-serif text-2xl font-bold text-foreground">
                 Women's <span className="text-primary">Glow</span>
               </span>
             </Link>
-            <p className="text-foreground/70 mb-6 leading-relaxed">
+            <p className="text-foreground/80 mb-6 leading-relaxed">
               Premium home beauty services in Agra. Experience luxury, hygiene, and professional care at your doorstep.
             </p>
             <div className="flex gap-4">
@@ -58,7 +60,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-serif text-lg font-bold mb-6">Quick Links</h4>
+            <h3 className="font-serif text-lg font-bold mb-6">Quick Links</h3>
             <ul className="space-y-4">
               <li><Link href="/#about" className="text-foreground/70 hover:text-primary transition-colors">About Us</Link></li>
               <li><Link href="/#services" className="text-foreground/70 hover:text-primary transition-colors">Our Services</Link></li>
@@ -70,8 +72,8 @@ export function Footer() {
 
           {/* Service Categories */}
           <div>
-            <h4 className="font-serif text-lg font-bold mb-6">Popular Services</h4>
-            <ul className="space-y-4 text-foreground/70">
+            <h3 className="font-serif text-lg font-bold mb-6">Popular Services</h3>
+            <ul className="space-y-4 text-foreground/80">
               <li>Facials & Cleanups</li>
               <li>Luxury Waxing</li>
               <li>Manicure & Pedicure</li>
@@ -82,19 +84,19 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-serif text-lg font-bold mb-6">Contact Us</h4>
+            <h3 className="font-serif text-lg font-bold mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-foreground/70">Agra, Uttar Pradesh 282001<br/>(Home Service Available)</span>
+                <span className="text-foreground/80">Agra, Uttar Pradesh 282001<br/>(Home Service Available)</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-foreground/70">+91 96347 04776</span>
+                <span className="text-foreground/80">+91 96347 04776</span>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-foreground/70">Mon - Sun: 9:00 AM - 8:00 PM</span>
+                <span className="text-foreground/80">Mon - Sun: 9:00 AM - 8:00 PM</span>
               </li>
             </ul>
           </div>

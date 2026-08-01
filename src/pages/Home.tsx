@@ -169,7 +169,7 @@ export default function Home() {
             className="rounded-xl border border-white/60 bg-white/80 backdrop-blur-md p-4 shadow-md text-center"
           >
             <div className="flex justify-center">{stat.icon}</div>
-            <h3 className="mt-2 text-lg sm:text-xl font-bold text-foreground">{stat.value}</h3>
+            <div className="mt-2 text-lg sm:text-xl font-bold text-foreground">{stat.value}</div>
             <p className="text-xs sm:text-sm uppercase tracking-wide text-muted-foreground">{stat.label}</p>
           </motion.div>
         ))}
@@ -241,7 +241,7 @@ export default function Home() {
       {/* Brands We Use */}
       <section className="py-10 bg-white border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <p className="text-center text-sm uppercase tracking-wider text-foreground/50 mb-6">Premium Products We Use</p>
+            <p className="text-center text-sm uppercase tracking-wider text-foreground/70 mb-6">Premium Products We Use</p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
             {BRAND_PARTNERS.map((brand) => (
               <span key={brand} className="font-serif text-xl md:text-2xl font-semibold text-foreground/70">
@@ -377,8 +377,8 @@ export default function Home() {
                       <Check className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                      <p className="text-foreground/60">{item.desc}</p>
+                      <h3 className="font-bold text-lg mb-1">{item.title}</h3>
+                      <p className="text-foreground/70">{item.desc}</p>
                     </div>
                   </div>
                 ))}

@@ -1,0 +1,10 @@
+# Women's Glow
+
+Women's Glow provides at-home beauty and salon services in Agra, Uttar Pradesh.
+
+## Pages
+
+- [Home](https://www.womensglow.beauty/): Home beauty services and booking information.
+- [Services](https://www.womensglow.beauty/services): Browse available beauty services.
+- [Reviews](https://www.womensglow.beauty/reviews): Client reviews and experiences.
+- [Booking](https://www.womensglow.beauty/booking): Book an at-home appointment.

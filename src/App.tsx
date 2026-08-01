@@ -55,7 +55,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <CartProvider>
-          <WouterRouter base={routerBase || '/'}>
+          <WouterRouter base={routerBase}>
             <Router />
           </WouterRouter>
           <Toaster />
