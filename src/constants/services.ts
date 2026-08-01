@@ -135,8 +135,8 @@ export const SERVICES: Service[] = [
   { id: 'pow-7', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Underarms', withoutProductPrice: 59, withProductPrice: 80, serviceType: 'both', duration: 8, image: '/images/services/wax/peel-off/underarms.webp' },
 
   // Honey Wax
-  { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms + Full Legs', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image: '/images/services/wax/honey/Full-Arms-Underarms-Full-Legs.webp' },
-  { id: 'hw-2', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms + Half Legs ', withoutProductPrice: 300, withProductPrice: 449, serviceType: 'both', duration: 60, popular: true, image: '/images/services/wax/honey/Full-Arms-Underarms-Half-Legs.webp' },
+  { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image: '/images/services/wax/honey/Full-Arms-Underarms-Full-Legs.webp' },
+  { id: 'hw-2', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Half Legs + Underarms ', withoutProductPrice: 300, withProductPrice: 449, serviceType: 'both', duration: 60, popular: true, image: '/images/services/wax/honey/Full-Arms-Underarms-Half-Legs.webp' },
   { id: 'hw-3', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 249, serviceType: 'both', duration: 31, image: '' },
   { id: 'hw-4', category: 'Wax', subCategory: 'Honey', name: 'Only Underarms', withoutProductPrice: 48, withProductPrice: 59, serviceType: 'both', duration: 8, image: '' },
   { id: 'hw-5', category: 'Wax', subCategory: 'Honey', name: 'Only Full Legs', withoutProductPrice: 200, withProductPrice: 259, serviceType: 'both', duration: 30, image: '' },
@@ -273,8 +273,8 @@ export const SERVICE_CATEGORIES = Array.from(new Set(SERVICES.map(s => s.categor
 
 // Fixed add-on charges applied at checkout (from salon policy)
 export const ADDON_CHARGES = {
-  disposableKit: { label: 'Disposable Kit (Hygiene Essential)', price: 59 },
-  transport: { label: 'Transport / Home Visit', price: 99 },
+  disposableKit: { label: 'Disposable Kit (Hygiene Essential)', price: 49 },
+  transport: { label: 'Transport / Home Visit', price: 59 },
 };
 
 // Referral program shown on the site

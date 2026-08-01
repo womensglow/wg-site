@@ -116,7 +116,7 @@ export default function ServiceDetails() {
           <div className="rounded-[32px] border border-border bg-white/80 p-8 shadow-sm">
             <div className="flex flex-col gap-6">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">{service.category}</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">{service.category} &gt; <span>{service.subCategory}</span></p>
                 <h1 className="mt-3 text-4xl font-serif font-bold text-foreground">{service.name}</h1>
                 <p className="mt-4 text-base text-foreground/70">Explore details, pricing, and available variants for this service.</p>
               </div>

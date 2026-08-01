@@ -5,11 +5,11 @@ import {
   BRAND_PARTNERS,
   getSubCategoryLabel,
 } from '../constants/services';
-import { IMAGE_REVIEWS } from '../constants/reviews';
+import { TEXT_REVIEWS, TextReview } from '../constants/reviews';
 import { OurServices } from '../components/OurServices';
 import { useCart } from '../contexts/CartContext';
 import { Button } from '@/components/ui/button';
-import { Star, ShieldCheck, Home as HomeIcon, Sparkles, ArrowRight } from 'lucide-react';
+import { Star, ShieldCheck, Home as HomeIcon, Sparkles, ArrowRight, Stars } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -38,8 +38,17 @@ export default function Home() {
     }, new Map<string, Set<string>>()),
   );
 
-  const reviews = IMAGE_REVIEWS;
+  const reviews = TEXT_REVIEWS;
 
+function Stars({ count }: { count: number }) {
+  return (
+    <div className="flex gap-1">
+      {[...Array(5)].map((_, i) => (
+        <Star key={i} className={`w-4 h-4 ${i < count ? 'fill-primary text-primary' : 'text-foreground/20'}`} />
+      ))}
+    </div>
+  );
+}
   const faqs = [
     { q: "How do I book an appointment?", a: "You can book an appointment by selecting your desired services, going to your cart, and filling out the booking form. This will prepare a WhatsApp message to confirm your slot." },
     { q: "Do you bring your own products and tools?", a: "Yes! We bring a complete professional kit including sanitized tools, premium products, disposable sheets, and even towels. You just need to provide a comfortable place to sit or lie down." },
@@ -215,7 +224,7 @@ export default function Home() {
       {/* Brands We Use */}
       <section className="py-10 bg-white border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
-            <p className="text-center text-sm uppercase tracking-wider text-foreground/70 mb-6">Premium Products We Use</p>
+          <p className="text-center text-sm uppercase tracking-wider text-foreground/70 mb-6">Premium Products We Use</p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
             {BRAND_PARTNERS.map((brand) => (
               <span key={brand} className="font-serif text-xl md:text-2xl font-semibold text-foreground/70">
@@ -227,6 +236,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
+      {/*       
       <section id="gallery" className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
@@ -261,7 +271,8 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
 
       {/* Reviews */}
       <section id="reviews" className="py-20 bg-[#FFFDFB]">
@@ -276,30 +287,14 @@ export default function Home() {
             <p className="text-foreground/70">Trusted by hundreds of women in Agra.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {reviews.map((review) => (
-              <div key={review.id} className="bg-white rounded-3xl border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                <div className="w-full h-56 bg-secondary/10">
-                  <img
-                    src={review.imageSrc}
-                    alt={review.caption}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="font-bold text-foreground">{review.name}</div>
-                    <div className="text-xs text-foreground/70">{review.location}</div>
-                  </div>
-                  <div className="flex gap-1 mb-3">
-                    {[...Array(review.rating)].map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="text-foreground/70 text-sm">{review.caption}</p>
-                </div>
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {TEXT_REVIEWS.map((review) => (
+              <div key={review.id} className="relative rounded-[28px] border border-border bg-white p-8 shadow-sm transition-shadow hover:shadow-md">
+                <div className="absolute right-8 top-8 text-6xl font-serif leading-none text-primary/20">“</div>
+                <div className="mb-4"><Stars count={review.rating} /></div>
+                <p className="relative z-10 mb-6 text-base leading-relaxed text-foreground/80">“{review.text}”</p>
+                <div className="font-semibold text-foreground">{review.name}</div>
+                <div className="text-xs text-foreground/50">{review.location}</div>
               </div>
             ))}
           </div>
