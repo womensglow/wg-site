@@ -11,12 +11,12 @@ type AnalyticsWindow = Window & {
 
 function loadAnalytics() {
 	const analyticsWindow = window as AnalyticsWindow;
-	if (document.querySelector('script[data-google-analytics]')) return;
+	if (analyticsWindow.gtag) return;
 
 	analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
 	analyticsWindow.gtag = (...args) => analyticsWindow.dataLayer!.push(args);
 	analyticsWindow.gtag('js', new Date());
-	analyticsWindow.gtag('config', 'G-ME4EFN2TX3');
+	analyticsWindow.gtag('config', 'G-ME4EFN2TX3', { send_page_view: false });
 
 	const script = document.createElement('script');
 	script.async = true;
@@ -24,22 +24,12 @@ function loadAnalytics() {
 	script.dataset.googleAnalytics = 'true';
 	document.head.appendChild(script);
 }
+loadAnalytics();
 
-function scheduleAnalytics() {
-	const interactionEvents = ['pointerdown', 'keydown', 'touchstart'];
-	const handleInteraction = () => {
-		loadAnalytics();
-		interactionEvents.forEach((eventName) => window.removeEventListener(eventName, handleInteraction));
-	};
-
-	interactionEvents.forEach((eventName) => window.addEventListener(eventName, handleInteraction, { once: true, passive: true }));
-	window.setTimeout(loadAnalytics, 15000);
-}
-
-if (document.readyState === 'complete') {
-	scheduleAnalytics();
-} else {
-	window.addEventListener('load', scheduleAnalytics, { once: true });
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/sw.js').catch((error) => {
+		console.error('Service worker registration failed', error);
+	});
 }
 
 createRoot(document.getElementById('root')!).render(<App />);

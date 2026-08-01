@@ -25,6 +25,14 @@ function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    const analyticsWindow = window as Window & {
+      gtag?: (...args: unknown[]) => void;
+    };
+    analyticsWindow.gtag?.('event', 'page_view', {
+      page_path: location,
+      page_location: window.location.href,
+      page_title: document.title,
+    });
   }, [location]);
   return null;
 }

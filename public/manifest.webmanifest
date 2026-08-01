@@ -4,9 +4,14 @@
   "description": "Premium home beauty services in Agra with a fast installable web app experience.",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/images/favicon/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/favicon/ms-icon-310x310.png",
+      "sizes": "310x310",
+      "type": "image/png"
     }
   ],
   "start_url": "/",

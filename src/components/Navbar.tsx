@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import { ShoppingBag, Menu } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { AppInstallButton } from './AppInstallButton';
 import logoUrl from '/images/wg_logo.webp';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { itemCount } = useCart();
   const [location] = useLocation();
 
@@ -31,6 +32,7 @@ export function Navbar() {
   ];
 
   const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
     if (href.startsWith('/#') && location === '/') {
       const id = href.substring(2);
       const element = document.getElementById(id);
@@ -98,7 +100,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu */}
-          <Sheet>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden">
                 <Menu className="w-6 h-6" />
@@ -120,12 +122,18 @@ export function Navbar() {
                   ))}
                 </nav>
                 <div className="mt-auto pb-6 space-y-4">
-                  <AppInstallButton />
-                  <Link href="/booking" className="w-full">
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-lg py-6 shadow-sm">
-                      Book Appointment
-                    </Button>
-                  </Link>
+                  <SheetClose asChild>
+                    <div>
+                      <AppInstallButton />
+                    </div>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link href="/booking" className="w-full">
+                      <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-lg py-6 shadow-sm">
+                        Book Appointment
+                      </Button>
+                    </Link>
+                  </SheetClose>
                 </div>
               </div>
             </SheetContent>
