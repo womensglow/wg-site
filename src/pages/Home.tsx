@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'wouter';
 import {
@@ -7,7 +7,6 @@ import {
   BRAND_PARTNERS
 } from '../constants/services';
 import { IMAGE_REVIEWS } from '../constants/reviews';
-import { ServiceCard } from '../components/ServiceCard';
 import { OurServices } from '../components/OurServices';
 import { useCart } from '../contexts/CartContext';
 import { Button } from '@/components/ui/button';
@@ -19,9 +18,34 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const ServiceCard = lazy(() => import('../components/ServiceCard').then((module) => ({ default: module.ServiceCard })));
+
 export default function Home() {
   const { itemCount } = useCart();
   const [, setLocation] = useLocation();
+  const servicesSectionRef = useRef<HTMLElement>(null);
+  const [shouldLoadServices, setShouldLoadServices] = useState(false);
+
+  useEffect(() => {
+    const section = servicesSectionRef.current;
+    if (!section || typeof IntersectionObserver === 'undefined') {
+      setShouldLoadServices(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadServices(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const handleBookAppointment = () => {
     if (itemCount === 0) {
@@ -90,45 +114,27 @@ export default function Home() {
         <div className="container relative z-20 mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-start lg:items-start justify-end text-left pb-16 lg:text-left min-h-screen">
 
           {/* Badge */}
-          <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
+          <div>
             <span className="inline-block rounded-full bg-primary/10 px-5 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-primary">
               Premium Home Salon in Agra
             </span>
-          </motion.div>
+          </div>
 
           {/* Heading */}
-          <motion.h1
-            className="mt-6 font-serif font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            transition={{ delay: 0.1 }}
-          >
+          <h1 className="mt-6 font-serif font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
             Glow at Home.
             <br />
             <span className="text-primary">Beauty at Your Door.</span>
-          </motion.h1>
+          </h1>
 
           {/* Description */}
-          <motion.p
-            className="mt-4 sm:mt-6 max-w-md sm:max-w-lg md:max-w-xl text-sm sm:text-base md:text-lg lg:text-xl text-foreground/80 leading-relaxed"
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            transition={{ delay: 0.2 }}
-          >
+          <p className="mt-4 sm:mt-6 max-w-md sm:max-w-lg md:max-w-xl text-sm sm:text-base md:text-lg lg:text-xl text-foreground/80 leading-relaxed">
             Experience luxury salon services in the comfort of your home.
             Professional beauticians, premium products, and impeccable hygiene.
-          </motion.p>
+          </p>
 
           {/* Buttons */}
-          <motion.div
-            className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start"
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            transition={{ delay: 0.3 }}
-          >
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
             <Button
               size="lg"
               onClick={handleBookAppointment}
@@ -144,7 +150,7 @@ export default function Home() {
             >
               View Services
             </Button>
-          </motion.div>
+          </div>
 
         </div>
       </section>
@@ -181,7 +187,7 @@ export default function Home() {
 
 
       {/* Popular Services Section */}
-      <section id="services" className="py-20 bg-[#FFFDFB]">
+      <section ref={servicesSectionRef} id="services" className="py-20 bg-[#FFFDFB]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">Popular Services</h2>
@@ -189,18 +195,14 @@ export default function Home() {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {popularServices.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <ServiceCard service={service} />
-              </motion.div>
-            ))}
+          <div className="grid min-h-[600px] grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {shouldLoadServices && (
+              <Suspense fallback={null}>
+                {popularServices.map((service) => (
+                  <ServiceCard key={service.id} service={service} />
+                ))}
+              </Suspense>
+            )}
           </div>
 
           <div className="text-center mt-12">
