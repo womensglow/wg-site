@@ -123,8 +123,11 @@ export function Navbar() {
                 </nav>
                 <div className="mt-auto pb-6 space-y-4">
                   <SheetClose asChild>
-                    <div>
-                      <AppInstallButton />
+                    <div className="w-full">
+                      <AppInstallButton
+                        className="w-full"
+                        onInstalled={() => setIsMobileMenuOpen(false)}
+                      />
                     </div>
                   </SheetClose>
                   <SheetClose asChild>
