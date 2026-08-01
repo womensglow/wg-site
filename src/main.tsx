@@ -7,7 +7,6 @@ import './index.css';
 type AnalyticsWindow = Window & {
 	dataLayer?: unknown[];
 	gtag?: (...args: unknown[]) => void;
-	requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
 };
 
 function loadAnalytics() {
@@ -27,12 +26,14 @@ function loadAnalytics() {
 }
 
 function scheduleAnalytics() {
-	const analyticsWindow = window as AnalyticsWindow;
-	if (analyticsWindow.requestIdleCallback) {
-		analyticsWindow.requestIdleCallback(loadAnalytics, { timeout: 5000 });
-	} else {
-		window.setTimeout(loadAnalytics, 4000);
-	}
+	const interactionEvents = ['pointerdown', 'keydown', 'touchstart'];
+	const handleInteraction = () => {
+		loadAnalytics();
+		interactionEvents.forEach((eventName) => window.removeEventListener(eventName, handleInteraction));
+	};
+
+	interactionEvents.forEach((eventName) => window.addEventListener(eventName, handleInteraction, { once: true, passive: true }));
+	window.setTimeout(loadAnalytics, 15000);
 }
 
 if (document.readyState === 'complete') {

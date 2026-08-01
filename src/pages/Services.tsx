@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Link, useLocation } from 'wouter';
 import { ArrowLeft, ChevronDown, ChevronUp, Filter, Loader2, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -419,16 +418,12 @@ export default function Services() {
               </div>
             ) : (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {filteredServices.map((service, index) => (
-                  <motion.div
+                {filteredServices.map((service) => (
+                  <div
                     key={service.id}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: Math.min(index, 8) * 0.04 }}
                   >
                     <ServiceCard service={service} />
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             )}
