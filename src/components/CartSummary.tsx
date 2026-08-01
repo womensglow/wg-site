@@ -1,7 +1,7 @@
 import { useCart } from '../contexts/CartContext';
 import { Clock, Trash2 } from 'lucide-react';
 import { ADDON_CHARGES } from '../constants/services';
-import { getServiceTypeLabel } from '../constants/services';
+import { getServiceTypeLabel, getSubCategoryLabel } from '../constants/services';
 
 export function CartSummary() {
   const { items, removeItem, totalPrice, totalDuration, itemCount } = useCart();
@@ -31,7 +31,14 @@ export function CartSummary() {
         {items.map((item) => (
           <div key={item.id} className="flex justify-between items-start group">
             <div className="flex-1 pr-4">
-              <p className="font-medium text-sm leading-tight mb-1">{item.name}{getServiceTypeLabel(item.serviceType) ? ` - ${getServiceTypeLabel(item.serviceType)}` : ''}</p>
+              <p className="font-medium text-sm leading-tight mb-1">{item.name}</p>
+              <p className="text-xs text-primary/80">
+                {item.category}
+                {item.subCategory ? ` / ${getSubCategoryLabel(item.subCategory)}` : ''}
+              </p>
+              {getServiceTypeLabel(item.serviceType) && (
+                <p className="text-xs text-foreground/60">{getServiceTypeLabel(item.serviceType)}</p>
+              )}
               <div className="flex items-center gap-2 text-xs text-foreground/60">
                 <span>₹{item.price}</span>
                 <span>•</span>

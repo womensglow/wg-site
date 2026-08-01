@@ -1,9 +1,9 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import {
   SERVICES,
   REFERRAL_PROGRAM,
-  BRAND_PARTNERS
+  BRAND_PARTNERS,
+  getSubCategoryLabel,
 } from '../constants/services';
 import { IMAGE_REVIEWS } from '../constants/reviews';
 import { OurServices } from '../components/OurServices';
@@ -17,34 +17,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const ServiceCard = lazy(() => import('../components/ServiceCard').then((module) => ({ default: module.ServiceCard })));
-
 export default function Home() {
   const { itemCount } = useCart();
   const [, setLocation] = useLocation();
-  const servicesSectionRef = useRef<HTMLElement>(null);
-  const [shouldLoadServices, setShouldLoadServices] = useState(false);
-
-  useEffect(() => {
-    const section = servicesSectionRef.current;
-    if (!section || typeof IntersectionObserver === 'undefined') {
-      setShouldLoadServices(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoadServices(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '600px 0px' },
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
 
   const handleBookAppointment = () => {
     if (itemCount === 0) {
@@ -54,9 +29,14 @@ export default function Home() {
     }
   };
 
-  const popularServices = SERVICES
-    .filter(service => service.popular)
-    .slice(0, 8);
+  const serviceCategories = Array.from(
+    SERVICES.reduce((categories, service) => {
+      const subcategories = categories.get(service.category) ?? new Set<string>();
+      if (service.subCategory) subcategories.add(service.subCategory);
+      categories.set(service.category, subcategories);
+      return categories;
+    }, new Map<string, Set<string>>()),
+  );
 
   const reviews = IMAGE_REVIEWS;
 
@@ -164,29 +144,43 @@ export default function Home() {
       <OurServices />
 
 
-      {/* Popular Services Section */}
-      <section ref={servicesSectionRef} id="services" className="py-20 bg-[#FFFDFB]">
+      {/* Service Categories Section */}
+      <section id="services" className="py-20 bg-[#FFFDFB]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">Popular Services</h2>
-            <p className="text-foreground/70 max-w-2xl mx-auto text-lg">Our most-loved treatments, picked by clients across Agra.</p>
+            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">Explore Our Services</h2>
+            <p className="text-foreground/70 max-w-2xl mx-auto text-lg">Find the right beauty service by category and treatment type.</p>
           </div>
 
-          {/* Services Grid */}
-          <div className="grid min-h-[3360px] auto-rows-[390px] grid-cols-1 gap-6 md:min-h-[796px] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {shouldLoadServices && (
-              <Suspense fallback={null}>
-                {popularServices.map((service) => (
-                  <ServiceCard key={service.id} service={service} />
-                ))}
-              </Suspense>
-            )}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceCategories.map(([category, subcategories]) => (
+              <div key={category} className="rounded-2xl border border-border bg-white p-6 shadow-sm">
+                <Link href={`/services?category=${encodeURIComponent(category)}`} className="group">
+                  <h3 className="font-serif text-2xl font-bold text-foreground transition-colors group-hover:text-primary">{category}</h3>
+                </Link>
+                {subcategories.size > 0 ? (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {Array.from(subcategories).map((subcategory) => (
+                      <Link
+                        key={subcategory}
+                        href={`/services?category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}`}
+                        className="rounded-full border border-primary/20 px-3 py-1.5 text-sm text-foreground/75 transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary"
+                      >
+                        {getSubCategoryLabel(subcategory)}
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="mt-4 text-sm text-foreground/60">Browse all services</p>
+                )}
+              </div>
+            ))}
           </div>
 
           <div className="text-center mt-12">
             <Link href="/services">
               <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base border-primary text-primary hover:bg-primary hover:text-white">
-                All Services <ArrowRight className="w-5 h-5 ml-2" />
+                Browse All Services <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>

@@ -1,4 +1,4 @@
-import { getServicePrice, getServiceTypeLabel, hasServiceVariants, type Service } from '../constants/services';
+import { getServicePrice, getSubCategoryLabel, hasServiceVariants, type Service } from '../constants/services';
 import { useCart } from '../contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Clock, Plus, Check } from 'lucide-react';
@@ -46,7 +46,15 @@ export function ServiceCard({ service }: { service: Service }) {
           {service.name}
         </h3>
 
-        
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-medium text-primary/80">
+          <span className="rounded-full bg-primary/10 px-2.5 py-1">{service.category}</span>
+          {service.subCategory && (
+            <span className="rounded-full bg-secondary/60 px-2.5 py-1 text-foreground/70">
+              {getSubCategoryLabel(service.subCategory)}
+            </span>
+          )}
+        </div>
+
         <div className="flex items-center gap-2 text-sm text-foreground/60 mb-4">
           <Clock className="w-4 h-4" />
           <span>{service.duration} mins</span>
