@@ -102,7 +102,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-foreground/60">
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-foreground/70">
           <p>&copy; {new Date().getFullYear()} Women's Glow Beauty Services. All rights reserved.</p>
           <p className="mt-2 md:mt-0">Home Beauty Services in Agra, UP</p>
         </div>

@@ -317,7 +317,7 @@ export default function Home() {
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
                     <div className="font-bold text-foreground">{review.name}</div>
-                    <div className="text-xs text-foreground/50">{review.location}</div>
+                    <div className="text-xs text-foreground/70">{review.location}</div>
                   </div>
                   <div className="flex gap-1 mb-3">
                     {[...Array(review.rating)].map((_, j) => (
