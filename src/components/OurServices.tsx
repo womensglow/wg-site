@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import {
   Scissors,
@@ -50,35 +49,13 @@ function getUniqueDisplayCategories() {
   return unique;
 }
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const stagger = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1
-    }
-  }
-};
-
 export function OurServices() {
   const categories = getUniqueDisplayCategories();
 
   return (
     <section className="py-20 bg-[#FFFDFB]">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
-          className="text-center mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
+        <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4 tracking-wide uppercase">
             Beauty Services
           </span>
@@ -91,21 +68,12 @@ export function OurServices() {
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Explore our comprehensive range of beauty and wellness services designed to enhance your natural glow
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger}
-        >
-          {categories.map((category, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          {categories.map((category) => (
             <Link key={category.displayName} href={`/services?category=${encodeURIComponent(category.firstCategory)}`}>
-              <motion.div
-                variants={fadeInUp}
-                className="group cursor-pointer"
-              >
+              <div className="group cursor-pointer">
                 <div className="aspect-square rounded-2xl border-2 border-primary/10 bg-white/80 backdrop-blur-sm p-6 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 hover:scale-105">
                   <div className="text-primary transition-transform duration-300 group-hover:scale-110">
                     {category.icon}
@@ -114,26 +82,19 @@ export function OurServices() {
                     {category.displayName}
                   </h3>
                 </div>
-              </motion.div>
+              </div>
             </Link>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div 
-          className="mt-12 text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          transition={{ delay: 0.3 }}
-        >
+        <div className="mt-12 text-center">
           <Link href="/services">
             <button className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/20">
               Browse All Services
               <span>→</span>
             </button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

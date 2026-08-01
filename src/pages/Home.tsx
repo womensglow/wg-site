@@ -1,5 +1,4 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Link, useLocation } from 'wouter';
 import {
   SERVICES,
@@ -58,21 +57,6 @@ export default function Home() {
   const popularServices = SERVICES
     .filter(service => service.popular)
     .slice(0, 8);
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
-
-  const stagger = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
 
   const reviews = IMAGE_REVIEWS;
 
@@ -157,29 +141,23 @@ export default function Home() {
 
 
       {/* Stats */}
-      <motion.div
-        className="mt-8 sm:mt-10 grid grid-cols-2 gap-4 sm:gap-6 w-full sm:w-auto"
-        initial="hidden"
-        animate="visible"
-        variants={stagger}
-      >
+      <div className="mt-8 sm:mt-10 grid grid-cols-2 gap-4 sm:gap-6 w-full sm:w-auto">
         {[
           { icon: <Star className="w-6 h-6 text-primary" />, value: "4.9", label: "Average Rating" },
           { icon: <HomeIcon className="w-6 h-6 text-primary" />, value: "500+", label: "Happy Customers" },
           { icon: <ShieldCheck className="w-6 h-6 text-primary" />, value: "Certified", label: "Professionals" },
           { icon: <Sparkles className="w-6 h-6 text-primary" />, value: "Premium", label: "Products" },
         ].map((stat, i) => (
-          <motion.div
+          <div
             key={i}
-            variants={fadeInUp}
             className="rounded-xl border border-white/60 bg-white/80 backdrop-blur-md p-4 shadow-md text-center"
           >
             <div className="flex justify-center">{stat.icon}</div>
             <div className="mt-2 text-lg sm:text-xl font-bold text-foreground">{stat.value}</div>
             <p className="text-xs sm:text-sm uppercase tracking-wide text-muted-foreground">{stat.label}</p>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
 
       {/* Our Services Section */}
