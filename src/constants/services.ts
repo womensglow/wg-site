@@ -117,26 +117,26 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   // Threading
-  { id: 't-1', category: 'Threading', name: 'Eyebrow', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/eyebrow.png' },
-  { id: 't-2', category: 'Threading', name: 'Upper Lip', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/upper-lip.png' },
-  { id: 't-3', category: 'Threading', name: 'Lower Lip', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/lower-lip.png' },
-  { id: 't-4', category: 'Threading', name: 'Chin', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/chin.png' },
-  { id: 't-5', category: 'Threading', name: 'Side Lock', withoutProductPrice: 60, duration: 15, image: '/images/services/threading/side-lock.png' },
-  { id: 't-6', category: 'Threading', name: 'Full Face', withoutProductPrice: 180, duration: 30, image: '/images/services/threading/full-face.png' },
-  { id: 't-7', category: 'Threading', name: 'Forehead', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/forehead.png' },
+  { id: 't-1', category: 'Threading', name: 'Eyebrow', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/eyebrow.webp' },
+  { id: 't-2', category: 'Threading', name: 'Upper Lip', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/upper-lip.webp' },
+  { id: 't-3', category: 'Threading', name: 'Lower Lip', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/lower-lip.webp' },
+  { id: 't-4', category: 'Threading', name: 'Chin', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/chin.webp' },
+  { id: 't-5', category: 'Threading', name: 'Side Lock', withoutProductPrice: 60, duration: 15, image: '/images/services/threading/side-lock.webp' },
+  { id: 't-6', category: 'Threading', name: 'Full Face', withoutProductPrice: 180, duration: 30, image: '/images/services/threading/full-face.webp' },
+  { id: 't-7', category: 'Threading', name: 'Forehead', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/forehead.webp' },
   
   // Peel Off Wax
-  { id: 'pow-1', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Forehead', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/forehead.png' },
-  { id: 'pow-2', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Upper Lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/upperlip.png'},
-  { id: 'pow-3', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Lower Lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/lowerlip.png' },
-  { id: 'pow-4', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Chin', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/chin.png' },
-  { id: 'pow-5', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Side Lock', withoutProductPrice: 60, withProductPrice: 149, serviceType: 'both', duration: 12, image: '/images/services/wax/peel-off/side-lock.png' },
-  { id: 'pow-6', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Full Face', withoutProductPrice: 150, withProductPrice: 349, serviceType: 'both', duration: 30, image: '/images/services/wax/peel-off/Full-face.png' },
-  { id: 'pow-7', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Underarms', withoutProductPrice: 59, withProductPrice: 80, serviceType: 'both', duration: 8, image: '/images/services/wax/peel-off/underarms.png' },
+  { id: 'pow-1', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Forehead', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/forehead.webp' },
+  { id: 'pow-2', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Upper Lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/upperlip.webp'},
+  { id: 'pow-3', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Lower Lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/lowerlip.webp' },
+  { id: 'pow-4', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Chin', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/chin.webp' },
+  { id: 'pow-5', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Side Lock', withoutProductPrice: 60, withProductPrice: 149, serviceType: 'both', duration: 12, image: '/images/services/wax/peel-off/side-lock.webp' },
+  { id: 'pow-6', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Full Face', withoutProductPrice: 150, withProductPrice: 349, serviceType: 'both', duration: 30, image: '/images/services/wax/peel-off/Full-face.webp' },
+  { id: 'pow-7', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Underarms', withoutProductPrice: 59, withProductPrice: 80, serviceType: 'both', duration: 8, image: '/images/services/wax/peel-off/underarms.webp' },
 
   // Honey Wax
-  { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms + Full Legs', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image: '/images/services/wax/honey/Full-Arms-Underarms-Full-Legs.png' },
-  { id: 'hw-2', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms + Half Legs ', withoutProductPrice: 300, withProductPrice: 449, serviceType: 'both', duration: 60, popular: true, image: '/images/services/wax/honey/Full-Arms-Underarms-Half-Legs.png' },
+  { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms + Full Legs', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image: '/images/services/wax/honey/Full-Arms-Underarms-Full-Legs.webp' },
+  { id: 'hw-2', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms + Half Legs ', withoutProductPrice: 300, withProductPrice: 449, serviceType: 'both', duration: 60, popular: true, image: '/images/services/wax/honey/Full-Arms-Underarms-Half-Legs.webp' },
   { id: 'hw-3', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 249, serviceType: 'both', duration: 31, image: '' },
   { id: 'hw-4', category: 'Wax', subCategory: 'Honey', name: 'Only Underarms', withoutProductPrice: 48, withProductPrice: 59, serviceType: 'both', duration: 8, image: '' },
   { id: 'hw-5', category: 'Wax', subCategory: 'Honey', name: 'Only Full Legs', withoutProductPrice: 200, withProductPrice: 259, serviceType: 'both', duration: 30, image: '' },

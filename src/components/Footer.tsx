@@ -27,6 +27,7 @@ export function Footer() {
                 href="https://instagram.com/women_sglow_agra" 
                 target="_blank" 
                 rel="noreferrer"
+                aria-label="Women's Glow on Instagram"
                 className="w-10 h-10 rounded-full bg-secondary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
               >
                 <Instagram className="w-5 h-5" />
@@ -36,6 +37,7 @@ export function Footer() {
                 href="https://instagram.com/women_sglow_agra" 
                 target="_blank" 
                 rel="noreferrer"
+                aria-label="Women's Glow on YouTube"
                 className="w-10 h-10 rounded-full bg-secondary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
               >
                 <Youtube className="w-5 h-5" />
@@ -45,6 +47,7 @@ export function Footer() {
                 href="https://instagram.com/women_sglow_agra" 
                 target="_blank" 
                 rel="noreferrer"
+                aria-label="Women's Glow on Facebook"
                 className="w-10 h-10 rounded-full bg-secondary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
               >
                 <Facebook className="w-5 h-5" />

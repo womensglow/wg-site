@@ -77,7 +77,7 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-4">
-          <Link href="/booking" className="relative p-2 text-foreground/80 hover:text-primary transition-colors">
+          <Link href="/booking" aria-label="Open booking cart" className="relative p-2 text-foreground/80 hover:text-primary transition-colors">
             <ShoppingBag className="w-6 h-6" />
             {itemCount > 0 && (
               <span className="absolute top-0 right-0 w-5 h-5 bg-primary text-primary-foreground text-xs rounded-full flex items-center justify-center font-bold">

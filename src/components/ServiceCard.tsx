@@ -32,7 +32,15 @@ export function ServiceCard({ service }: { service: Service }) {
 
       <div className="flex-1">
         <div className="mb-4 overflow-hidden rounded-xl">
-          <img src={service.image} alt={service.name} className="w-full h-36 object-cover" />
+          <img
+            src={service.image}
+            alt={service.name}
+            width="1448"
+            height="1086"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-36 object-cover"
+          />
         </div>
         <h3 className="font-serif text-lg font-bold text-foreground leading-snug mb-2 group-hover:text-primary transition-colors">
           {service.name}

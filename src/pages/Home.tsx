@@ -71,12 +71,14 @@ export default function Home() {
 
       <section className="relative min-h-screen flex items-center overflow-hidden">
 
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-[70%] sm:bg-[40%_center] md:bg-[90%_center] lg:bg-right z-0"
-          style={{
-            backgroundImage: 'url("/images/wg-hero-home.png")',
-          }}
+        <img
+          src="/images/wg-hero-home.webp"
+          alt="Women's Glow home beauty service"
+          width="1768"
+          height="889"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-[70%] sm:object-[40%_center] md:object-[90%_center] lg:object-right z-0"
         />
 
         {/* Gradient Overlay */}
