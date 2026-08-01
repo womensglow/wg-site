@@ -17,6 +17,10 @@ const NotFound = lazy(() => import('./pages/not-found'));
 
 const queryClient = new QueryClient();
 
+function PageLoadingFallback() {
+  return <div aria-hidden="true" className="min-h-screen bg-[#FFFDFB]" />;
+}
+
 function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
@@ -31,7 +35,7 @@ function Router() {
       <ScrollToTop />
       <Navbar />
       <main className="flex-1">
-        <Suspense fallback={null}>
+        <Suspense fallback={<PageLoadingFallback />}>
           <Switch>
             <Route path="/" component={Home} />
             <Route path="/services" component={Services} />

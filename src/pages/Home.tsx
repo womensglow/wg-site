@@ -173,7 +173,7 @@ export default function Home() {
           </div>
 
           {/* Services Grid */}
-          <div className="grid min-h-[600px] grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid min-h-[3360px] auto-rows-[390px] grid-cols-1 gap-6 md:min-h-[796px] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {shouldLoadServices && (
               <Suspense fallback={null}>
                 {popularServices.map((service) => (
