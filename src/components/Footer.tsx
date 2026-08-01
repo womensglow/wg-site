@@ -83,7 +83,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div id="contact">
             <h3 className="font-serif text-lg font-bold mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">

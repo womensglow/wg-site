@@ -11,7 +11,7 @@ interface AppInstallButtonProps {
 export function AppInstallButton({ className, onInstalled }: AppInstallButtonProps) {
   const { deferredPrompt, promptInstall, isInstalled } = usePwaPrompt();
 
-  if (!deferredPrompt || isInstalled) {
+  if (isInstalled) {
     return null;
   }
 
@@ -19,6 +19,10 @@ export function AppInstallButton({ className, onInstalled }: AppInstallButtonPro
     <Button
       type="button"
       onClick={async () => {
+        if (!deferredPrompt) {
+          window.alert('To install the app, open your browser menu and choose "Add to Home screen" or "Install app".');
+          return;
+        }
         const installed = await promptInstall();
         if (installed) onInstalled?.();
       }}

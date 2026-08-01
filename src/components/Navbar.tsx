@@ -28,7 +28,6 @@ export function Navbar() {
     { name: 'Gallery', href: '/#gallery' },
     { name: 'Reviews', href: '/#reviews' },
     { name: 'FAQ', href: '/#faq' },
-    { name: 'Contact', href: '/#contact' },
   ];
 
   const handleNavClick = (href: string) => {

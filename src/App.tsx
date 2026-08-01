@@ -24,7 +24,14 @@ function PageLoadingFallback() {
 function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    const hash = window.location.hash.slice(1);
+    const target = hash ? document.getElementById(hash) : null;
+
+    if (target) {
+      window.setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
     const analyticsWindow = window as Window & {
       gtag?: (...args: unknown[]) => void;
     };
