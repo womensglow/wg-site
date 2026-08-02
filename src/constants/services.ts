@@ -126,13 +126,13 @@ export const SERVICES: Service[] = [
   { id: 't-7', category: 'Threading', name: 'Forehead', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/forehead.webp' },
   
   // Peel Off Wax
-  { id: 'pow-1', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Forehead', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/forehead.png' },
-  { id: 'pow-2', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Upper Lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/upperlip.png'},
-  { id: 'pow-3', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Lower Lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/lowerlip.png' },
-  { id: 'pow-4', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Chin', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/wax/peel-off/chin.png' },
-  { id: 'pow-5', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Side Lock', withoutProductPrice: 60, withProductPrice: 149, serviceType: 'both', duration: 12, image: '/images/services/wax/peel-off/side-lock.png' },
-  { id: 'pow-6', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Full Face', withoutProductPrice: 150, withProductPrice: 349, serviceType: 'both', duration: 30, image: '/images/services/wax/peel-off/Full-face.png' },
-  { id: 'pow-7', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Underarms', withoutProductPrice: 59, withProductPrice: 80, serviceType: 'both', duration: 8, image: '/images/services/wax/peel-off/underarms.png' },
+  { id: 'pow-1', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Forehead', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/forehead.png',
+  { id: 'pow-2', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Upper Lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image:'/images/services/waxing/peel-off/upperlip.png'},
+  { id: 'pow-3', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Lower Lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/lowerlip.png' },
+  { id: 'pow-4', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Chin', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/chin.png' },
+  { id: 'pow-5', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Side Lock', withoutProductPrice: 60, withProductPrice: 149, serviceType: 'both', duration: 12, image: '/images/services/waxing/peel-off/side-lock.png' },
+  { id: 'pow-6', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Full Face', withoutProductPrice: 150, withProductPrice: 349, serviceType: 'both', duration: 30, image: '/images/services/waxing/peel-off/Full-face.png' },
+  { id: 'pow-7', category: 'Wax', subCategory: 'Peel-Off Brazilian', name: 'Underarms', withoutProductPrice: 59, withProductPrice: 80, serviceType: 'both', duration: 8, image: '/images/services/waxing/peel-off/underarms.png' },
 
   // Honey Wax
   { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image:'/images/services/waxing/honey/Full-Arms-Full-Legs- Underarms.png'},
