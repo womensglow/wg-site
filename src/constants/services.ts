@@ -126,18 +126,18 @@ export const SERVICES: Service[] = [
   { id: 't-7', category: 'Threading', name: 'Forehead', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/forehead.webp' },
   
   // Peel Off Wax
-  { id: 'pow-1', category: 'Wax', subCategory: 'peel-off brazilian', name: 'forehead', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/forehead.png',
-  { id: 'pow-2', category: 'Wax', subCategory: 'peel-off brazilian', name: 'upper lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image:'/images/services/waxing/peel-off/upperlip.png'},
+  { id: 'pow-1', category: 'Wax', subCategory: 'peel-off brazilian', name: 'forehead', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/forehead.png' },
+  { id: 'pow-2', category: 'Wax', subCategory: 'peel-off brazilian', name: 'upper lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image:'/images/services/waxing/peel-off/upperlip.png' },
   { id: 'pow-3', category: 'Wax', subCategory: 'peel-off brazilian', name: 'lower lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/lowerlip.png' },
   { id: 'pow-4', category: 'Wax', subCategory: 'peel-off brazilian', name: 'chin', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/chin.png' },
-  { id: 'pow-5', category: 'Wax', subCategory: 'peel-Off brazilian', name: 'side lock', withoutProductPrice: 60, withProductPrice: 149, serviceType: 'both', duration: 12, image: '/images/services/waxing/peel-off/side-lock.png' },
-  { id: 'pow-6', category: 'Wax', subCategory: 'peel-Off brazilian', name: 'Full face', withoutProductPrice: 150, withProductPrice: 349, serviceType: 'both', duration: 30, image: '/images/services/waxing/peel-off/Full-face.png' },
-  { id: 'pow-7', category: 'Wax', subCategory: 'peel-Off brazilian', name: 'underarms', withoutProductPrice: 59, withProductPrice: 80, serviceType: 'both', duration: 8, image: '/images/services/waxing/peel-off/underarms.png' },
+  { id: 'pow-5', category: 'Wax', subCategory: 'peel-off brazilian', name: 'side lock', withoutProductPrice: 60, withProductPrice: 149, serviceType: 'both', duration: 12, image: '/images/services/waxing/peel-off/side-lock.png' },
+  { id: 'pow-6', category: 'Wax', subCategory: 'peel-off brazilian', name: 'Full face', withoutProductPrice: 150, withProductPrice: 349, serviceType: 'both', duration: 30, image: '/images/services/waxing/peel-off/Full-face.png' },
+  { id: 'pow-7', category: 'Wax', subCategory: 'peel-off brazilian', name: 'underarms', withoutProductPrice: 59, withProductPrice: 80, serviceType: 'both', duration: 8, image: '/images/services/waxing/peel-off/underarms.png' },
 
   // Honey Wax
-  { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image:'/images/services/waxing/honey/Full-Arms-Full-Legs- Underarms.png'},
-  { id: 'hw-2', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Half Legs + Underarms ', withoutProductPrice: 300, withProductPrice: 449, serviceType: 'both', duration: 60, popular: true, image: '/images/services/waxing/honey/Full- Arms- Half Legs- Underarms.png' },
-  { id: 'hw-3', category: 'Wax', subCategory: 'honey', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 249, serviceType: 'both', duration: 31, image: '/images/services/waxing/honey/honey-Full-Arms- Underarms.png' },
+  { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image:'/images/services/waxing/honey/Full-Arms-Full-Legs-Underarms.png' },
+  { id: 'hw-2', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Half Legs + Underarms ', withoutProductPrice: 300, withProductPrice: 449, serviceType: 'both', duration: 60, popular: true, image: '/images/services/waxing/honey/Full-Arms-Half-Legs-Underarms.png' },
+  { id: 'hw-3', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 249, serviceType: 'both', duration: 31, image: '/images/services/waxing/honey/honey-Full-Arms-Underarms.png' },
   { id: 'hw-4', category: 'Wax', subCategory: 'Honey', name: 'Only Underarms', withoutProductPrice: 48, withProductPrice: 59, serviceType: 'both', duration: 8, image: '/images/services/waxing/honey/honey-Only-Underarms.png' },
   { id: 'hw-5', category: 'Wax', subCategory: 'Honey', name: 'Only Full Legs', withoutProductPrice: 200, withProductPrice: 259, serviceType: 'both', duration: 30, image: '/images/services/waxing/honey/honey-only-full-legs.png' },
   { id: 'hw-6', category: 'Wax', subCategory: 'Honey', name: 'Only Half Legs', withoutProductPrice: 150, withProductPrice: 249, serviceType: 'both', duration: 12, image: '/images/services/waxing/honey/honey-half-leg.png' },
@@ -162,7 +162,7 @@ export const SERVICES: Service[] = [
   { id: 'rw-10', category: 'Wax', subCategory: 'Rica', name: 'Bikini', withoutProductPrice: 300, withProductPrice: 699, serviceType: 'both', duration: 60, image:'/images/services/waxing/rica-wax/honey-bikini.jpg'},
   { id: 'rw-11', category: 'Wax', subCategory: 'Rica', name: 'Bikini + Butt Line', withoutProductPrice: 390, withProductPrice: 799, serviceType: 'both', duration: 70, image:'/images/services/waxing/rica-wax/bikkini-butt-line.jpg' },
   { id: 'rw-12', category: 'Wax', subCategory: 'Rica', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 349, serviceType: 'both', duration: 25, image:'/images/services/waxing/rica-wax/Rica-Stomach.png' },
-  { id: 'rw-13', category: 'Wax', subCategory: 'Rica', name: 'Full Body', withoutProductPrice: 720, withProductPrice: 1599, serviceType: 'both', duration: 120, image:'/images/services/waxing/rica-wax/Rica-Full Body.png'},
+  { id: 'rw-13', category: 'Wax', subCategory: 'Rica', name: 'Full Body', withoutProductPrice: 720, withProductPrice: 1599, serviceType: 'both', duration: 120, image:'/images/services/waxing/rica-wax/Rica-Full-Body.png'},
 
   // Gel Wax
   { id: 'gw-1', category: 'Wax', subCategory: 'Gel', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 385, withProductPrice: 699, serviceType: 'both', duration: 65 },
