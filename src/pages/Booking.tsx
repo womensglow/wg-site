@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useCart } from '../contexts/CartContext';
-import { ADDON_CHARGES, getServiceTypeLabel } from '../constants/services';
+import { ADDON_CHARGES, getServiceTypeLabel, getSubCategoryLabel } from '../constants/services';
 import { CartSummary } from '../components/CartSummary';
 import { BookingSuccessModal } from '../components/BookingSuccessModal';
 import { Button } from '@/components/ui/button';
@@ -104,6 +104,8 @@ export default function Booking() {
         ...data,
         preferredDate: format(data.preferredDate, 'yyyy-MM-dd'),
         services: items.map(i => `${i.name}${getServiceTypeLabel(i.serviceType) ? ` - ${getServiceTypeLabel(i.serviceType)}` : ''} (Qty: ${i.quantity})`).join(', '),
+        // Structured service details (stringified JSON) so the sheet can store category/subcategory per item
+        servicesDetailed: JSON.stringify(items.map(i => ({ id: i.id, name: i.name, category: i.category, subCategory: i.subCategory || '', serviceType: i.serviceType || i.productMode || '', quantity: i.quantity, unitPrice: i.price }))),
         servicesSubtotal: totalPrice,
         disposableKitFee: ADDON_CHARGES.disposableKit.price,
         transportFee: ADDON_CHARGES.transport.price,
@@ -129,7 +131,11 @@ export default function Booking() {
 
       // 3. Build WhatsApp Message
       const serviceLines = items
-        .map(i => `  • ${i.name}${getServiceTypeLabel(i.serviceType) ? ` - ${getServiceTypeLabel(i.serviceType)}` : ''}${i.quantity > 1 ? ` × ${i.quantity}` : ''} — ₹${i.price * i.quantity}`)
+        .map(i => {
+          const sub = i.subCategory ? ` / ${getSubCategoryLabel(i.subCategory)}` : '';
+          const typeLabel = getServiceTypeLabel(i.serviceType) ? ` - ${getServiceTypeLabel(i.serviceType)}` : '';
+          return `  • ${i.category}${sub}: ${i.name}${typeLabel}${i.quantity > 1 ? ` × ${i.quantity}` : ''} — ₹${i.price * i.quantity}`;
+        })
         .join('\n');
 
       const message = `✨ *WOMEN'S GLOW BEAUTY SERVICES* ✨

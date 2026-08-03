@@ -46,6 +46,7 @@ function doPost(e) {
       data.preferredDate   || "",
       data.preferredTime   || "",
       data.services        || "",
+      data.servicesDetailed || "",
       data.servicesSubtotal || 0,
       data.disposableKitFee || 0,
       data.transportFee    || 0,
@@ -81,6 +82,7 @@ function getHeaders() {
     "Appointment Date",
     "Appointment Time",
     "Services",
+    "Services Details",
     "Services Subtotal (₹)",
     "Disposable Kit Fee (₹)",
     "Transport Fee (₹)",
@@ -103,14 +105,15 @@ function formatHeaderRow(sheet) {
   sheet.setColumnWidth(2, 160);  // Timestamp
   sheet.setColumnWidth(3, 140);  // Name
   sheet.setColumnWidth(13, 280); // Services
-  sheet.setColumnWidth(14, 130); // Services Subtotal
-  sheet.setColumnWidth(15, 140); // Disposable Kit Fee
-  sheet.setColumnWidth(16, 120); // Transport Fee
-  sheet.setColumnWidth(17, 120); // Total
-  sheet.setColumnWidth(18, 120); // Payment Mode
-  sheet.setColumnWidth(19, 200); // Instructions
-  sheet.setColumnWidth(20, 100); // Source
-  sheet.setColumnWidth(21, 100); // Status
+  sheet.setColumnWidth(14, 360); // Services Details (JSON / long text)
+  sheet.setColumnWidth(15, 130); // Services Subtotal
+  sheet.setColumnWidth(16, 140); // Disposable Kit Fee
+  sheet.setColumnWidth(17, 120); // Transport Fee
+  sheet.setColumnWidth(18, 120); // Total
+  sheet.setColumnWidth(19, 120); // Payment Mode
+  sheet.setColumnWidth(20, 200); // Instructions
+  sheet.setColumnWidth(21, 100); // Source
+  sheet.setColumnWidth(22, 100); // Status
 }
 
 function formatTimestamp(isoString) {
@@ -123,33 +126,4 @@ function jsonResponse(obj) {
   return ContentService
     .createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
-}
-
-// ── Test function — run manually from the editor to check ────
-function testInsert() {
-  var fakeEvent = {
-    postData: {
-      contents: JSON.stringify({
-        bookingId: "WG-TEST-0001",
-        timestamp: new Date().toISOString(),
-        name: "Test Customer",
-        phone: "9876543210",
-        whatsapp: "9876543210",
-        gender: "Female",
-        address: "123 Test Street",
-        landmark: "Near Clock Tower",
-        area: "Civil Lines",
-        pincode: "282001",
-        preferredDate: "2026-07-10",
-        preferredTime: "11:00 AM – 12:00 PM",
-        services: "Eyebrow Threading (Qty: 1), Full Arms Wax Rica (Qty: 1)",
-        totalAmount: 360,
-        paymentMode: "UPI",
-        specialInstructions: "Please bring rose wax",
-        website: ""
-      })
-    }
-  };
-  doPost(fakeEvent);
-  Logger.log("Test row inserted — check your sheet!");
 }
