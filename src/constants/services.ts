@@ -135,7 +135,7 @@ export const SERVICES: Service[] = [
   { id: 'pow-7', category: 'Wax', subCategory: 'peel-off brazilian', name: 'underarms', withoutProductPrice: 59, withProductPrice: 80, serviceType: 'both', duration: 8, image: '/images/services/waxing/peel-off/underarms.png' },
 
   // Honey Wax
-  { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image:'/images/services/waxing/honey/Full-Arms-Full-Legs-Underarms.png' },
+  { id: 'hw-1', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 380, withProductPrice: 549, serviceType: 'both', duration: 65, popular: true, image: '/images/services/waxing/honey/Full-Arms-Full-Legs-Underarms.png' },
   { id: 'hw-2', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Half Legs + Underarms ', withoutProductPrice: 300, withProductPrice: 449, serviceType: 'both', duration: 60, popular: true, image: '/images/services/waxing/honey/Full-Arms-Half-Legs-Underarms.png' },
   { id: 'hw-3', category: 'Wax', subCategory: 'Honey', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 249, serviceType: 'both', duration: 31, image: '/images/services/waxing/honey/honey-Full-Arms-Underarms.png' },
   { id: 'hw-4', category: 'Wax', subCategory: 'Honey', name: 'Only Underarms', withoutProductPrice: 48, withProductPrice: 59, serviceType: 'both', duration: 8, image: '/images/services/waxing/honey/honey-Only-Underarms.png' },
