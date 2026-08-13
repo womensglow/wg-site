@@ -180,14 +180,14 @@ export const SERVICES: Service[] = [
   { id: 'gw-13', category: 'Wax', subCategory: 'Gel', name: 'Full Body', withoutProductPrice: 720,  withProductPrice: 1499, serviceType: 'both',duration: 120, image:'/images/services/waxing/Gel-wax/Full-Body.png' },
 
   // Roll On Rica Wax
-  { id: 'rorw-1', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 799, duration: 80 },
-  { id: 'rorw-2', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Arms + Half Legs + Underarms', withoutProductPrice: 699, duration: 60 },
-  { id: 'rorw-3', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Body', withoutProductPrice: 1599, duration: 140 },
-  { id: 'rorw-4', category: 'Wax', subCategory: 'Roll-ON', name: 'Hand Wax', withoutProductPrice: 380, duration: 25 },
-  { id: 'rorw-5', category: 'Wax', subCategory: 'Roll-ON', name: 'Leg Wax', withoutProductPrice: 499, duration: 30 },
-  { id: 'rorw-6', category: 'Wax', subCategory: 'Roll-ON', name: 'Half Leg', withoutProductPrice: 395, duration: 25 },
-  { id: 'rorw-7', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Back', withoutProductPrice: 390, duration: 30 },
-  { id: 'rorw-8', category: 'Wax', subCategory: 'Roll-ON', name: 'Stomach', withoutProductPrice: 380, duration: 25 },
+  { id: 'rorw-1', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 799, duration: 80, image:'/images/services/roll-on/Full-Arms-Full-Legs-Underarms.png' },
+  { id: 'rorw-2', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Arms + Half Legs + Underarms', withoutProductPrice: 699, duration: 60, image:'/images/services/roll-on/Full-Arms-Half-Legs-Underarms.png'},
+  { id: 'rorw-3', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Body', withoutProductPrice: 1599, duration: 140, image:'/images/services/roll-on/Full-Body.png'},
+  { id: 'rorw-4', category: 'Wax', subCategory: 'Roll-ON', name: 'Hand Wax', withoutProductPrice: 380, duration: 25, image:'/images/services/roll-on/Hand-Wax.png' },
+  { id: 'rorw-5', category: 'Wax', subCategory: 'Roll-ON', name: 'Leg Wax', withoutProductPrice: 499, duration: 30, image:'/images/services/roll-on/Leg-Wax.png' },
+  { id: 'rorw-6', category: 'Wax', subCategory: 'Roll-ON', name: 'Half Leg', withoutProductPrice: 395, duration: 25, image:'/images/services/roll-on/Half-Leg.png' },
+  { id: 'rorw-7', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Back', withoutProductPrice: 390, duration: 30, image:'/images/services/roll-on/Full-Back.png' },
+  { id: 'rorw-8', category: 'Wax', subCategory: 'Roll-ON', name: 'Stomach', withoutProductPrice: 380, duration: 25, image:'/images/services/roll-on/Stomach.png' },
 
   // Mani and Pedi
   { id: 'mp-1', category: 'Mani and Pedi', name: 'De-Tan Mani Pedi', withoutProductPrice: 795, duration: 145, popular: true },
@@ -202,8 +202,8 @@ export const SERVICES: Service[] = [
   { id: 'mp-10', category: 'Mani and Pedi', name: 'Nail Paint Apply', withoutProductPrice: 59, duration: 10 },
 
   // Hair Care
-  { id: 'hc-1', category: 'Hair Care', name: 'Touch-Up - On Product', withoutProductPrice: 399, duration: 30 },
-  { id: 'hc-2', category: 'Hair Care', name: 'Henna Application', withoutProductPrice: 240, duration: 40},
+  { id: 'hc-1', category: 'Hair Care', name: 'Touch-Up - On Product', withoutProductPrice: 399, duration: 30, image:'/images/services/hair-care/Touch-Up -On-Product.png' },
+  { id: 'hc-2', category: 'Hair Care', name: 'Henna Application', withoutProductPrice: 240, duration: 40, image:'/images/services/hair-care/Henna-Application.png'},
 
   // Bleach
   { id: 'bl-1', category: 'Bleach', name: 'Full Face + Neck', withoutProductPrice: 120, withProductPrice: 195, serviceType: 'both', duration: 30 },
@@ -211,7 +211,7 @@ export const SERVICES: Service[] = [
   { id: 'bl-3', category: 'Bleach', name: 'Full Back', withoutProductPrice: 200, withProductPrice: 409, serviceType: 'both', duration: 30 },
   { id: 'bl-4', category: 'Bleach', name: 'Half Back', withoutProductPrice: 150, withProductPrice: 280, serviceType: 'both', duration: 35 },
   { id: 'bl-5', category: 'Bleach', name: 'Full Body', withoutProductPrice: 510, withProductPrice: 759, serviceType: 'both', duration: 60 },
-  { id: 'bl-6', category: 'Bleach', name: 'Stomach', withoutProductPrice: 180, withProductPrice: 409, serviceType: 'both' ,duration: 30 },
+  { id: 'bl-6', category: 'Bleach', name: 'Stomach', withoutProductPrice: 180, withProductPrice: 409, serviceType: 'both' ,duration: 30, image:'/images/services/bleach/Stomach.png' },
   { id: 'bl-7', category: 'Bleach', name: 'Only Underarms', withoutProductPrice: 99, withProductPrice: 199, serviceType: 'both', duration: 20 },
 
   // Body Scrub
@@ -223,10 +223,10 @@ export const SERVICES: Service[] = [
 
   // Body Polishing
   { id: 'bp-1', category: 'Body Polishing', name: 'Full Body Polishing', withoutProductPrice: 1599, duration: 100 },
-  { id: 'bp-2', category: 'Body Polishing', name: 'Hydra Glow Body Polishing', withoutProductPrice: 4999, duration: 165, popular: true },
+  { id: 'bp-2', category: 'Body Polishing', name: 'Hydra Glow Body Polishing', withoutProductPrice: 4999, duration: 165, popular: true, image:'/images/services/body-polish/Hydra-Glow-Body-Polishing.png' },
 
   // Body Spa & Massage
-  { id: 'bm-1', category: 'Body Spa & Massage', name: 'Full Body Spa', withoutProductPrice: 1049, duration: 60, popular: true },
+  { id: 'bm-1', category: 'Body Spa & Massage', name: 'Full Body Spa', withoutProductPrice: 1049, duration: 60, popular: true, image:'/images/services/body-spa/Full-Body-Spa.png' },
   { id: 'bm-2', category: 'Body Spa & Massage', name: 'Head Massage (15 min)', withoutProductPrice: 90, duration: 15 },
   { id: 'bm-3', category: 'Body Spa & Massage', name: 'Head Massage (20 min)', withoutProductPrice: 120, duration: 20 },
   { id: 'bm-4', category: 'Body Spa & Massage', name: 'Head Massage (30 min)', withoutProductPrice: 180, duration: 30 },
@@ -236,7 +236,7 @@ export const SERVICES: Service[] = [
   { id: 'bm-8', category: 'Body Spa & Massage', name: 'Head + Foot Massage', withoutProductPrice: 320, duration: 30 },
 
   // Spa Treatments
-  { id: 'sp-1', category: 'Spa', name: 'Aroma Relaxation Spa', withoutProductPrice: 799, duration: 75, popular: true },
+  { id: 'sp-1', category: 'Spa', name: 'Aroma Relaxation Spa', withoutProductPrice: 799, duration: 75, popular: true, image:'/images/services/body-spa/Aroma-Relaxation-Spa.png'},
   { id: 'sp-2', category: 'Spa', name: 'Detox Body Spa', withoutProductPrice: 999, duration: 90 },
   { id: 'sp-3', category: 'Spa', name: 'Hydra Glow Spa', withoutProductPrice: 1299, duration: 100 },
   { id: 'sp-4', category: 'Spa', name: 'Foot Spa & Massage', withoutProductPrice: 459, duration: 45 },
@@ -248,25 +248,25 @@ export const SERVICES: Service[] = [
   { id: 'cu-3', category: 'Basic Cleanup', name: 'Red Wine Skin Tightening Cleanup - 6 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45 },
 
   // Basic Facial
-  { id: 'bf-1', category: 'Facial', subCategory: 'Basic', name: 'Fruit Facial - 5 Steps', withoutProductPrice: 380,  withProductPrice: 599, serviceType: 'both', duration: 65 },
-  { id: 'bf-2', category: 'Facial', subCategory: 'Basic', name: 'De-Tan Facial - 6 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65 },
-  { id: 'bf-3', category: 'Facial', subCategory: 'Basic', name: 'Red Wine Skin Tightening Facial - 6 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65 },
-  { id: 'bf-4', category: 'Facial', subCategory: 'Basic', name: 'Gold Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65 },
-  { id: 'bf-5', category: 'Facial', subCategory: 'Basic', name: 'Diamond Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65 },
-  { id: 'bf-6', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Facial - 7 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65 },
+  { id: 'bf-1', category: 'Facial', subCategory: 'Basic', name: 'Fruit Facial - 5 Steps', withoutProductPrice: 380,  withProductPrice: 599, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Fruit-Facial.png'},
+  { id: 'bf-2', category: 'Facial', subCategory: 'Basic', name: 'De-Tan Facial - 6 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/De-Tan-Facial.png' },
+  { id: 'bf-3', category: 'Facial', subCategory: 'Basic', name: 'Red Wine Skin Tightening Facial - 6 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Red-Wine-Skin-Tightening-Facial.png' },
+  { id: 'bf-4', category: 'Facial', subCategory: 'Basic', name: 'Gold Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Gold-Facial.png' },
+  { id: 'bf-5', category: 'Facial', subCategory: 'Basic', name: 'Diamond Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Diamond-Facial.png' },
+  { id: 'bf-6', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Facial - 7 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Aroma-Magic-Facial.png' },
 
   // Classic Facial
-  { id: 'cf-1', category: 'Facial', subCategory: 'Classic', name: 'Korean Facial', withoutProductPrice: 599, withProductPrice: 1199, serviceType: 'both', duration: 75, popular: true },
-  { id: 'cf-2', category: 'Facial', subCategory: 'Classic', name: "Shine's Glow O3+ Facial", withoutProductPrice: 420, withProductPrice: 1295, serviceType: 'both', duration: 60 },
-  { id: 'cf-3', category: 'Facial', subCategory: 'Classic', name: 'O3+ Bridal Facial V-C', withoutProductPrice: 599, withProductPrice: 1549, serviceType: 'both', duration: 100 },
-  { id: 'cf-4', category: 'Facial', subCategory: 'Classic', name: 'O3+ Radiant Glow Bridal Facial', withoutProductPrice: 599, withProductPrice: 1599, serviceType: 'both', duration: 100 },
-  { id: 'cf-5', category: 'Facial', subCategory: 'Classic', name: 'Hydra Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70 },
-  { id: 'cf-6', category: 'Facial', subCategory: 'Classic', name: 'FYC Bridal Glow Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70 },
+  { id: 'cf-1', category: 'Facial', subCategory: 'Classic', name: 'Korean Facial', withoutProductPrice: 599, withProductPrice: 1199, serviceType: 'both', duration: 75, popular: true, image:'/images/services/facial-classic/Korean-Facial.png' },
+  { id: 'cf-2', category: 'Facial', subCategory: 'Classic', name: "Shine's Glow O3+ Facial", withoutProductPrice: 420, withProductPrice: 1295, serviceType: 'both', duration: 60, image:'/images/services/facial-classic/Shines-Glow-O3-Facial.png' },
+  { id: 'cf-3', category: 'Facial', subCategory: 'Classic', name: 'O3+ Bridal Facial V-C', withoutProductPrice: 599, withProductPrice: 1549, serviceType: 'both', duration: 100, image:'/images/services/facial-classic/O3-Radiant -Glow-Bridal-Facial.png' },
+  { id: 'cf-4', category: 'Facial', subCategory: 'Classic', name: 'O3+ Radiant Glow Bridal Facial', withoutProductPrice: 599, withProductPrice: 1599, serviceType: 'both', duration: 100, image:'/images/services/facial-classic/O3-Radiant -Glow-Bridal-Facial.png'},
+  { id: 'cf-5', category: 'Facial', subCategory: 'Classic', name: 'Hydra Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70, image:'/images/services/facial-classic/Hydra-Facial.png' },
+  { id: 'cf-6', category: 'Facial', subCategory: 'Classic', name: 'FYC Bridal Glow Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70, image:'/images/services/facial-classic/FYC-Bridal -Glow-Facial.png' },
 
   // Bridal & Combo Packages
-  { id: 'bcp-1', category: 'Bridal & Combo Packages', name: 'Rica Wax + De-Tan Facial + Threading Combo', withoutProductPrice: 1624, duration: 145 },
-  { id: 'bcp-2', category: 'Bridal & Combo Packages', name: 'Rica Wax + Red Wine Skin-Tightening Facial + O3 Pedicure Combo', withoutProductPrice: 1999, duration: 205 },
-  { id: 'bcp-3', category: 'Bridal & Combo Packages', name: 'Bridal Shine Special Package', withoutProductPrice: 7040, duration: 215, popular: true },
+  { id: 'bcp-1', category: 'Bridal & Combo Packages', name: 'Rica Wax + De-Tan Facial + Threading Combo', withoutProductPrice: 1624, duration: 145, image:'/images/services/packages/Rica-Wax-De-Tan-Facial-Threading-Combo.png' },
+  { id: 'bcp-2', category: 'Bridal & Combo Packages', name: 'Rica Wax + Red Wine Skin-Tightening Facial + O3 Pedicure Combo', withoutProductPrice: 1999, duration: 205, image:'/images/services/packages/Rica-Wax-Red-Wine-Skin-Tightening-Facial-O3-Pedicure-Combo.png' },
+  { id: 'bcp-3', category: 'Bridal & Combo Packages', name: 'Bridal Shine Special Package', withoutProductPrice: 7040, duration: 215, popular: true, image:'/images/services/packages/Bridal-Shine-Special-Package.png' },
 ];
 
 export const SERVICE_CATEGORIES = Array.from(new Set(SERVICES.map(s => s.category)));
