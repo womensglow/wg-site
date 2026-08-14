@@ -74,8 +74,6 @@ function FilterPanel({
     { value: 'Bridal & Combo Packages', label: 'Packages', categories: ['Bridal & Combo Packages'] },
     { value: 'Facial', label: 'Facial', categories: ['Facial'] },
     { value: 'Body Scrub', label: 'Body Scrub / Body Polish', categories: ['Body Scrub', 'Body Polishing'] },
-    { value: 'Face Mask', label: 'Face Mask', categories: ['Face Mask'] },
-    { value: 'Makeup', label: 'Makeup', categories: ['Makeup'] },
     { value: 'Basic Cleanup', label: 'Cleanup', categories: ['Basic Cleanup'] },
     { value: 'Mani and Pedi', label: 'Mani-Pedi', categories: ['Mani and Pedi'] },
     { value: 'Body Spa & Massage', label: 'Body Spa', categories: ['Body Spa & Massage', 'Spa'] },

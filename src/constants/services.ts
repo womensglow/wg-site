@@ -190,16 +190,16 @@ export const SERVICES: Service[] = [
   { id: 'rorw-8', category: 'Wax', subCategory: 'Roll-ON', name: 'Stomach', withoutProductPrice: 380, duration: 25, image:'/images/services/roll-on/Stomach.png' },
 
   // Mani and Pedi
-  { id: 'mp-1', category: 'Mani and Pedi', name: 'De-Tan Mani Pedi', withoutProductPrice: 795, duration: 145, popular: true },
-  { id: 'mp-2', category: 'Mani and Pedi', name: 'O3+ Luxury Crystal Spa Mani Pedi', withoutProductPrice: 1250, duration: 140 },
-  { id: 'mp-3', category: 'Mani and Pedi', name: 'O3+ Pedicure', withoutProductPrice: 649, duration: 60 },
-  { id: 'mp-4', category: 'Mani and Pedi', name: 'Korean Mani Pedi', withoutProductPrice: 1199, duration: 100, popular: true },
-  { id: 'mp-5', category: 'Mani and Pedi', name: 'Korean Pedicure', withoutProductPrice: 699, duration: 60 },
-  { id: 'mp-6', category: 'Mani and Pedi', name: 'Korean Manicure', withoutProductPrice: 600, duration: 45 },
-  { id: 'mp-7', category: 'Mani and Pedi', name: 'De-Tan Pedicure', withoutProductPrice: 599, duration: 60 },
-  { id: 'mp-8', category: 'Mani and Pedi', name: 'O3+ Manicure', withoutProductPrice: 595, duration: 45 },
-  { id: 'mp-9', category: 'Mani and Pedi', name: 'Cut + File + Polish', withoutProductPrice: 120, duration: 20 },
-  { id: 'mp-10', category: 'Mani and Pedi', name: 'Nail Paint Apply', withoutProductPrice: 59, duration: 10 },
+  { id: 'mp-1', category: 'Mani and Pedi', name: 'De-Tan Mani Pedi', withoutProductPrice: 490, withProductPrice: 795, serviceType: 'both', duration: 145, popular: true },
+  { id: 'mp-2', category: 'Mani and Pedi', name: 'O3+ Luxury Crystal Spa Mani Pedi', withoutProductPrice: 490, withProductPrice: 1150, serviceType: 'both', duration: 140 },
+  { id: 'mp-3', category: 'Mani and Pedi', name: 'O3+ Pedicure', withoutProductPrice: 390, withProductPrice: 649, serviceType: 'both', duration: 60 },
+  { id: 'mp-4', category: 'Mani and Pedi', name: 'Korean Mani Pedi', withoutProductPrice: 490, withProductPrice: 1199, serviceType: 'both',  duration: 100, popular: true },
+  { id: 'mp-5', category: 'Mani and Pedi', name: 'Korean Pedicure', withoutProductPrice: 390, withProductPrice: 699, serviceType: 'both',  duration: 60 },
+  { id: 'mp-6', category: 'Mani and Pedi', name: 'Korean Manicure', withoutProductPrice: 270, withProductPrice: 600, serviceType: 'both',  duration: 45 },
+  { id: 'mp-7', category: 'Mani and Pedi', name: 'De-Tan Pedicure', withoutProductPrice: 390, withProductPrice: 599, serviceType: 'both',  duration: 60 },
+  { id: 'mp-8', category: 'Mani and Pedi', name: 'O3+ Manicure', withoutProductPrice: 270, withProductPrice: 595, serviceType: 'both', duration: 45 },
+  { id: 'mp-9', category: 'Mani and Pedi', name: 'Cut + File + Polish', withoutProductPrice: 120, withProductPrice: 250, serviceType: 'both',  duration: 20 },
+  { id: 'mp-10', category: 'Mani and Pedi', name: 'Nail Paint Apply', withoutProductPrice: 59, withProductPrice: 595, serviceType: 'both',  duration: 10 },
 
   // Hair Care
   { id: 'hc-1', category: 'Hair Care', name: 'Touch-Up - On Product', withoutProductPrice: 399, duration: 30, image:'/images/services/hair-care/Touch-Up -On-Product.png' },
@@ -215,25 +215,26 @@ export const SERVICES: Service[] = [
   { id: 'bl-7', category: 'Bleach', name: 'Only Underarms', withoutProductPrice: 99, withProductPrice: 199, serviceType: 'both', duration: 20 },
 
   // Body Scrub
-  { id: 'bs-1', category: 'Body Scrub', name: 'Full Body Scrub', withoutProductPrice: 549, duration: 60 },
-  { id: 'bs-2', category: 'Body Scrub', name: 'Full Hand Scrub', withoutProductPrice: 299, duration: 20 },
-  { id: 'bs-3', category: 'Body Scrub', name: 'Full Back Scrub', withoutProductPrice: 359, duration: 30 },
-  { id: 'bs-4', category: 'Body Scrub', name: 'Full Leg Scrub', withoutProductPrice: 299, duration: 20 },
-  { id: 'bs-5', category: 'Body Scrub', name: 'Half Back Scrub', withoutProductPrice: 285, duration: 20 },
+  { id: 'bs-1', category: 'Body Scrub', name: 'Full Body Scrub', withoutProductPrice: 360, withProductPrice: 549, serviceType: 'both', duration: 60 },
+  { id: 'bs-2', category: 'Body Scrub', name: 'Full Hand Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20 },
+  { id: 'bs-3', category: 'Body Scrub', name: 'Full Back Scrub', withoutProductPrice: 180, withProductPrice: 359, serviceType: 'both', duration: 30 },
+  { id: 'bs-4', category: 'Body Scrub', name: 'Full Leg Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20 },
+  { id: 'bs-5', category: 'Body Scrub', name: 'Half Back Scrub', withoutProductPrice: 120, withProductPrice: 285, serviceType: 'both', duration: 20 },
 
   // Body Polishing
   { id: 'bp-1', category: 'Body Polishing', name: 'Full Body Polishing', withoutProductPrice: 1599, duration: 100 },
   { id: 'bp-2', category: 'Body Polishing', name: 'Hydra Glow Body Polishing', withoutProductPrice: 4999, duration: 165, popular: true, image:'/images/services/body-polish/Hydra-Glow-Body-Polishing.png' },
 
   // Body Spa & Massage
-  { id: 'bm-1', category: 'Body Spa & Massage', name: 'Full Body Spa', withoutProductPrice: 1049, duration: 60, popular: true, image:'/images/services/body-spa/Full-Body-Spa.png' },
-  { id: 'bm-2', category: 'Body Spa & Massage', name: 'Head Massage (15 min)', withoutProductPrice: 90, duration: 15 },
-  { id: 'bm-3', category: 'Body Spa & Massage', name: 'Head Massage (20 min)', withoutProductPrice: 120, duration: 20 },
-  { id: 'bm-4', category: 'Body Spa & Massage', name: 'Head Massage (30 min)', withoutProductPrice: 180, duration: 30 },
-  { id: 'bm-5', category: 'Body Spa & Massage', name: 'Head + Neck + Shoulder Massage', withoutProductPrice: 460, duration: 30 },
-  { id: 'bm-6', category: 'Body Spa & Massage', name: 'Full Back Massage', withoutProductPrice: 499, duration: 30 },
-  { id: 'bm-7', category: 'Body Spa & Massage', name: 'Foot Massage', withoutProductPrice: 299, duration: 20 },
-  { id: 'bm-8', category: 'Body Spa & Massage', name: 'Head + Foot Massage', withoutProductPrice: 320, duration: 30 },
+  { id: 'bm-1', category: 'Body Spa & Massage', name: 'Full Body Spa', withoutProductPrice: 699, withProductPrice: 1049, duration: 60, popular: true, image:'/images/services/body-spa/Full-Body-Spa.png' },
+  { id: 'bm-2', category: 'Body Spa & Massage', name: 'Head Massage (15 min)', withoutProductPrice: 90, withProductPrice: 149, serviceType: 'both', duration: 15 },
+  { id: 'bm-3', category: 'Body Spa & Massage', name: 'Head Massage (20 min)', withoutProductPrice: 120, withProductPrice: 159, serviceType: 'both', duration: 20 },
+  { id: 'bm-4', category: 'Body Spa & Massage', name: 'Head Massage (30 min)', withoutProductPrice: 150, withProductPrice: 180, serviceType: 'both', duration: 30 },
+  { id: 'bm-5', category: 'Body Spa & Massage', name: 'Head + Neck + Shoulder Massage', withoutProductPrice: 390, withProductPrice: 460, serviceType: 'both', duration: 30 },
+  { id: 'bm-6', category: 'Body Spa & Massage', name: 'Full Back Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 30 },
+  { id: 'bm-7', category: 'Body Spa & Massage', name: 'Foot Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 20 },
+  { id: 'bm-8', category: 'Body Spa & Massage', name: 'Head + Foot Massage', withoutProductPrice: 320, withProductPrice: 449, serviceType: 'both', duration: 30 },
+  { id: 'bm-9', category: 'Body Spa & Massage', name: 'Full Leg + Full Arms', withoutProductPrice: 400, withProductPrice: 470, serviceType: 'both', duration: 30 },
 
   // Spa Treatments
   { id: 'sp-1', category: 'Spa', name: 'Aroma Relaxation Spa', withoutProductPrice: 799, duration: 75, popular: true, image:'/images/services/body-spa/Aroma-Relaxation-Spa.png'},
