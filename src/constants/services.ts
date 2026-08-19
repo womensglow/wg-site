@@ -50,8 +50,6 @@ export function getSubCategoryLabel(value?: string | null): string {
   const normalized = normalizeSubCategory(value);
 
   switch (normalized) {
-    case 'body':
-      return 'Body Wax';
     default:
       return value?.toString().trim().replace(/\b\w/g, (letter) => letter.toUpperCase()) ?? '';
   }
@@ -93,8 +91,8 @@ export function getServicePrice(service: Service): number {
 export function hasServiceVariants(service: Service): boolean {
   return Boolean(
     service.groupId ||
-      typeof service.withProductPrice === 'number' ||
-      normalizeServiceType(service.serviceType ?? service.productMode) === 'both',
+    typeof service.withProductPrice === 'number' ||
+    normalizeServiceType(service.serviceType ?? service.productMode) === 'both',
   );
 }
 
@@ -102,7 +100,6 @@ export type Service = {
   id: string;
   category: string;
   name: string;
-  /** Default and without-product list price. */
   withoutProductPrice: number;
   withProductPrice?: number;
   duration: number;
@@ -124,10 +121,10 @@ export const SERVICES: Service[] = [
   { id: 't-5', category: 'Threading', name: 'Side Lock', withoutProductPrice: 60, duration: 15, image: '/images/services/threading/side-lock.webp' },
   { id: 't-6', category: 'Threading', name: 'Full Face', withoutProductPrice: 180, duration: 30, image: '/images/services/threading/full-face.webp' },
   { id: 't-7', category: 'Threading', name: 'Forehead', withoutProductPrice: 30, duration: 5, image: '/images/services/threading/forehead.webp' },
-  
+
   // Peel Off Wax
   { id: 'pow-1', category: 'Wax', subCategory: 'peel-off brazilian', name: 'forehead', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/forehead.png' },
-  { id: 'pow-2', category: 'Wax', subCategory: 'peel-off brazilian', name: 'upper lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image:'/images/services/waxing/peel-off/upperlip.png' },
+  { id: 'pow-2', category: 'Wax', subCategory: 'peel-off brazilian', name: 'upper lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/upperlip.png' },
   { id: 'pow-3', category: 'Wax', subCategory: 'peel-off brazilian', name: 'lower lip', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/lowerlip.png' },
   { id: 'pow-4', category: 'Wax', subCategory: 'peel-off brazilian', name: 'chin', withoutProductPrice: 59, withProductPrice: 69, serviceType: 'both', duration: 5, image: '/images/services/waxing/peel-off/chin.png' },
   { id: 'pow-5', category: 'Wax', subCategory: 'peel-off brazilian', name: 'side lock', withoutProductPrice: 60, withProductPrice: 149, serviceType: 'both', duration: 12, image: '/images/services/waxing/peel-off/side-lock.png' },
@@ -147,97 +144,108 @@ export const SERVICES: Service[] = [
   { id: 'hw-10', category: 'Wax', subCategory: 'Honey', name: 'bikini', withoutProductPrice: 300, withProductPrice: 599, serviceType: 'both', duration: 60, image: '/images/services/waxing/honey/honey-bikini.jpg' },
   { id: 'hw-11', category: 'Wax', subCategory: 'Honey', name: 'bikini + butt line', withoutProductPrice: 289, withProductPrice: 390, serviceType: 'both', duration: 70, image: '/images/services/waxing/honey/bikkini-butt-line.jpg' },
   { id: 'hw-12', category: 'Wax', subCategory: 'Honey', name: 'full Body', withoutProductPrice: 720, withProductPrice: 1299, serviceType: 'both', duration: 122, image: '/images/services/waxing/honey/honey-full-body.png' },
-  { id: 'hw-13', category: 'Wax', subCategory: 'Honey', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 240, serviceType: 'both',  duration: 25, image: '/images/services/waxing/honey/honey-stomach.png' },
+  { id: 'hw-13', category: 'Wax', subCategory: 'Honey', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 240, serviceType: 'both', duration: 25, image: '/images/services/waxing/honey/honey-stomach.png' },
 
   // Rica Wax
-  { id: 'rw-1', category: 'Wax', subCategory: 'Rica', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 385, withProductPrice: 899, serviceType: 'both', duration: 65, popular: true,image:'/images/services/waxing/rica-wax/Rica-Full-Arms-Full-Legs-Underarms.png'},
-  { id: 'rw-2', category: 'Wax', subCategory: 'Rica', name: 'Full Arms + Half Legs + Underarms', withoutProductPrice: 300, withProductPrice: 799, serviceType: 'both', duration: 60, image:'/images/services/waxing/rica-wax/RIca-Full-Arms-Half-Legs-Underarms.png'},
-  { id: 'rw-3', category: 'Wax', subCategory: 'Rica', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 299, serviceType: 'both', duration: 31, image:'/images/services/waxing/rica-wax/Rica-Full-Arms-Underarms.png'},
-  { id: 'rw-4', category: 'Wax', subCategory: 'Rica', name: 'Only Underarms', withoutProductPrice: 48, withProductPrice: 59, serviceType: 'both', duration: 8, image:'/images/services/waxing/rica-wax/Rica-Only-Underarms.png' },
-  { id: 'rw-5', category: 'Wax', subCategory: 'Rica', name: 'Half Legs', withoutProductPrice: 150, withProductPrice: 399, serviceType: 'both', duration: 12, image:'/images/services/waxing/rica-wax/Rica-Half-Back.png'},
-  { id: 'rw-6', category: 'Wax', subCategory: 'Rica', name: 'Full Legs', withoutProductPrice: 200, withProductPrice: 399, serviceType: 'both', duration: 30, image:'/images/services/waxing/rica-wax/Rica-Full-Legs.png'},
-  { id: 'rw-7', category: 'Wax', subCategory: 'Rica', name: 'Full Arms', withoutProductPrice: 150, withProductPrice: 290, serviceType: 'both', duration: 15, image:'/images/services/waxing/rica-wax/Rica-Full-Arms.png' },
-  { id: 'rw-8', category: 'Wax', subCategory: 'Rica', name: 'Half Back', withoutProductPrice: 120, withProductPrice: 280, serviceType: 'both', duration: 25, image:'/images/services/waxing/rica-wax/Rica-Half-Back.png' },
-  { id: 'rw-9', category: 'Wax', subCategory: 'Rica', name: 'Full Back', withoutProductPrice: 180, withProductPrice: 459, serviceType: 'both', duration: 30, image:'/images/services/waxing/rica-wax/Rica-Full-Back.png'},
-  { id: 'rw-10', category: 'Wax', subCategory: 'Rica', name: 'Bikini', withoutProductPrice: 300, withProductPrice: 699, serviceType: 'both', duration: 60, image:'/images/services/waxing/rica-wax/honey-bikini.jpg'},
-  { id: 'rw-11', category: 'Wax', subCategory: 'Rica', name: 'Bikini + Butt Line', withoutProductPrice: 390, withProductPrice: 799, serviceType: 'both', duration: 70, image:'/images/services/waxing/rica-wax/bikkini-butt-line.jpg' },
-  { id: 'rw-12', category: 'Wax', subCategory: 'Rica', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 349, serviceType: 'both', duration: 25, image:'/images/services/waxing/rica-wax/Rica-Stomach.png' },
-  { id: 'rw-13', category: 'Wax', subCategory: 'Rica', name: 'Full Body', withoutProductPrice: 720, withProductPrice: 1599, serviceType: 'both', duration: 120, image:'/images/services/waxing/rica-wax/Rica-Full-Body.png'},
+  { id: 'rw-1', category: 'Wax', subCategory: 'Rica', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 385, withProductPrice: 899, serviceType: 'both', duration: 65, popular: true, image: '/images/services/waxing/rica-wax/Rica-Full-Arms-Full-Legs-Underarms.png' },
+  { id: 'rw-2', category: 'Wax', subCategory: 'Rica', name: 'Full Arms + Half Legs + Underarms', withoutProductPrice: 300, withProductPrice: 799, serviceType: 'both', duration: 60, image: '/images/services/waxing/rica-wax/RIca-Full-Arms-Half-Legs-Underarms.png' },
+  { id: 'rw-3', category: 'Wax', subCategory: 'Rica', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 299, serviceType: 'both', duration: 31, image: '/images/services/waxing/rica-wax/Rica-Full-Arms-Underarms.png' },
+  { id: 'rw-4', category: 'Wax', subCategory: 'Rica', name: 'Only Underarms', withoutProductPrice: 48, withProductPrice: 59, serviceType: 'both', duration: 8, image: '/images/services/waxing/rica-wax/Rica-Only-Underarms.png' },
+  { id: 'rw-5', category: 'Wax', subCategory: 'Rica', name: 'Half Legs', withoutProductPrice: 150, withProductPrice: 399, serviceType: 'both', duration: 12, image: '/images/services/waxing/rica-wax/Rica-Half-Back.png' },
+  { id: 'rw-6', category: 'Wax', subCategory: 'Rica', name: 'Full Legs', withoutProductPrice: 200, withProductPrice: 399, serviceType: 'both', duration: 30, image: '/images/services/waxing/rica-wax/Rica-Full-Legs.png' },
+  { id: 'rw-7', category: 'Wax', subCategory: 'Rica', name: 'Full Arms', withoutProductPrice: 150, withProductPrice: 290, serviceType: 'both', duration: 15, image: '/images/services/waxing/rica-wax/Rica-Full-Arms.png' },
+  { id: 'rw-8', category: 'Wax', subCategory: 'Rica', name: 'Half Back', withoutProductPrice: 120, withProductPrice: 280, serviceType: 'both', duration: 25, image: '/images/services/waxing/rica-wax/Rica-Half-Back.png' },
+  { id: 'rw-9', category: 'Wax', subCategory: 'Rica', name: 'Full Back', withoutProductPrice: 180, withProductPrice: 459, serviceType: 'both', duration: 30, image: '/images/services/waxing/rica-wax/Rica-Full-Back.png' },
+  { id: 'rw-10', category: 'Wax', subCategory: 'Rica', name: 'Bikini', withoutProductPrice: 300, withProductPrice: 699, serviceType: 'both', duration: 60, image: '/images/services/waxing/rica-wax/honey-bikini.jpg' },
+  { id: 'rw-11', category: 'Wax', subCategory: 'Rica', name: 'Bikini + Butt Line', withoutProductPrice: 390, withProductPrice: 799, serviceType: 'both', duration: 70, image: '/images/services/waxing/rica-wax/bikkini-butt-line.jpg' },
+  { id: 'rw-12', category: 'Wax', subCategory: 'Rica', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 349, serviceType: 'both', duration: 25, image: '/images/services/waxing/rica-wax/Rica-Stomach.png' },
+  { id: 'rw-13', category: 'Wax', subCategory: 'Rica', name: 'Full Body', withoutProductPrice: 720, withProductPrice: 1599, serviceType: 'both', duration: 120, image: '/images/services/waxing/rica-wax/Rica-Full-Body.png' },
 
   // Gel Wax
-  { id: 'gw-1', category: 'Wax', subCategory: 'Gel', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 385, withProductPrice: 699, serviceType: 'both', duration: 65, image:'/images/services/waxing/Gel-wax/Full-Arms-Full-Legs-Underarms.png' },
-  { id: 'gw-2', category: 'Wax', subCategory: 'Gel', name: 'Full Arms + Half Legs + Underarms', withoutProductPrice: 300, withProductPrice: 599, serviceType: 'both', duration: 60, image:'/images/services/waxing/Gel-wax/Full-Arms-Half-Legs-Underarms.png' },
-  { id: 'gw-3', category: 'Wax', subCategory: 'Gel', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 449, serviceType: 'both', duration: 31, image:'/images/services/waxing/Gel-wax/Full-Arms-Underarms.png' },
-  { id: 'gw-4', category: 'Wax', subCategory: 'Gel', name: 'Only Underarms', withoutProductPrice: 48, withProductPrice: 75, serviceType: 'both', duration: 8, image: '/images/services/waxing/Gel-wax/Only-Underarms.png'},
-  { id: 'gw-5', category: 'Wax', subCategory: 'Gel', name: 'Half Legs', withoutProductPrice: 150, withProductPrice: 389, serviceType: 'both', duration: 15, image:'/images/services/waxing/Gel-wax/Half-Legs.png'},
-  { id: 'gw-6', category: 'Wax', subCategory: 'Gel', name: 'Full Hand', withoutProductPrice: 200, withProductPrice: 399, serviceType: 'both', duration: 30, image:'/images/services/waxing/Gel-wax/Full-Hand.png' },
-  { id: 'gw-7', category: 'Wax', subCategory: 'Gel', name: 'Only Arms', withoutProductPrice: 150, withProductPrice: 389, serviceType: 'both', duration: 15, image:'/images/services/waxing/Gel-wax/Only-Arms.png' },
-  { id: 'gw-8', category: 'Wax', subCategory: 'Gel', name: 'Half Back', withoutProductPrice: 120, withProductPrice: 295, serviceType: 'both', duration: 25, image:'/images/services/waxing/Gel-wax/Half-Back.png' },
-  { id: 'gw-9', category: 'Wax', subCategory: 'Gel', name: 'Full Back', withoutProductPrice: 180, withProductPrice: 395, serviceType: 'both', duration: 30, image:'/images/services/waxing/Gel-wax/Full-Back.png'},
-  { id: 'gw-10', category: 'Wax', subCategory: 'Gel', name: 'Bikini', withoutProductPrice: 300, withProductPrice: 699, serviceType: 'both', duration: 60, image:'/images/services/waxing/Gel-wax/bikini.jpg' },
-  { id: 'gw-11', category: 'Wax', subCategory: 'Gel', name: 'Bikini + Butt Line', withoutProductPrice: 390, withProductPrice: 799, serviceType: 'both', duration: 70, image:'/images/services/waxing/Gel-wax/bikkini-butt-line.jpg'},
-  { id: 'gw-12', category: 'Wax', subCategory: 'Gel', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 25, image:'/images/services/waxing/Gel-wax/Stomach.png' },
-  { id: 'gw-13', category: 'Wax', subCategory: 'Gel', name: 'Full Body', withoutProductPrice: 720,  withProductPrice: 1499, serviceType: 'both',duration: 120, image:'/images/services/waxing/Gel-wax/Full-Body.png' },
+  { id: 'gw-1', category: 'Wax', subCategory: 'Gel', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 385, withProductPrice: 699, serviceType: 'both', duration: 65, image: '/images/services/waxing/Gel-wax/Full-Arms-Full-Legs-Underarms.png' },
+  { id: 'gw-2', category: 'Wax', subCategory: 'Gel', name: 'Full Arms + Half Legs + Underarms', withoutProductPrice: 300, withProductPrice: 599, serviceType: 'both', duration: 60, image: '/images/services/waxing/Gel-wax/Full-Arms-Half-Legs-Underarms.png' },
+  { id: 'gw-3', category: 'Wax', subCategory: 'Gel', name: 'Full Arms + Underarms', withoutProductPrice: 150, withProductPrice: 449, serviceType: 'both', duration: 31, image: '/images/services/waxing/Gel-wax/Full-Arms-Underarms.png' },
+  { id: 'gw-4', category: 'Wax', subCategory: 'Gel', name: 'Only Underarms', withoutProductPrice: 48, withProductPrice: 75, serviceType: 'both', duration: 8, image: '/images/services/waxing/Gel-wax/Only-Underarms.png' },
+  { id: 'gw-5', category: 'Wax', subCategory: 'Gel', name: 'Half Legs', withoutProductPrice: 150, withProductPrice: 389, serviceType: 'both', duration: 15, image: '/images/services/waxing/Gel-wax/Half-Legs.png' },
+  { id: 'gw-6', category: 'Wax', subCategory: 'Gel', name: 'Full Hand', withoutProductPrice: 200, withProductPrice: 399, serviceType: 'both', duration: 30, image: '/images/services/waxing/Gel-wax/Full-Hand.png' },
+  { id: 'gw-7', category: 'Wax', subCategory: 'Gel', name: 'Only Arms', withoutProductPrice: 150, withProductPrice: 389, serviceType: 'both', duration: 15, image: '/images/services/waxing/Gel-wax/Only-Arms.png' },
+  { id: 'gw-8', category: 'Wax', subCategory: 'Gel', name: 'Half Back', withoutProductPrice: 120, withProductPrice: 295, serviceType: 'both', duration: 25, image: '/images/services/waxing/Gel-wax/Half-Back.png' },
+  { id: 'gw-9', category: 'Wax', subCategory: 'Gel', name: 'Full Back', withoutProductPrice: 180, withProductPrice: 395, serviceType: 'both', duration: 30, image: '/images/services/waxing/Gel-wax/Full-Back.png' },
+  { id: 'gw-10', category: 'Wax', subCategory: 'Gel', name: 'Bikini', withoutProductPrice: 300, withProductPrice: 699, serviceType: 'both', duration: 60, image: '/images/services/waxing/Gel-wax/bikini.jpg' },
+  { id: 'gw-11', category: 'Wax', subCategory: 'Gel', name: 'Bikini + Butt Line', withoutProductPrice: 390, withProductPrice: 799, serviceType: 'both', duration: 70, image: '/images/services/waxing/Gel-wax/bikkini-butt-line.jpg' },
+  { id: 'gw-12', category: 'Wax', subCategory: 'Gel', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 25, image: '/images/services/waxing/Gel-wax/Stomach.png' },
+  { id: 'gw-13', category: 'Wax', subCategory: 'Gel', name: 'Full Body', withoutProductPrice: 720, withProductPrice: 1499, serviceType: 'both', duration: 120, image: '/images/services/waxing/Gel-wax/Full-Body.png' },
 
   // Roll On Rica Wax
-  { id: 'rorw-1', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 799, duration: 80, image:'/images/services/roll-on/Full-Arms-Full-Legs-Underarms.png' },
-  { id: 'rorw-2', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Arms + Half Legs + Underarms', withoutProductPrice: 699, duration: 60, image:'/images/services/roll-on/Full-Arms-Half-Legs-Underarms.png'},
-  { id: 'rorw-3', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Body', withoutProductPrice: 1599, duration: 140, image:'/images/services/roll-on/Full-Body.png'},
-  { id: 'rorw-4', category: 'Wax', subCategory: 'Roll-ON', name: 'Hand Wax', withoutProductPrice: 380, duration: 25, image:'/images/services/roll-on/Hand-Wax.png' },
-  { id: 'rorw-5', category: 'Wax', subCategory: 'Roll-ON', name: 'Leg Wax', withoutProductPrice: 499, duration: 30, image:'/images/services/roll-on/Leg-Wax.png' },
-  { id: 'rorw-6', category: 'Wax', subCategory: 'Roll-ON', name: 'Half Leg', withoutProductPrice: 395, duration: 25, image:'/images/services/roll-on/Half-Leg.png' },
-  { id: 'rorw-7', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Back', withoutProductPrice: 390, duration: 30, image:'/images/services/roll-on/Full-Back.png' },
-  { id: 'rorw-8', category: 'Wax', subCategory: 'Roll-ON', name: 'Stomach', withoutProductPrice: 380, duration: 25, image:'/images/services/roll-on/Stomach.png' },
+  { id: 'rorw-1', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Arms + Full Legs + Underarms', withoutProductPrice: 799, duration: 80, image: '/images/services/roll-on/Full-Arms-Full-Legs-Underarms.png' },
+  { id: 'rorw-2', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Arms + Half Legs + Underarms', withoutProductPrice: 699, duration: 60, image: '/images/services/roll-on/Full-Arms-Half-Legs-Underarms.png' },
+  { id: 'rorw-3', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Body', withoutProductPrice: 1599, duration: 140, image: '/images/services/roll-on/Full-Body.png' },
+  { id: 'rorw-4', category: 'Wax', subCategory: 'Roll-ON', name: 'Hand Wax', withoutProductPrice: 380, duration: 25, image: '/images/services/roll-on/Hand-Wax.png' },
+  { id: 'rorw-5', category: 'Wax', subCategory: 'Roll-ON', name: 'Leg Wax', withoutProductPrice: 499, duration: 30, image: '/images/services/roll-on/Leg-Wax.png' },
+  { id: 'rorw-6', category: 'Wax', subCategory: 'Roll-ON', name: 'Half Leg', withoutProductPrice: 395, duration: 25, image: '/images/services/roll-on/Half-Leg.png' },
+  { id: 'rorw-7', category: 'Wax', subCategory: 'Roll-ON', name: 'Full Back', withoutProductPrice: 390, duration: 30, image: '/images/services/roll-on/Full-Back.png' },
+  { id: 'rorw-8', category: 'Wax', subCategory: 'Roll-ON', name: 'Stomach', withoutProductPrice: 380, duration: 25, image: '/images/services/roll-on/Stomach.png' },
 
-  // Mani and Pedi
+  // Menicure and Pedicure
   { id: 'mp-1', category: 'Mani and Pedi', name: 'De-Tan Mani Pedi', withoutProductPrice: 490, withProductPrice: 795, serviceType: 'both', duration: 145, popular: true },
   { id: 'mp-2', category: 'Mani and Pedi', name: 'O3+ Luxury Crystal Spa Mani Pedi', withoutProductPrice: 490, withProductPrice: 1150, serviceType: 'both', duration: 140 },
   { id: 'mp-3', category: 'Mani and Pedi', name: 'O3+ Pedicure', withoutProductPrice: 390, withProductPrice: 649, serviceType: 'both', duration: 60 },
-  { id: 'mp-4', category: 'Mani and Pedi', name: 'Korean Mani Pedi', withoutProductPrice: 490, withProductPrice: 1199, serviceType: 'both',  duration: 100, popular: true },
-  { id: 'mp-5', category: 'Mani and Pedi', name: 'Korean Pedicure', withoutProductPrice: 390, withProductPrice: 699, serviceType: 'both',  duration: 60 },
-  { id: 'mp-6', category: 'Mani and Pedi', name: 'Korean Manicure', withoutProductPrice: 270, withProductPrice: 600, serviceType: 'both',  duration: 45 },
-  { id: 'mp-7', category: 'Mani and Pedi', name: 'De-Tan Pedicure', withoutProductPrice: 390, withProductPrice: 599, serviceType: 'both',  duration: 60 },
+  { id: 'mp-4', category: 'Mani and Pedi', name: 'Korean Mani Pedi', withoutProductPrice: 490, withProductPrice: 1199, serviceType: 'both', duration: 100, popular: true },
+  { id: 'mp-5', category: 'Mani and Pedi', name: 'Korean Pedicure', withoutProductPrice: 390, withProductPrice: 699, serviceType: 'both', duration: 60 },
+  { id: 'mp-6', category: 'Mani and Pedi', name: 'Korean Manicure', withoutProductPrice: 270, withProductPrice: 600, serviceType: 'both', duration: 45 },
+  { id: 'mp-7', category: 'Mani and Pedi', name: 'De-Tan Pedicure', withoutProductPrice: 390, withProductPrice: 599, serviceType: 'both', duration: 60 },
   { id: 'mp-8', category: 'Mani and Pedi', name: 'O3+ Manicure', withoutProductPrice: 270, withProductPrice: 595, serviceType: 'both', duration: 45 },
-  { id: 'mp-9', category: 'Mani and Pedi', name: 'Cut + File + Polish', withoutProductPrice: 120, withProductPrice: 250, serviceType: 'both',  duration: 20 },
-  { id: 'mp-10', category: 'Mani and Pedi', name: 'Nail Paint Apply', withoutProductPrice: 59, withProductPrice: 595, serviceType: 'both',  duration: 10 },
+  { id: 'mp-9', category: 'Mani and Pedi', name: 'Cut + File + Polish', withoutProductPrice: 120, withProductPrice: 250, serviceType: 'both', duration: 20 },
+  { id: 'mp-10', category: 'Mani and Pedi', name: 'Nail Paint Apply', withoutProductPrice: 59, withProductPrice: 595, serviceType: 'both', duration: 10 },
 
   // Hair Care
-  { id: 'hc-1', category: 'Hair Care', name: 'Touch-Up - On Product', withoutProductPrice: 399, duration: 30, image:'/images/services/hair-care/Touch-Up -On-Product.png' },
-  { id: 'hc-2', category: 'Hair Care', name: 'Henna Application', withoutProductPrice: 240, duration: 40, image:'/images/services/hair-care/Henna-Application.png'},
-
+  { id: 'hc-1', category: 'Hair Care', name: 'Touch-Up - On Product', withoutProductPrice: 399, duration: 30, image: '/images/services/hair-care/Touch-Up -On-Product.png' },
+  { id: 'hc-2', category: 'Hair Care', name: 'Henna Application', withoutProductPrice: 240, duration: 40, image: '/images/services/hair-care/Henna-Application.png' },
+  { id: 'hc-3', category: 'Hair Care', name: 'Streax-Professional-Natural-Black-No-1', withProductPrice: 399, withoutProductPrice: 170, duration: 30 },
+  { id: 'hc-4', category: 'Hair Care', name: 'Streax-Professional-Dark-Brown-No-3', withProductPrice: 170, withoutProductPrice: 399, duration: 30 },
+  { id: 'hc-5', category: 'Hair Care', name: 'Streax-Professional-No-Light-Brown-No-5', withProductPrice: 399, withoutProductPrice: 170, duration: 30 },
+  { id: 'hc-6', category: 'Hair Care', name: 'Loreal-professional-smooth-&-shiny-hair', subCategory: 'Hair-wash-not-included', withoutProductPrice: 999, duration: 60 },
   // Bleach
   { id: 'bl-1', category: 'Bleach', name: 'Full Face + Neck', withoutProductPrice: 120, withProductPrice: 195, serviceType: 'both', duration: 30 },
   { id: 'bl-2', category: 'Bleach', name: 'Full Arm', withoutProductPrice: 150, withProductPrice: 349, serviceType: 'both', duration: 30 },
   { id: 'bl-3', category: 'Bleach', name: 'Full Back', withoutProductPrice: 200, withProductPrice: 409, serviceType: 'both', duration: 30 },
   { id: 'bl-4', category: 'Bleach', name: 'Half Back', withoutProductPrice: 150, withProductPrice: 280, serviceType: 'both', duration: 35 },
   { id: 'bl-5', category: 'Bleach', name: 'Full Body', withoutProductPrice: 510, withProductPrice: 759, serviceType: 'both', duration: 60 },
-  { id: 'bl-6', category: 'Bleach', name: 'Stomach', withoutProductPrice: 180, withProductPrice: 409, serviceType: 'both' ,duration: 30, image:'/images/services/bleach/Stomach.png' },
+  { id: 'bl-6', category: 'Bleach', name: 'Stomach', withoutProductPrice: 180, withProductPrice: 409, serviceType: 'both', duration: 30, image: '/images/services/bleach/Stomach.png' },
   { id: 'bl-7', category: 'Bleach', name: 'Only Underarms', withoutProductPrice: 99, withProductPrice: 199, serviceType: 'both', duration: 20 },
+  
+  // De-Tan
+  { id: 'debl-1', category: 'De-tan', name: 'Full Face + Neck', withoutProductPrice: 150, withProductPrice: 209, serviceType: 'both', duration: 30 },
+  { id: 'debl-2', category: 'De-tan', name: 'Full Arm', withoutProductPrice: 150, withProductPrice: 349, serviceType: 'both', duration: 30 },
+  { id: 'debl-3', category: 'De-tan', name: 'Full Back', withoutProductPrice: 180, withProductPrice: 395, serviceType: 'both', duration: 30 },
+  { id: 'debl-4', category: 'De-tan', name: 'Half Back', withoutProductPrice: 120, withProductPrice: 180, serviceType: 'both', duration: 20 },
+  { id: 'debl-5', category: 'De-tan', name: 'Full Body', withoutProductPrice: 360, withProductPrice: 845, serviceType: 'both', duration: 60 },
+  { id: 'debl-6', category: 'De-tan', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 199, serviceType: 'both', duration: 20, },
 
   // Body Scrub
-  { id: 'bs-1', category: 'Body Scrub', name: 'Full Body Scrub', withoutProductPrice: 360, withProductPrice: 549, serviceType: 'both', duration: 60 },
-  { id: 'bs-2', category: 'Body Scrub', name: 'Full Hand Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20 },
-  { id: 'bs-3', category: 'Body Scrub', name: 'Full Back Scrub', withoutProductPrice: 180, withProductPrice: 359, serviceType: 'both', duration: 30 },
-  { id: 'bs-4', category: 'Body Scrub', name: 'Full Leg Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20 },
-  { id: 'bs-5', category: 'Body Scrub', name: 'Half Back Scrub', withoutProductPrice: 120, withProductPrice: 285, serviceType: 'both', duration: 20 },
+  { id: 'bs-1', category: 'Body', subCategory: 'Scrub', name: 'Full Body Scrub', withoutProductPrice: 360, withProductPrice: 549, serviceType: 'both', duration: 60 },
+  { id: 'bs-2', category: 'Body', subCategory: 'Scrub', name: 'Full Hand Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20 },
+  { id: 'bs-3', category: 'Body', subCategory: 'Scrub', name: 'Full Back Scrub', withoutProductPrice: 180, withProductPrice: 359, serviceType: 'both', duration: 30 },
+  { id: 'bs-4', category: 'Body', subCategory: 'Scrub', name: 'Full Leg Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20 },
+  { id: 'bs-5', category: 'Body', subCategory: 'Scrub', name: 'Half Back Scrub', withoutProductPrice: 120, withProductPrice: 285, serviceType: 'both', duration: 20 },
 
   // Body Polishing
-  { id: 'bp-1', category: 'Body Polishing', name: 'Full Body Polishing', withoutProductPrice: 1599, duration: 100 },
-  { id: 'bp-2', category: 'Body Polishing', name: 'Hydra Glow Body Polishing', withoutProductPrice: 4999, duration: 165, popular: true, image:'/images/services/body-polish/Hydra-Glow-Body-Polishing.png' },
+  { id: 'bp-1', category: 'Body', subCategory: 'Polishing', name: 'Full Body Polishing', withoutProductPrice: 1599, duration: 100 },
+  { id: 'bp-2', category: 'Body', subCategory: 'Polishing', name: 'Hydra Glow Body Polishing', withoutProductPrice: 4999, duration: 165, popular: true, image: '/images/services/body-polish/Hydra-Glow-Body-Polishing.png' },
 
   // Body Spa & Massage
-  { id: 'bm-1', category: 'Body Spa & Massage', name: 'Full Body Spa', withoutProductPrice: 699, withProductPrice: 1049, duration: 60, popular: true, image:'/images/services/body-spa/Full-Body-Spa.png' },
-  { id: 'bm-2', category: 'Body Spa & Massage', name: 'Head Massage (15 min)', withoutProductPrice: 90, withProductPrice: 149, serviceType: 'both', duration: 15 },
-  { id: 'bm-3', category: 'Body Spa & Massage', name: 'Head Massage (20 min)', withoutProductPrice: 120, withProductPrice: 159, serviceType: 'both', duration: 20 },
-  { id: 'bm-4', category: 'Body Spa & Massage', name: 'Head Massage (30 min)', withoutProductPrice: 150, withProductPrice: 180, serviceType: 'both', duration: 30 },
-  { id: 'bm-5', category: 'Body Spa & Massage', name: 'Head + Neck + Shoulder Massage', withoutProductPrice: 390, withProductPrice: 460, serviceType: 'both', duration: 30 },
-  { id: 'bm-6', category: 'Body Spa & Massage', name: 'Full Back Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 30 },
-  { id: 'bm-7', category: 'Body Spa & Massage', name: 'Foot Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 20 },
-  { id: 'bm-8', category: 'Body Spa & Massage', name: 'Head + Foot Massage', withoutProductPrice: 320, withProductPrice: 449, serviceType: 'both', duration: 30 },
-  { id: 'bm-9', category: 'Body Spa & Massage', name: 'Full Leg + Full Arms', withoutProductPrice: 400, withProductPrice: 470, serviceType: 'both', duration: 30 },
+  { id: 'bm-1', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Body Spa', withoutProductPrice: 699, withProductPrice: 1049, duration: 60, popular: true, image: '/images/services/body-spa/Full-Body-Spa.png' },
+  { id: 'bm-2', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (15 min)', withoutProductPrice: 90, withProductPrice: 149, serviceType: 'both', duration: 15 },
+  { id: 'bm-3', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (20 min)', withoutProductPrice: 120, withProductPrice: 159, serviceType: 'both', duration: 20 },
+  { id: 'bm-4', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (30 min)', withoutProductPrice: 150, withProductPrice: 180, serviceType: 'both', duration: 30 },
+  { id: 'bm-5', category: 'Body', subCategory: 'Spa & Massage', name: 'Head + Neck + Shoulder Massage', withoutProductPrice: 390, withProductPrice: 460, serviceType: 'both', duration: 30 },
+  { id: 'bm-6', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Back Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 30 },
+  { id: 'bm-7', category: 'Body', subCategory: 'Spa & Massage', name: 'Foot Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 20 },
+  { id: 'bm-8', category: 'Body', subCategory: 'Spa & Massage', name: 'Head + Foot Massage', withoutProductPrice: 320, withProductPrice: 449, serviceType: 'both', duration: 30 },
+  { id: 'bm-9', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Leg + Full Arms', withoutProductPrice: 400, withProductPrice: 470, serviceType: 'both', duration: 30 },
 
   // Spa Treatments
-  { id: 'sp-1', category: 'Spa', name: 'Aroma Relaxation Spa', withoutProductPrice: 799, duration: 75, popular: true, image:'/images/services/body-spa/Aroma-Relaxation-Spa.png'},
+  { id: 'sp-1', category: 'Spa', name: 'Aroma Relaxation Spa', withoutProductPrice: 799, duration: 75, popular: true, image: '/images/services/body-spa/Aroma-Relaxation-Spa.png' },
   { id: 'sp-2', category: 'Spa', name: 'Detox Body Spa', withoutProductPrice: 999, duration: 90 },
   { id: 'sp-3', category: 'Spa', name: 'Hydra Glow Spa', withoutProductPrice: 1299, duration: 100 },
   { id: 'sp-4', category: 'Spa', name: 'Foot Spa & Massage', withoutProductPrice: 459, duration: 45 },
@@ -247,27 +255,44 @@ export const SERVICES: Service[] = [
   { id: 'cu-1', category: 'Basic Cleanup', name: 'Fruit Cleanup - 5 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45 },
   { id: 'cu-2', category: 'Basic Cleanup', name: 'De-Tan Cleanup - 6 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45 },
   { id: 'cu-3', category: 'Basic Cleanup', name: 'Red Wine Skin Tightening Cleanup - 6 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45 },
+  { id: 'cu-4', category: 'Basic Cleanup', name: 'Pura-Bright-7-step', withoutProductPrice: 350, withProductPrice: 979, serviceType: 'both', duration: 50 },
+  { id: 'cu-5', category: 'Basic Cleanup', name: 'Ozone-illuminious-gold-Facial-for-all-types-skin', withoutProductPrice: 300, withProductPrice: 599, serviceType: 'both', duration: 50 },
 
   // Basic Facial
-  { id: 'bf-1', category: 'Facial', subCategory: 'Basic', name: 'Fruit Facial - 5 Steps', withoutProductPrice: 380,  withProductPrice: 599, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Fruit-Facial.png'},
-  { id: 'bf-2', category: 'Facial', subCategory: 'Basic', name: 'De-Tan Facial - 6 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/De-Tan-Facial.png' },
-  { id: 'bf-3', category: 'Facial', subCategory: 'Basic', name: 'Red Wine Skin Tightening Facial - 6 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Red-Wine-Skin-Tightening-Facial.png' },
-  { id: 'bf-4', category: 'Facial', subCategory: 'Basic', name: 'Gold Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Gold-Facial.png' },
-  { id: 'bf-5', category: 'Facial', subCategory: 'Basic', name: 'Diamond Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Diamond-Facial.png' },
-  { id: 'bf-6', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Facial - 7 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image:'/images/services/facial-basic/Aroma-Magic-Facial.png' },
+  { id: 'bf-1', category: 'Facial', subCategory: 'Basic', name: 'Fruit Facial - 5 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Fruit-Facial.png' },
+  { id: 'bf-2', category: 'Facial', subCategory: 'Basic', name: 'De-Tan Facial - 6 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/De-Tan-Facial.png' },
+  { id: 'bf-3', category: 'Facial', subCategory: 'Basic', name: 'Red Wine Skin Tightening Facial - 6 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Red-Wine-Skin-Tightening-Facial.png' },
+  { id: 'bf-4', category: 'Facial', subCategory: 'Basic', name: 'Gold Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Gold-Facial.png' },
+  { id: 'bf-5', category: 'Facial', subCategory: 'Basic', name: 'Diamond Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Diamond-Facial.png' },
+  { id: 'bf-6', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Facial - 7 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Aroma-Magic-Facial.png' },
+
 
   // Classic Facial
-  { id: 'cf-1', category: 'Facial', subCategory: 'Classic', name: 'Korean Facial', withoutProductPrice: 599, withProductPrice: 1199, serviceType: 'both', duration: 75, popular: true, image:'/images/services/facial-classic/Korean-Facial.png' },
-  { id: 'cf-2', category: 'Facial', subCategory: 'Classic', name: "Shine's Glow O3+ Facial", withoutProductPrice: 420, withProductPrice: 1295, serviceType: 'both', duration: 60, image:'/images/services/facial-classic/Shines-Glow-O3-Facial.png' },
-  { id: 'cf-3', category: 'Facial', subCategory: 'Classic', name: 'O3+ Bridal Facial V-C', withoutProductPrice: 599, withProductPrice: 1549, serviceType: 'both', duration: 100, image:'/images/services/facial-classic/O3-Radiant -Glow-Bridal-Facial.png' },
-  { id: 'cf-4', category: 'Facial', subCategory: 'Classic', name: 'O3+ Radiant Glow Bridal Facial', withoutProductPrice: 599, withProductPrice: 1599, serviceType: 'both', duration: 100, image:'/images/services/facial-classic/O3-Radiant -Glow-Bridal-Facial.png'},
-  { id: 'cf-5', category: 'Facial', subCategory: 'Classic', name: 'Hydra Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70, image:'/images/services/facial-classic/Hydra-Facial.png' },
-  { id: 'cf-6', category: 'Facial', subCategory: 'Classic', name: 'FYC Bridal Glow Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70, image:'/images/services/facial-classic/FYC-Bridal -Glow-Facial.png' },
+  { id: 'cf-1', category: 'Facial', subCategory: 'Classic', name: 'Korean Facial', withoutProductPrice: 599, withProductPrice: 1199, serviceType: 'both', duration: 75, popular: true, image: '/images/services/facial-classic/Korean-Facial.png' },
+  { id: 'cf-2', category: 'Facial', subCategory: 'Classic', name: "Shine's Glow O3+ Facial", withoutProductPrice: 420, withProductPrice: 1295, serviceType: 'both', duration: 60, image: '/images/services/facial-classic/Shines-Glow-O3-Facial.png' },
+  { id: 'cf-3', category: 'Facial', subCategory: 'Classic', name: 'O3+ Bridal Facial V-C', withoutProductPrice: 599, withProductPrice: 1549, serviceType: 'both', duration: 100, image: '/images/services/facial-classic/O3-Radiant -Glow-Bridal-Facial.png' },
+  { id: 'cf-4', category: 'Facial', subCategory: 'Classic', name: 'O3+ Radiant Glow Bridal Facial', withoutProductPrice: 599, withProductPrice: 1599, serviceType: 'both', duration: 100, image: '/images/services/facial-classic/O3-Radiant -Glow-Bridal-Facial.png' },
+  { id: 'cf-5', category: 'Facial', subCategory: 'Classic', name: 'Hydra Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70, image: '/images/services/facial-classic/Hydra-Facial.png' },
+  { id: 'cf-6', category: 'Facial', subCategory: 'Classic', name: 'FYC Bridal Glow Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70, image: '/images/services/facial-classic/FYC-Bridal -Glow-Facial.png' },
+  { id: 'cf-7', category: 'Facial', subCategory: 'Classic', name: 'Kanpeki-Glass-Glow-Skin-11-step', withoutProductPrice: 600, withProductPrice: 1499, serviceType: 'both', duration: 100, },
+  { id: 'cf-8', category: 'Facial', subCategory: 'Classic', name: 'Kanpeki-Pura-Bright-7-step-Facial', withoutProductPrice: 1229, withProductPrice: 490, serviceType: 'both', duration: 70, },
+
+  // Hydra Facial
+  { id: 'af-1', category: 'Facial', subCategory: 'Advance', name: 'Hydra Boast', withoutProductPrice: 2499, withProductPrice: 4999, serviceType: 'both', duration: 90, popular: true, },
+  { id: 'af-2', category: 'Facial', subCategory: 'Advance', name: 'Korean', withoutProductPrice: 2595, withProductPrice: 5999, serviceType: 'both', duration: 100, },
+  { id: 'Af-3', category: 'Facial', subCategory: 'Advance', name: 'Cashmara', withoutProductPrice: 3995, withProductPrice: 6985, serviceType: 'both', duration: 100, popular: true, },
+  { id: 'af-4', category: 'Facial', subCategory: 'Advance', name: 'Gogi', withoutProductPrice: 4599, withProductPrice: 8799, serviceType: 'both', duration: 100, },
+  { id: 'af-5', category: 'Facial', subCategory: 'Advance', name: 'De Tan Cleanup', withoutProductPrice: 1800, withProductPrice: 2222, serviceType: 'both', duration: 70, popular: true, },
+  { id: 'af-6', category: 'Facial', subCategory: 'Advance', name: 'FYC Bridal Glow', withoutProductPrice: 3899, withProductPrice: 5885, serviceType: 'both', duration: 100, popular: true, },
+  {
+    id: 'af-7', category: 'Facial', subCategory: 'Advance', name: 'Kanpeki-Hydra-Shine-5-step', withoutProductPrice: 965, withProductPrice:
+      385, serviceType: 'both', duration: 65, popular: true,
+  },
 
   // Bridal & Combo Packages
-  { id: 'bcp-1', category: 'Bridal & Combo Packages', name: 'Rica Wax + De-Tan Facial + Threading Combo', withoutProductPrice: 1624, duration: 145, image:'/images/services/packages/Rica-Wax-De-Tan-Facial-Threading-Combo.png' },
-  { id: 'bcp-2', category: 'Bridal & Combo Packages', name: 'Rica Wax + Red Wine Skin-Tightening Facial + O3 Pedicure Combo', withoutProductPrice: 1999, duration: 205, image:'/images/services/packages/Rica-Wax-Red-Wine-Skin-Tightening-Facial-O3-Pedicure-Combo.png' },
-  { id: 'bcp-3', category: 'Bridal & Combo Packages', name: 'Bridal Shine Special Package', withoutProductPrice: 7040, duration: 215, popular: true, image:'/images/services/packages/Bridal-Shine-Special-Package.png' },
+  { id: 'bcp-1', category: 'Bridal & Combo Packages', name: 'Rica Wax + De-Tan Facial + Threading Combo', withoutProductPrice: 1624, duration: 145, image: '/images/services/packages/Rica-Wax-De-Tan-Facial-Threading-Combo.png' },
+  { id: 'bcp-2', category: 'Bridal & Combo Packages', name: 'Rica Wax + Red Wine Skin-Tightening Facial + O3 Pedicure Combo', withoutProductPrice: 1999, duration: 205, image: '/images/services/packages/Rica-Wax-Red-Wine-Skin-Tightening-Facial-O3-Pedicure-Combo.png' },
+  { id: 'bcp-3', category: 'Bridal & Combo Packages', name: 'Bridal Shine Special Package', withoutProductPrice: 7040, duration: 215, popular: true, image: '/images/services/packages/Bridal-Shine-Special-Package.png' },
 ];
 
 export const SERVICE_CATEGORIES = Array.from(new Set(SERVICES.map(s => s.category)));

@@ -26,7 +26,8 @@ const CATEGORY_DISPLAY_MAP: Record<string, { icon: React.ReactNode; displayName:
   'Body Spa & Massage': { icon: <Waves className="w-8 h-8" />, displayName: 'Body Spa' },
   'Spa': { icon: <Waves className="w-8 h-8" />, displayName: 'Body Spa' },
   'Hair Care': { icon: <Crown className="w-8 h-8" />, displayName: 'Hair Care' },
-  'Bridal & Combo Packages': { icon: <Palette className="w-8 h-8" />, displayName: 'Hairdo' },
+  'Bridal & Combo Packages': { icon: <Palette className="w-8 h-8" />, displayName: 'Packages' },
+  
 };
 
 // Get unique display categories
