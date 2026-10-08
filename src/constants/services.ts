@@ -187,19 +187,19 @@ export const SERVICES: Service[] = [
   { id: 'rorw-8', category: 'Wax', subCategory: 'Roll-ON', name: 'Stomach', withoutProductPrice: 380, duration: 25, image: '/images/services/roll-on/Stomach.png' },
 
   // Menicure and Pedicure
-  { id: 'mp-1', category: 'Mani and Pedi', name: 'De-Tan Mani Pedi', withoutProductPrice: 490, withProductPrice: 795, serviceType: 'both', duration: 145, popular: true },
-  { id: 'mp-2', category: 'Mani and Pedi', name: 'O3+ Luxury Crystal Spa Mani Pedi', withoutProductPrice: 490, withProductPrice: 1150, serviceType: 'both', duration: 140 },
-  { id: 'mp-3', category: 'Mani and Pedi', name: 'O3+ Pedicure', withoutProductPrice: 390, withProductPrice: 649, serviceType: 'both', duration: 60 },
-  { id: 'mp-4', category: 'Mani and Pedi', name: 'Korean Mani Pedi', withoutProductPrice: 490, withProductPrice: 1199, serviceType: 'both', duration: 100, popular: true },
-  { id: 'mp-5', category: 'Mani and Pedi', name: 'Korean Pedicure', withoutProductPrice: 390, withProductPrice: 699, serviceType: 'both', duration: 60 },
-  { id: 'mp-6', category: 'Mani and Pedi', name: 'Korean Manicure', withoutProductPrice: 270, withProductPrice: 600, serviceType: 'both', duration: 45 },
-  { id: 'mp-7', category: 'Mani and Pedi', name: 'De-Tan Pedicure', withoutProductPrice: 390, withProductPrice: 599, serviceType: 'both', duration: 60 },
-  { id: 'mp-8', category: 'Mani and Pedi', name: 'O3+ Manicure', withoutProductPrice: 270, withProductPrice: 595, serviceType: 'both', duration: 45 },
-  { id: 'mp-9', category: 'Mani and Pedi', name: 'Cut + File + Polish', withoutProductPrice: 120, withProductPrice: 250, serviceType: 'both', duration: 20 },
-  { id: 'mp-10', category: 'Mani and Pedi', name: 'Nail Paint Apply', withoutProductPrice: 59, withProductPrice: 595, serviceType: 'both', duration: 10 },
-  { id: 'mp-11', category: 'Mani and Pedi', name: 'FYC Classic meni pedi', withoutProductPrice: 490, withProductPrice: 749, serviceType: 'both', duration: 105 },
-  { id: 'mp-12', category: 'Mani and Pedi', name: 'only pedicure', withoutProductPrice: 390, withProductPrice: 599, serviceType: 'both', duration: 60 },
-  { id: 'mp-13', category: 'Mani and Pedi', name: 'Only pedicure', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45 },
+  { id: 'mp-1', category: 'Mani and Pedi', name: 'De-Tan Mani Pedi', withoutProductPrice: 490, withProductPrice: 795, serviceType: 'both', duration: 145, popular: true, image: '/images/services/Madi-Pedi/De-Tan-Mani-Pedi-png'},
+  { id: 'mp-2', category: 'Mani and Pedi', name: 'O3+ Luxury Crystal Spa Mani Pedi', withoutProductPrice: 490, withProductPrice: 1150, serviceType: 'both', duration: 140, image: '/images/services/Madi-Pedi/O3-Luxury-Crystal-Spa-Mani-Pedi-png'},
+  { id: 'mp-3', category: 'Mani and Pedi', name: 'O3+ Pedicure', withoutProductPrice: 390, withProductPrice: 649, serviceType: 'both', duration: 60, image: '/images/services/Madi-Pedi/O3-Pedicure-png' },
+  { id: 'mp-4', category: 'Mani and Pedi', name: 'Korean Mani Pedi', withoutProductPrice: 490, withProductPrice: 1199, serviceType: 'both', duration: 100, popular: true, image: '/images/services/Madi-Pedi/Korean-Mani-Pedi-png' },
+  { id: 'mp-5', category: 'Mani and Pedi', name: 'Korean Pedicure', withoutProductPrice: 390, withProductPrice: 699, serviceType: 'both', duration: 60, image: '/images/services/Madi-Pedi/Korean-Pedicure-png' },
+  { id: 'mp-6', category: 'Mani and Pedi', name: 'Korean Manicure', withoutProductPrice: 270, withProductPrice: 600, serviceType: 'both', duration: 45, image: '/images/services/Madi-Pedi/Korean Manicure.png' },
+  { id: 'mp-7', category: 'Mani and Pedi', name: 'De-Tan Pedicure', withoutProductPrice: 390, withProductPrice: 599, serviceType: 'both', duration: 60 , image: '/images/services/Madi-Pedi/De-Tan Pedicure.png'},
+  { id: 'mp-8', category: 'Mani and Pedi', name: 'O3+ Manicure', withoutProductPrice: 270, withProductPrice: 595, serviceType: 'both', duration: 45, image: '/images/services/Madi-Pedi/O3-Manicure-png' },
+  { id: 'mp-9', category: 'Mani and Pedi', name: 'Cut + File + Polish', withoutProductPrice: 120, withProductPrice: 250, serviceType: 'both', duration: 20, image: '/images/services/Madi-Pedi/Cut-File-Polish-png'},
+  { id: 'mp-10', category: 'Mani and Pedi', name: 'Nail Paint Apply', withoutProductPrice: 59, withProductPrice: 595, serviceType: 'both', duration: 10 , image: '/images/services/Madi-Pedi/Nail-Paint-Apply-png'},
+  { id: 'mp-11', category: 'Mani and Pedi', name: 'FYC Classic meni pedi', withoutProductPrice: 490, withProductPrice: 749, serviceType: 'both', duration: 105, image: '/images/services/Madi-Pedi/FYC-Classic-meni-pedi-png' },
+  { id: 'mp-12', category: 'Mani and Pedi', name: 'only pedicure', withoutProductPrice: 390, withProductPrice: 599, serviceType: 'both', duration: 60, image: '/images/services/Madi-Pedi/O3-Pedicure-png' },
+  { id: 'mp-13', category: 'Mani and Pedi', name: 'Only pedicure', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45, image: '/images/services/Madi-Pedi/O3-Pedicure-png' },
 
   // Hair Care
   { id: 'hc-1', category: 'Hair Care', name: 'Touch-Up - On Product', withoutProductPrice: 399, duration: 30, image: '/images/services/hair-care/Touch-Up -On-Product.png' },
@@ -226,36 +226,36 @@ export const SERVICES: Service[] = [
   { id: 'debl-6', category: 'De-tan', name: 'Stomach', withoutProductPrice: 120, withProductPrice: 199, serviceType: 'both', duration: 20, image:'/images/services/De-tan/Stomach.png' },
 
   // Body Scrub
-  { id: 'bs-1', category: 'Body', subCategory: 'Scrub', name: 'Full Body Scrub', withoutProductPrice: 360, withProductPrice: 549, serviceType: 'both', duration: 60 },
-  { id: 'bs-2', category: 'Body', subCategory: 'Scrub', name: 'Full Hand Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20 },
-  { id: 'bs-3', category: 'Body', subCategory: 'Scrub', name: 'Full Back Scrub', withoutProductPrice: 180, withProductPrice: 359, serviceType: 'both', duration: 30 },
-  { id: 'bs-4', category: 'Body', subCategory: 'Scrub', name: 'Full Leg Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20 },
-  { id: 'bs-5', category: 'Body', subCategory: 'Scrub', name: 'Half Back Scrub', withoutProductPrice: 120, withProductPrice: 285, serviceType: 'both', duration: 20 },
+  { id: 'bs-1', category: 'Body', subCategory: 'Scrub', name: 'Full Body Scrub', withoutProductPrice: 360, withProductPrice: 549, serviceType: 'both', duration: 60, image: '/images/services/body/Full Body Scrub.png' },
+  { id: 'bs-2', category: 'Body', subCategory: 'Scrub', name: 'Full Hand Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20, image: '/images/services/body/Full-Hand-Scrub-png' },
+  { id: 'bs-3', category: 'Body', subCategory: 'Scrub', name: 'Full Back Scrub', withoutProductPrice: 180, withProductPrice: 359, serviceType: 'both', duration: 30, image: '/images/services/body/Full Back Scrub.png'},
+  { id: 'bs-4', category: 'Body', subCategory: 'Scrub', name: 'Full Leg Scrub', withoutProductPrice: 120, withProductPrice: 299, serviceType: 'both', duration: 20, image: '/images/services/body/Full-Leg-Scrub-png' },
+  { id: 'bs-5', category: 'Body', subCategory: 'Scrub', name: 'Half Back Scrub', withoutProductPrice: 120, withProductPrice: 285, serviceType: 'both', duration: 20, image: '/images/services/body/Half-Back-Scrub-png' },
 
   // Body Polishing
-  { id: 'bp-1', category: 'Body', subCategory: 'Polishing', name: 'Full Body Polishing', withoutProductPrice: 1599, duration: 100 },
-  { id: 'bp-3', category: 'Body', subCategory: 'Polishing', name: 'Aroma Luxury Therapy skin care 6 step ', withoutProductPrice: 1499, withProductPrice: 799, duration: 120} ,
-  { id: 'bp-4', category: 'Body', subCategory: 'Polishing', name: 'FYC Professional Hydra Boost 4 step', withoutProductPrice: 1299, withProductPrice:799, duration: 165 } ,
+  { id: 'bp-1', category: 'Body', subCategory: 'Polishing', name: 'Full Body Polishing', withoutProductPrice: 1599, duration: 100, image: '/images/services/body/Full-Body-Polishing-png' },
+  { id: 'bp-3', category: 'Body', subCategory: 'Polishing', name: 'Aroma Luxury Therapy skin care 6 step ', withoutProductPrice: 1499, withProductPrice: 799, duration: 120, image: '/images/services/body/Aroma-Luxury-Therapy-skin-care-6-step-png'} ,
+  { id: 'bp-4', category: 'Body', subCategory: 'Polishing', name: 'FYC Professional Hydra Boost 4 step', withoutProductPrice: 1299, withProductPrice:799, duration: 165, image: '/images/services/body/FYC-Professional-Hydra-Boost-4-step-png' } ,
 
   // Body Spa & Massage
   { id: 'bm-1', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Body Spa', withoutProductPrice: 699, withProductPrice: 1049, duration: 60, popular: true, image: '/images/services/body-spa/Full-Body-Spa.png' },
-  { id: 'bm-2', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (15 min)', withoutProductPrice: 90, withProductPrice: 149, serviceType: 'both', duration: 15 },
-  { id: 'bm-3', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (20 min)', withoutProductPrice: 120, withProductPrice: 159, serviceType: 'both', duration: 20 },
-  { id: 'bm-4', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (30 min)', withoutProductPrice: 150, withProductPrice: 180, serviceType: 'both', duration: 30 },
-  { id: 'bm-5', category: 'Body', subCategory: 'Spa & Massage', name: 'Head + Neck + Shoulder Massage', withoutProductPrice: 390, withProductPrice: 460, serviceType: 'both', duration: 30 },
-  { id: 'bm-6', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Back Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 30 },
-  { id: 'bm-7', category: 'Body', subCategory: 'Spa & Massage', name: 'Foot Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 20 },
-  { id: 'bm-8', category: 'Body', subCategory: 'Spa & Massage', name: 'Head + Foot Massage', withoutProductPrice: 320, withProductPrice: 449, serviceType: 'both', duration: 30 },
-  { id: 'bm-9', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Leg + Full Arms', withoutProductPrice: 400, withProductPrice: 470, serviceType: 'both', duration: 30 },
+  { id: 'bm-2', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (15 min)', withoutProductPrice: 90, withProductPrice: 149, serviceType: 'both', duration: 15, image: '/images/services/body/Head-Massage-15-min-png' },
+  { id: 'bm-3', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (20 min)', withoutProductPrice: 120, withProductPrice: 159, serviceType: 'both', duration: 20, image: '/images/services/body/Head-Massage-20-min-png'},
+  { id: 'bm-4', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (30 min)', withoutProductPrice: 150, withProductPrice: 180, serviceType: 'both', duration: 3, image: '/images/services/body/Head-Massage-30-min-png'  },
+  { id: 'bm-5', category: 'Body', subCategory: 'Spa & Massage', name: 'Head + Neck + Shoulder Massage', withoutProductPrice: 390, withProductPrice: 460, serviceType: 'both', duration: 30, image: '/images/services/body/Head + Neck + Shoulder Massage.png'},
+  { id: 'bm-6', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Back Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 30, image: , image: '/images/services/body/Full-Back-Massage-png' },
+  { id: 'bm-7', category: 'Body', subCategory: 'Spa & Massage', name: 'Foot Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 20, image: '/images/services/body/Foot-Massage-png' },
+  { id: 'bm-8', category: 'Body', subCategory: 'Spa & Massage', name: 'Head + Foot Massage', withoutProductPrice: 320, withProductPrice: 449, serviceType: 'both', duration: 30, image: '/images/services/body/Head-Foot-Massage-png' },
+  { id: 'bm-9', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Leg + Full Arms', withoutProductPrice: 400, withProductPrice: 470, serviceType: 'both', duration: 30, image: 'public/images/services/body/Full Leg + Full Arms.png' },
   { id: 'sp-1', category: 'Spa', name: 'Aroma Relaxation Spa', withoutProductPrice: 799, duration: 75, popular: true, image: '/images/services/body-spa/Aroma-Relaxation-Spa.png' },
 
   // Basic Cleanup
-  { id: 'cu-1', category: 'Basic Cleanup', name: 'Fruit Cleanup - 5 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45 },
-  { id: 'cu-2', category: 'Basic Cleanup', name: 'De-Tan Cleanup - 6 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45 },
-  { id: 'cu-3', category: 'Basic Cleanup', name: 'Red Wine Skin Tightening Cleanup - 6 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45 },
-  { id: 'cu-4', category: 'Basic Cleanup', name: 'Pura-Bright-7-step', withoutProductPrice: 350, withProductPrice: 979, serviceType: 'both', duration: 50 },
-  { id: 'cu-5', category: 'Basic Cleanup', name: 'Ozone-illuminious-gold-Facial-for-all-types-skin', withoutProductPrice: 300, withProductPrice: 599, serviceType: 'both', duration: 50 },
-   { id: 'cu-6', category: 'Basic Cleanup', name: 'FYC Professional Pure White Whitining Vitamin C Cleanup', withoutProductPrice: 300, withProductPrice: 599, serviceType: 'both', duration: 50 },
+  { id: 'cu-1', category: 'Basic Cleanup', name: 'Fruit Cleanup - 5 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45, image: '/images/services/cleanup/Fruit-Cleanup-5-Steps.png' },
+  { id: 'cu-2', category: 'Basic Cleanup', name: 'De-Tan Cleanup - 6 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45, image: '/images/services/cleanup/De-Tan-Cleanup-6-Steps.png' },
+  { id: 'cu-3', category: 'Basic Cleanup', name: 'Red Wine Skin Tightening Cleanup - 6 Steps', withoutProductPrice: 270, withProductPrice: 499, serviceType: 'both', duration: 45, image: '/images/services/cleanup/Red-Wine-Skin-Tightening-Cleanup-6-Steps.png' },
+  { id: 'cu-4', category: 'Basic Cleanup', name: 'Pura-Bright-7-step', withoutProductPrice: 350, withProductPrice: 979, serviceType: 'both', duration: 50, image: '/images/services/cleanup/Pura-Bright-7-step.png' },
+  { id: 'cu-5', category: 'Basic Cleanup', name: 'Ozone-illuminious-gold-Facial-for-all-types-skin', withoutProductPrice: 300, withProductPrice: 599, serviceType: 'both', duration: 50, image: '/images/services/cleanup/Ozone-illuminious-gold-Facial-for-all-types-skin.png' },
+   { id: 'cu-6', category: 'Basic Cleanup', name: 'FYC Professional Pure White Whitining Vitamin C Cleanup', withoutProductPrice: 300, withProductPrice: 599, serviceType: 'both', duration: 50, image: '/images/services/cleanup/FYC-Professional-Pure-White-Whitining-Vitamin-C-Cleanup.png' },
 
 
   // Basic Facial
@@ -265,13 +265,13 @@ export const SERVICES: Service[] = [
   { id: 'bf-4', category: 'Facial', subCategory: 'Basic', name: 'Gold Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Gold-Facial.png' },
   { id: 'bf-5', category: 'Facial', subCategory: 'Basic', name: 'Diamond Facial - 4 Steps', withoutProductPrice: 380, withProductPrice: 599, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Diamond-Facial.png' },
   { id: 'bf-6', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Facial - 7 Steps', withoutProductPrice: 380, withProductPrice: 699, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Aroma-Magic-Facial.png' },
-  { id: 'bf-7', category: 'Facial', subCategory: 'Basic', name: 'FYC professional pure white whitining vitamin C facial - 5 Steps', withoutProductPrice: 385, withProductPrice: 915, serviceType: 'both', duration: 65 },
-  { id: 'bf-8', category: 'Facial', subCategory: 'Basic', name: 'Ozzone illuminious Gold Facial for all type skin - 5+ Steps', withoutProductPrice: 385, withProductPrice: 690, serviceType: 'both', duration: 70},
-  { id: 'bf-9', category: 'Facial', subCategory: 'Basic', name: 'Raaga Normal to Dry Skin - 6 Steps', withoutProductPrice: 385, withProductPrice: 525, serviceType: 'both', duration: 60},
-  { id: 'bf-10', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Diamond Glow Facial all type Skin - 6 Steps', withoutProductPrice: 385, withProductPrice: 835, serviceType: 'both', duration: 65},
-   { id: 'bf-11', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Gold  Facial all type Skin - 7 Steps', withoutProductPrice: 385, withProductPrice: 745, serviceType: 'both', duration: 65},
-   { id: 'bf-12', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Silver Facial Normal to Dry Sensitive Skin - 7 Steps', withoutProductPrice: 385, withProductPrice: 675, serviceType: 'both', duration: 70},
-   { id: 'bf-13', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Pearl Facial oily Acene Prone Skin - 7 Steps', withoutProductPrice: 385, withProductPrice: 665, serviceType: 'both', duration: 70},
+  { id: 'bf-7', category: 'Facial', subCategory: 'Basic', name: 'FYC professional pure white whitining vitamin C facial - 5 Steps', withoutProductPrice: 385, withProductPrice: 915, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/FYC-professional-pure-white-whitining-vitamin-C-facial-5-Steps.png' },
+  { id: 'bf-8', category: 'Facial', subCategory: 'Basic', name: 'Ozzone illuminious Gold Facial for all type skin - 5+ Steps', withoutProductPrice: 385, withProductPrice: 690, serviceType: 'both', duration: 70, image: '/images/services/facial-basic/Ozone_illuminious_GoldFacial_for_all_type_skin _5+Steps.png'},
+  { id: 'bf-9', category: 'Facial', subCategory: 'Basic', name: 'Raaga Normal to Dry Skin - 6 Steps', withoutProductPrice: 385, withProductPrice: 525, serviceType: 'both', duration: 60, image: '/images/services/facial-basic/Raaga-Normal-to-Dry-Skin-6-Steps.png'},
+  { id: 'bf-10', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Diamond Glow Facial all type Skin - 6 Steps', withoutProductPrice: 385, withProductPrice: 835, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Aroma-Magic-Diamond-Glow-Facial-all-type-Skin-6-Steps.png'},
+   { id: 'bf-11', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Gold  Facial all type Skin - 7 Steps', withoutProductPrice: 385, withProductPrice: 745, serviceType: 'both', duration: 65, image: '/images/services/facial-basic/Aroma-Magic-Gold-Facial-all-type-Skin-7-Steps.png'},
+   { id: 'bf-12', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Silver Facial Normal to Dry Sensitive Skin - 7 Steps', withoutProductPrice: 385, withProductPrice: 675, serviceType: 'both', duration: 70, image: '/images/services/facial-basic/Aroma-Magic-Silver-Facial-Normal-to-Dry-Sensitive-Skin-7-Steps.png'},
+   { id: 'bf-13', category: 'Facial', subCategory: 'Basic', name: 'Aroma Magic Pearl Facial oily Acene Prone Skin - 7 Steps', withoutProductPrice: 385, withProductPrice: 665, serviceType: 'both', duration: 70, image: '/images/services/facial-basic/Aroma-Magic-Pearl-Facial-oily-Acene-Prone-Skin-7-Steps.png'},
 
   // Classic Facial
   { id: 'cf-1', category: 'Facial', subCategory: 'Classic', name: 'Korean Facial', withoutProductPrice: 599, withProductPrice: 1199, serviceType: 'both', duration: 75, popular: true, image: '/images/services/facial-classic/Korean-Facial.png' },
@@ -280,19 +280,19 @@ export const SERVICES: Service[] = [
   { id: 'cf-4', category: 'Facial', subCategory: 'Classic', name: 'O3+ Radiant Glow Bridal Facial', withoutProductPrice: 599, withProductPrice: 1599, serviceType: 'both', duration: 100, image: '/images/services/facial-classic/O3-Radiant -Glow-Bridal-Facial.png' },
   { id: 'cf-5', category: 'Facial', subCategory: 'Classic', name: 'Hydra Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70, image: '/images/services/facial-classic/Hydra-Facial.png' },
   { id: 'cf-6', category: 'Facial', subCategory: 'Classic', name: 'FYC Bridal Glow Facial', withoutProductPrice: 599, withProductPrice: 1099, serviceType: 'both', duration: 70, image: '/images/services/facial-classic/FYC-Bridal -Glow-Facial.png' },
-  { id: 'cf-7', category: 'Facial', subCategory: 'Classic', name: 'Kanpeki-Glass-Glow-Skin-11-step', withoutProductPrice: 600, withProductPrice: 1499, serviceType: 'both', duration: 100, },
-  { id: 'cf-8', category: 'Facial', subCategory: 'Classic', name: 'Kanpeki-Pura-Bright-7-step-Facial', withoutProductPrice: 1229, withProductPrice: 490, serviceType: 'both', duration: 70, },
+  { id: 'cf-7', category: 'Facial', subCategory: 'Classic', name: 'Kanpeki-Glass-Glow-Skin-11-step', withoutProductPrice: 600, withProductPrice: 1499, serviceType: 'both', duration: 100, image: '/images/services/facial-classic/Kanpeki-Glass-Glow-Skin-11-step-png'  },
+  { id: 'cf-8', category: 'Facial', subCategory: 'Classic', name: 'Kanpeki-Pura-Bright-7-step-Facial', withoutProductPrice: 1229, withProductPrice: 490, serviceType: 'both', duration: 70, image: '/images/services/facial-classic/Kanpeki-Pura-Bright-7-step-Facial-png' },
 
   // Hydra Facial
-  { id: 'af-1', category: 'Facial', subCategory: 'Advance', name: 'Hydra Boast', withoutProductPrice: 2499, withProductPrice: 4999, serviceType: 'both', duration: 90, popular: true, },
-  { id: 'af-2', category: 'Facial', subCategory: 'Advance', name: 'Korean', withoutProductPrice: 2595, withProductPrice: 5999, serviceType: 'both', duration: 100, },
-  { id: 'Af-3', category: 'Facial', subCategory: 'Advance', name: 'Cashmara', withoutProductPrice: 3995, withProductPrice: 6985, serviceType: 'both', duration: 100, popular: true, },
-  { id: 'af-4', category: 'Facial', subCategory: 'Advance', name: 'Gogi', withoutProductPrice: 4599, withProductPrice: 8799, serviceType: 'both', duration: 100, },
-  { id: 'af-5', category: 'Facial', subCategory: 'Advance', name: 'De Tan Cleanup', withoutProductPrice: 1800, withProductPrice: 2222, serviceType: 'both', duration: 70, popular: true, },
-  { id: 'af-6', category: 'Facial', subCategory: 'Advance', name: 'FYC Bridal Glow', withoutProductPrice: 3899, withProductPrice: 5885, serviceType: 'both', duration: 100, popular: true, },
+  { id: 'af-1', category: 'Facial', subCategory: 'Advance', name: 'Hydra Boast', withoutProductPrice: 2499, withProductPrice: 4999, serviceType: 'both', duration: 90, popular: true, image: '/images/services/advance/Hydra-Boast-png'},
+  { id: 'af-2', category: 'Facial', subCategory: 'Advance', name: 'Korean', withoutProductPrice: 2595, withProductPrice: 5999, serviceType: 'both', duration: 100, image: '/images/services/advance/Korean-png' },
+  { id: 'Af-3', category: 'Facial', subCategory: 'Advance', name: 'Cashmara', withoutProductPrice: 3995, withProductPrice: 6985, serviceType: 'both', duration: 100, popular: true, image: '/images/services/advance/Cashmara-png' },
+  { id: 'af-4', category: 'Facial', subCategory: 'Advance', name: 'Gogi', withoutProductPrice: 4599, withProductPrice: 8799, serviceType: 'both', duration: 100, image: '/images/services/advance/Gogi-png' },
+  { id: 'af-5', category: 'Facial', subCategory: 'Advance', name: 'De Tan Cleanup', withoutProductPrice: 1800, withProductPrice: 2222, serviceType: 'both', duration: 70, popular: true, image: '/images/services/advance/De-Tan-Cleanu-png' },
+  { id: 'af-6', category: 'Facial', subCategory: 'Advance', name: 'FYC Bridal Glow', withoutProductPrice: 3899, withProductPrice: 5885, serviceType: 'both', duration: 100, popular: true, image: '/images/services/advance/FYC-Bridal-Glow-png' },
   {
     id: 'af-7', category: 'Facial', subCategory: 'Advance', name: 'Kanpeki-Hydra-Shine-5-step', withoutProductPrice: 965, withProductPrice:
-      385, serviceType: 'both', duration: 65, popular: true,
+      385, serviceType: 'both', duration: 65, popular: true, image: '/images/services/advance/Kanpeki-Hydra-Shine-5-step-png'
   },
 
   // Bridal & Combo Packages
