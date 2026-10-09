@@ -243,10 +243,10 @@ export const SERVICES: Service[] = [
   { id: 'bm-3', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (20 min)', withoutProductPrice: 120, withProductPrice: 159, serviceType: 'both', duration: 20, image: '/images/services/body/Head-Massage-20-min-png'},
   { id: 'bm-4', category: 'Body', subCategory: 'Spa & Massage', name: 'Head Massage (30 min)', withoutProductPrice: 150, withProductPrice: 180, serviceType: 'both', duration: 3, image: '/images/services/body/Head-Massage-30-min-png'  },
   { id: 'bm-5', category: 'Body', subCategory: 'Spa & Massage', name: 'Head + Neck + Shoulder Massage', withoutProductPrice: 390, withProductPrice: 460, serviceType: 'both', duration: 30, image: '/images/services/body/Head + Neck + Shoulder Massage.png'},
-  { id: 'bm-6', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Back Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 30, image: , image: '/images/services/body/Full-Back-Massage-png' },
+  { id: 'bm-6', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Back Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 30, image: '/images/services/body/Full-Back-Massage-png' },
   { id: 'bm-7', category: 'Body', subCategory: 'Spa & Massage', name: 'Foot Massage', withoutProductPrice: 299, withProductPrice: 499, serviceType: 'both', duration: 20, image: '/images/services/body/Foot-Massage-png' },
   { id: 'bm-8', category: 'Body', subCategory: 'Spa & Massage', name: 'Head + Foot Massage', withoutProductPrice: 320, withProductPrice: 449, serviceType: 'both', duration: 30, image: '/images/services/body/Head-Foot-Massage-png' },
-  { id: 'bm-9', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Leg + Full Arms', withoutProductPrice: 400, withProductPrice: 470, serviceType: 'both', duration: 30, image: 'public/images/services/body/Full Leg + Full Arms.png' },
+  { id: 'bm-9', category: 'Body', subCategory: 'Spa & Massage', name: 'Full Leg + Full Arms', withoutProductPrice: 400, withProductPrice: 470, serviceType: 'both', duration: 30, image: '/images/services/body/Full Leg + Full Arms.png' },
   { id: 'sp-1', category: 'Spa', name: 'Aroma Relaxation Spa', withoutProductPrice: 799, duration: 75, popular: true, image: '/images/services/body-spa/Aroma-Relaxation-Spa.png' },
 
   // Basic Cleanup
